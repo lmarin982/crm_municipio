@@ -41,12 +41,17 @@ h1.formulario-titulo {
 /* Modificar los estilos de los formularios */
 .formulario-juridica,
 .formulario-natural {
-  display: none; /* Oculto por defecto */
+  display: none;
+  /* Oculto por defecto */
   opacity: 0;
-  height: 0; /* Añadir altura 0 cuando está oculto */
-  overflow: hidden; /* Ocultar el contenido */
-  margin: 0; /* Eliminar márgenes cuando está oculto */
-  padding: 0; /* Eliminar padding cuando está oculto */
+  height: 0;
+  /* Añadir altura 0 cuando está oculto */
+  overflow: hidden;
+  /* Ocultar el contenido */
+  margin: 0;
+  /* Eliminar márgenes cuando está oculto */
+  padding: 0;
+  /* Eliminar padding cuando está oculto */
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -54,9 +59,12 @@ h1.formulario-titulo {
 .formulario-natural.visible {
   display: block;
   opacity: 1;
-  height: auto; /* Restaurar altura automática */
-  margin-bottom: 20px; /* Restaurar margen cuando es visible */
-  padding: 20px; /* Restaurar padding cuando es visible */
+  height: auto;
+  /* Restaurar altura automática */
+  margin-bottom: 20px;
+  /* Restaurar margen cuando es visible */
+  padding: 20px;
+  /* Restaurar padding cuando es visible */
 }
 
 /* Estilos para el contenedor del formulario */
@@ -129,7 +137,8 @@ h1.formulario-titulo {
   justify-content: space-between;
   gap: 20px;
   align-items: center;
-  margin-bottom: 0; /* Eliminar margen inferior */
+  margin-bottom: 0;
+  /* Eliminar margen inferior */
 }
 
 .selector-tipo select {
@@ -294,6 +303,21 @@ h1.formulario-titulo {
   gap: 20px;
 }
 
+.registro-elementos-titulo {
+  background: #000080;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.registro-elementos-titulo h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin: 0;
+  width: 100%;
+}
+
 .elementos-inputs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -331,7 +355,8 @@ h1.formulario-titulo {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
-  table-layout: fixed; /* Mantiene las columnas con ancho fijo */
+  table-layout: fixed;
+  /* Mantiene las columnas con ancho fijo */
 }
 
 .tabla-registro th {
@@ -349,7 +374,8 @@ h1.formulario-titulo {
   border-bottom: 1px solid #e0e0e0;
   font-size: 0.9rem;
   vertical-align: top;
-  word-break: break-word; /* Permite romper palabras largas */
+  word-break: break-word;
+  /* Permite romper palabras largas */
 }
 
 /* Style the example row */
@@ -369,7 +395,8 @@ h1.formulario-titulo {
   cursor: pointer;
   font-size: 0.8rem;
   transition: all 0.2s ease;
-  white-space: nowrap; /* Evita que el texto se rompa */
+  white-space: nowrap;
+  /* Evita que el texto se rompa */
 }
 
 .eliminar-registro:hover {
@@ -503,7 +530,8 @@ h1.formulario-titulo {
 
 /* Estilos para truncar el texto en las celdas */
 .tabla-registro td.truncate {
-  max-width: 200px; /* Ajusta el ancho máximo según sea necesario */
+  max-width: 200px;
+  /* Ajusta el ancho máximo según sea necesario */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

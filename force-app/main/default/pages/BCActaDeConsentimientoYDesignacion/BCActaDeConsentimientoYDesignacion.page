@@ -99,7 +99,7 @@
                   gap: 10px;
                   flex-flow: row wrap;
                 ">
-                                <p>Subir archivo del nombramiento del representate legal</p>
+                                <p>Subir archivo del nombramiento del representate legal (*)</p>
                                 <label for="registroFile" class="custom-file-upload">
                                     <img src="{!$Resource.BCFlechaArriba_Logo}" alt="Subir archivo" width="20px" />
                                 </label>
@@ -329,7 +329,9 @@
             <!-- Registro de direcciones -->
             <!-- Registro de direcciones -->
             <div class="formulario-contenedor">
-                <h2 class="solicitante-titulo">Registro de elementos de seguridad</h2>
+                <div class="registro-elementos-titulo">
+                    <h2>Registro de elementos de seguridad</h2>
+                </div>
                 <div class="registro-elementos-container">
                     <!-- Campos de entrada -->
                     <div class="elementos-inputs">

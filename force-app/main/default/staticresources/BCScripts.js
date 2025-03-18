@@ -32,7 +32,7 @@ function agregarRegistro(event) {
     const tipoSolicitudValue = tipoSolicitudSelect.value;
 
     const tipoElementoValue = tipoElementoSelect.value;
-    const tipoElementoSeleccionado = tiposElementosSeguridad.find(elemento => elemento.tipo === tipoElementoValue); // Encuentra el objeto correspondiente
+    const tipoElementoSeleccionado = tiposElementosSeguridad.find(elemento => elemento.tipo === tipoElementoValue);
 
     if (!tipoElementoValue || !direccion || !latitud || !longitud || !tipoSolicitudValue) {
         mostrarMensajeErrorJS('Por favor complete todos los campos del registro');
@@ -42,7 +42,7 @@ function agregarRegistro(event) {
     const coordenadas = `${latitud}, ${longitud}`;
 
     registrosElementosSeguridad.push({
-        tipoElemento: tipoElementoSeleccionado, // Guarda el objeto completo
+        tipoElemento: tipoElementoSeleccionado,
         direccion,
         coordenadas,
         tipoSolicitud: tipoSolicitudText
@@ -58,8 +58,8 @@ function agregarRegistro(event) {
 // --- Function to Delete a Row ---
 function eliminarRegistro(index) {
     if (confirm('¿Está seguro de que desea eliminar este registro?')) {
-        registrosElementosSeguridad.splice(index, 1); // Remove the correct element
-        actualizarTabla(); // Re-render the table
+        registrosElementosSeguridad.splice(index, 1);
+        actualizarTabla();
     }
 }
 
@@ -67,18 +67,18 @@ function eliminarRegistro(index) {
 function actualizarCheckbox(fileId, checkboxId, nombreArchivoId) {
     const archivo = document.getElementById(fileId);
     const checkbox = document.getElementById(checkboxId);
-    const nombreArchivoSpan = document.getElementById(nombreArchivoId);  //  Make sure this element exists if you're using it
+    const nombreArchivoSpan = document.getElementById(nombreArchivoId);
 
     if (archivo.files.length > 0) {
         checkbox.checked = true;
         if (nombreArchivoSpan) {
-            nombreArchivoSpan.textContent = archivo.files[0].name; // Muestra el nombre del archivo, if the element is defined
+            nombreArchivoSpan.textContent = archivo.files[0].name;
         }
 
     } else {
         checkbox.checked = false;
         if (nombreArchivoSpan) {
-            nombreArchivoSpan.textContent = ''; // Limpia el nombre del archivo, if the element is defined
+            nombreArchivoSpan.textContent = '';
         }
 
     }
@@ -90,31 +90,28 @@ function mostrarFormulario() {
     const formularioJuridica = document.querySelector('.formulario-juridica');
     const formularioNatural = document.querySelector('.formulario-natural');
 
-    // Remove 'visible' class first
     formularioJuridica.classList.remove('visible');
     formularioNatural.classList.remove('visible');
 
-    // Use setTimeout for CSS transitions (optional, but nice)
     setTimeout(() => {
         formularioJuridica.style.display = 'none';
         formularioNatural.style.display = 'none';
 
         if (tipoSeleccionado === 'juridica') {
             formularioJuridica.style.display = 'block';
-            formularioJuridica.offsetHeight; // Trigger reflow (for transitions)
+            formularioJuridica.offsetHeight;
             formularioJuridica.classList.add('visible');
         } else if (tipoSeleccionado === 'natural') {
             formularioNatural.style.display = 'block';
-            formularioNatural.offsetHeight; // Trigger reflow
+            formularioNatural.offsetHeight;
             formularioNatural.classList.add('visible');
         }
-    }, 300); // Match CSS transition time
+    }, 300);
 }
 
 
-// --- Function to Clear *ALL* Form Fields (for Reset/Submit) ---
+// --- Function to Clear *ALL* Form Fields ---
 function limpiarTodosLosCampos() {
-    // Arrays of element IDs for easier clearing
     const camposJuridica = [
         'nombreEmpresaJuridica', 'rucJuridica', 'direccionJuridica',
         'correoJuridica', 'telefonoJuridica', 'representanteLegalJuridica',
@@ -134,7 +131,6 @@ function limpiarTodosLosCampos() {
         'registroCheckbox', 'actaCheckbox', 'planosCheckbox', 'fotosCheckbox', 'comprobanteCheckbox'
     ];
 
-    // Clear fields, handling potential null elements
     camposJuridica.forEach(campo => {
         const elemento = document.getElementById(campo);
         if (elemento) elemento.value = '';
@@ -152,23 +148,19 @@ function limpiarTodosLosCampos() {
         if (elemento) elemento.checked = false;
     });
 
-    // Clear the added rows table
-    limpiarFormularioDirecciones(); // Clear input fields in the "add row" section
-    registrosElementosSeguridad.length = 0; // Empty the array
-    actualizarTabla();  // Re-render the table (now empty)
+    limpiarFormularioDirecciones();
+    registrosElementosSeguridad.length = 0;
+    actualizarTabla();
 
-    // Clear terms and conditions checkbox
     const aceptaTerminos = document.getElementById('aceptaTerminos');
     if (aceptaTerminos) aceptaTerminos.checked = false;
 }
 
 // --- Function to Clear *ONLY* Address Input Fields ---
-// **CORRECTED:** This now *only* clears the input fields, *NOT* the dropdowns
 function limpiarFormularioDirecciones() {
     document.getElementById('direccionElemento').value = '';
     document.getElementById('latitudElemento').value = '';
     document.getElementById('longitudElemento').value = '';
-    // *DO NOT* clear tipoElemento and tipoSolicitud here!
 }
 
 // --- Validation Functions ---
@@ -184,7 +176,6 @@ function validarFormulario() {
         return false;
     }
 
-    //  Check if the address list is empty
     if (registrosElementosSeguridad.length === 0) {
         mostrarMensajeErrorJS('Debe agregar al menos un elemento de seguridad.');
         return false;
@@ -196,7 +187,7 @@ function validarFormulario() {
         return validarFormularioNatural();
     }
 
-    return true; // Should not reach here, but allow for flexibility
+    return true;
 }
 
 function enviarFormulario() {
@@ -207,7 +198,7 @@ function enviarFormulario() {
         return;
     }
 
-    mostrarMensajeConfirmacionJS(); // Replace with your submission logic
+    mostrarMensajeConfirmacionJS();
     limpiarTodosLosCampos();
     mostrarFormulario();
 }
@@ -218,6 +209,19 @@ function validarFormularioJuridica() {
         'correoJuridica', 'telefonoJuridica', 'representanteLegalJuridica',
         'identificacionRepresentanteJuridica'
     ];
+    //Validacion RUC
+    const rucValido = validarRUC(document.getElementById('rucJuridica').value);
+    if (!rucValido) {
+        mostrarMensajeErrorJS('Por favor, ingrese un RUC válido.');
+        return false;  // Detener la validación si el RUC no es válido.
+    }
+    // Validacion de la identificacion del representante legal
+    const idRepresentanteValido = validarCedula(document.getElementById('identificacionRepresentanteJuridica').value);
+    if (!idRepresentanteValido) {
+        mostrarMensajeErrorJS('Por favor, ingrese una cédula válida para el representante legal.');
+        return false; // Detener si la cedula no es valida.
+    }
+
     return validarCamposRequeridos(campos, 'jurídica');
 }
 
@@ -226,6 +230,14 @@ function validarFormularioNatural() {
         'nombresApellidosNatural', 'ccNatural', 'direccionNatural',
         'correoNatural', 'telefonoNatural'
     ];
+
+    //Validacion de cedula
+    const cedulaValida = validarCedula(document.getElementById('ccNatural').value);
+    if (!cedulaValida) {
+        mostrarMensajeErrorJS('Por favor, ingrese una cédula válida.');
+        return false; // Detener si la cedula no es valida
+    }
+
     return validarCamposRequeridos(campos, 'natural');
 }
 
@@ -252,6 +264,117 @@ function validarArchivosRequeridos() {
     return true;
 }
 
+
+// --- FUNCIONES DE VALIDACION DE CEDULA Y RUC ---
+
+function validarCedula(cedula) {
+    if (cedula.length !== 10) {
+        return false;
+    }
+    if (/^([0-9])*$/.test(cedula) == false) {
+        return false;
+    }
+    let suma = 0;
+    for (let i = 0; i < 9; i++) {
+        let digito = parseInt(cedula.charAt(i));
+        if (i % 2 == 0) {
+            digito = digito * 2;
+            if (digito > 9) {
+                digito = digito - 9;
+            }
+        }
+        suma = suma + digito;
+    }
+
+    let modulo = suma % 10;
+    let verificador = 0;
+    if (modulo != 0) {
+        verificador = 10 - modulo;
+    }
+
+    if (verificador != parseInt(cedula.charAt(9))) {
+        return false;
+    }
+
+    return true; //Cedula Correcta
+}
+
+function validarRUC(ruc) {
+    if (ruc.length < 13) { //Minimo 13 digitos
+        return false;
+    }
+
+    if (/^([0-9])*$/.test(ruc) == false) { //Solo numeros
+        return false
+    }
+
+    // Validar los dos primeros dígitos (provincia)
+    const provincia = parseInt(ruc.substring(0, 2));
+    if (provincia < 1 || provincia > 24) {
+        return false;
+    }
+
+    //  Verificación del tercer dígito
+    const tercerDigito = parseInt(ruc.charAt(2));
+    if (tercerDigito > 6) {
+        return false
+    }
+
+    //Verificar el digito verificador
+
+    let coeficientes = [];
+    let verificador = parseInt(ruc.charAt(9));
+    let suma = 0;
+
+    if (tercerDigito < 6) {
+        // Persona natural o RUC de persona natural
+        coeficientes = [2, 1, 2, 1, 2, 1, 2, 1, 2];
+    } else if (tercerDigito === 6) { // Entidades Publicas
+        coeficientes = [3, 2, 7, 6, 5, 4, 3, 2, 0];
+        verificador = parseInt(ruc.charAt(8));
+    } else if (tercerDigito === 9) { // Persona Juridica
+        coeficientes = [4, 3, 2, 7, 6, 5, 4, 3, 2];
+    } else {
+        return false
+    }
+
+    //Si el tercer digito es menor que 6 se tiene un ruc de persona natural por lo que tambien tiene un digito verificador
+    for (let i = 0; i < coeficientes.length; i++) {
+        let digito = parseInt(ruc.charAt(i));
+        digito = digito * coeficientes[i];
+        if (digito > 9 && tercerDigito < 6) {
+            digito = digito - 9;
+        }
+        suma = suma + digito;
+    }
+
+    let modulo = suma % 11;
+    let validador = 0;
+    if (modulo != 0) {
+        validador = 11 - modulo;
+    }
+
+    if (validador != verificador) {
+        return false
+    }
+
+    return true;
+}
+
+// --- EVENT LISTENERS PARA VALIDACION EN TIEMPO REAL ---
+
+function agregarValidacionEnTiempoReal(inputId, funcionValidacion) {
+    const inputElement = document.getElementById(inputId);
+    if (inputElement) {
+        inputElement.addEventListener('blur', function () { // 'blur' se activa cuando el campo pierde el foco
+            if (!funcionValidacion(this.value)) {
+                mostrarMensajeErrorJS(`El valor ingresado en ${this.placeholder} no es válido.`);
+            }
+        });
+    }
+}
+
+
 // --- Function to Update the Table ---
 function actualizarTabla() {
     const tablaRegistro = document.querySelector('.tabla-registro');
@@ -265,8 +388,8 @@ function actualizarTabla() {
         fila.innerHTML = `
             <td class="truncate" style="text-align: center;" title="${registro.tipoElemento.descripcion}">${registro.tipoElemento.tipo}</td>
             <td class="truncate" title="${registro.direccion}">${registro.direccion}</td>
-            <td>${registro.coordenadas}</td>
-            <td>${registro.tipoSolicitud}</td>
+            <td style="text-align: center;">${registro.coordenadas}</td>
+            <td style="text-align: center;">${registro.tipoSolicitud}</td>
             <td>
                 <button onclick="eliminarRegistro(${index})" class="eliminar-registro">
                     Eliminar
@@ -285,12 +408,12 @@ function truncarTextoTabla() {
 
     celdasTruncadas.forEach(celda => {
         const textoCompleto = celda.textContent;
-        const limite = 50; // Define el límite de caracteres antes de truncar
+        const limite = 50;
 
         if (textoCompleto.length > limite) {
             const textoTruncado = textoCompleto.substring(0, limite) + '...';
             celda.textContent = textoTruncado;
-            celda.setAttribute('title', textoCompleto); // Agrega tooltip
+            celda.setAttribute('title', textoCompleto);
         }
     });
 }
@@ -303,56 +426,56 @@ function agregarEventosHover() {
         const textoCompleto = celda.getAttribute('title');
 
         celda.addEventListener('mouseover', function () {
-            celda.textContent = textoCompleto; // Muestra el texto completo
+            celda.textContent = textoCompleto;
         });
 
         celda.addEventListener('mouseout', function () {
-            celda.textContent = textoTruncado; // Restaura el texto truncado
+            celda.textContent = textoTruncado;
         });
     });
 }
 
 // --- Placeholder Functions for Messages (Replace with your implementation) ---
 function mostrarMensajeErrorJS(mensaje) {
-    alert(mensaje); // Replace with, e.g., a modal or a message div
+    alert(mensaje);
 }
 
 function mostrarMensajeConfirmacionJS() {
-    alert('Formulario enviado correctamente.'); // Replace with your logic
+    alert('Formulario enviado correctamente.');
 }
 
 // --- DOMContentLoaded Event: Populate Dropdowns and Initial Setup ---
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Populate "Tipo de Elemento" dropdown
     const tipoElementoSelect = document.getElementById('tipoElemento');
-    tipoElementoSelect.innerHTML = '<option value="">Seleccione...</option>'; // Add default option
+    tipoElementoSelect.innerHTML = '<option value="">Seleccione...</option>';
     tiposElementosSeguridad.forEach(elemento => {
         const option = document.createElement('option');
-        option.value = elemento.tipo; // Use 'tipo' as the value
-        option.textContent = elemento.descripcion; // Use 'descripcion' as the text
+        option.value = elemento.tipo;
+        option.textContent = elemento.descripcion;
         tipoElementoSelect.appendChild(option);
     });
 
-    // Populate "Tipo de Solicitud" dropdown
     const tipoSolicitudSelect = document.getElementById('tipoSolicitud');
-    tipoSolicitudSelect.innerHTML = '<option value="">Seleccione...</option>'; // Add default option
+    tipoSolicitudSelect.innerHTML = '<option value="">Seleccione...</option>';
     tipos_de_solicitus.forEach(tipo => {
         const option = document.createElement('option');
-        option.value = tipo; // Use the type itself as the value
+        option.value = tipo;
         option.textContent = tipo.toUpperCase();
         tipoSolicitudSelect.appendChild(option);
     });
 
-    // Ensure forms are initially hidden
     const formularioJuridica = document.querySelector('.formulario-juridica');
     const formularioNatural = document.querySelector('.formulario-natural');
     if (formularioJuridica) formularioJuridica.style.display = 'none';
     if (formularioNatural) formularioNatural.style.display = 'none';
 
-    // Call mostrarFormulario to handle initial visibility (if needed)
     mostrarFormulario();
-
-    truncarTextoTabla(); // Trunca el texto al cargar la página
+    truncarTextoTabla();
     agregarEventosHover();
+
+    // Agregar validación en tiempo real a los campos de cédula y RUC.
+    agregarValidacionEnTiempoReal('ccNatural', validarCedula);
+    agregarValidacionEnTiempoReal('rucJuridica', validarRUC);
+    agregarValidacionEnTiempoReal('identificacionRepresentanteJuridica', validarCedula);
 });
