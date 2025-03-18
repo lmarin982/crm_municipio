@@ -1,4 +1,4 @@
-<apex:page controller="BCFormularioController" contentType="text/html;charset=UTF-8" showHeader="true" sidebar="true" standardStylesheets="false">
+<apex:page  contentType="text/html;charset=UTF-8" showHeader="true" sidebar="true" standardStylesheets="false">
     <apex:stylesheet value="{!$Resource.BCEstilosActaConsetimientoYResignacion}" />
     <apex:includeScript value="{!$Resource.BCScripts}" />
 
