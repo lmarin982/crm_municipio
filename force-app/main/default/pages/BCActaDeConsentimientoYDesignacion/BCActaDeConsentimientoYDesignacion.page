@@ -359,16 +359,18 @@
                 </div>
             </div>
 
-            <!-- Registro de Propietarios/Mandatarios -->
+            <!-- Registro de Propietarios/Mandatarios (AHORA TIPO LISTA) -->
             <div class="formulario-contenedor">
-                <h2 class="solicitante-titulo">Registro de Propietarios/Mandatarios</h2>
+                <div class="registro-elementos-titulo">
+                    <h2>Registro de Propietarios/Mandatarios</h2>
+                </div>
                 <div class="registro-propietarios-container">
 
-                    <!-- Campos de entrada (inputs) -->
-                     <div class="propietarios-inputs">
-                        <div class="propietario-campo">
+                    <!-- Campos de entrada (en línea) -->
+                    <div class="propietarios-inputs" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <div class="propietario-campo" style="flex: 1 1 150px;">
                             <label class="solicitante-label">
-                                <p>Calidad del Suscrito</p>
+                                <p>Calidad</p>
                                 <select id="calidadSuscrito" class="solicitante-input">
                                     <option value="">Seleccione...</option>
                                     <option value="Propietario">Propietario</option>
@@ -376,69 +378,82 @@
                                 </select>
                             </label>
                         </div>
-
-                        <div class="propietario-campo">
+                        <div class="propietario-campo" style="flex: 2 1 250px;">
                             <label class="solicitante-label">
                                 <p>Nombres y Apellidos</p>
-                                <input type="text" id="nombresApellidosPropietario" class="solicitante-input" placeholder="Ingrese nombres y apellidos" />
+                                <input type="text" id="nombresApellidosPropietario" class="solicitante-input" placeholder="Nombres y Apellidos" />
                             </label>
                         </div>
-
-                         <div class="propietario-campo">
+                        <div class="propietario-campo" style="flex: 1 1 120px;">
                             <label class="solicitante-label">
                                 <p>Cédula / RUC</p>
-                                <input type="text" id="cedulaRucPropietario" class="solicitante-input" placeholder="Ingrese cédula o RUC" />
+                                <input type="text" id="cedulaRucPropietario" class="solicitante-input" placeholder="Cédula / RUC" />
                             </label>
                         </div>
-
-                        <div class="propietario-campo">
+                        <div class="propietario-campo" style="flex: 1 1 120px;">
                             <label class="solicitante-label">
                                 <p>Teléfono</p>
-                                <input type="tel" id="telefonoPropietario" class="solicitante-input" placeholder="Ingrese teléfono" />
+                                <input type="tel" id="telefonoPropietario" class="solicitante-input" placeholder="Teléfono" />
                             </label>
                         </div>
-
-                        <div class="propietario-campo">
+                        <div class="propietario-campo" style="flex: 1 1 200px;">
                             <label class="solicitante-label">
-                                <p>Correo Electrónico</p>
-                                <input type="email" id="correoPropietario" class="solicitante-input" placeholder="Ingrese correo electrónico" />
+                                <p>Correo</p>
+                                <input type="email" id="correoPropietario" class="solicitante-input" placeholder="Correo Electrónico" />
                             </label>
                         </div>
-
-                        <!-- Botón para abrir el modal del código catastral -->
-                        <div class="propietario-campo">
-                            <button type="button" onclick="abrirModalCodigoCatastral()" class="btn-codigo-catastral">Ingresar Código Catastral</button>
+                        <div class="propietario-campo" style="flex: 0 0 auto;">
+                            <label class="solicitante-label">
+                                <p style="visibility: hidden;">_</p>
+                                <button type="button" onclick="abrirModalCodigoCatastral()" class="btn-codigo-catastral">Código Catastral</button>
+                            </label>
+                        </div>
+                        <div class="propietario-campo" style="flex: 0 0 auto;">
+                            <label class="solicitante-label">
+                                <p style="visibility: hidden;">_</p>
+                                <!-- Para la alineación vertical -->
+                                <button type="button" onclick="agregarRegistroPropietario(event)" class="btn-agregar">Agregar</button>
+                            </label>
                         </div>
                     </div>
 
-                    <div class="propietario-accion">
-                         <button type="button" onclick="agregarRegistroPropietario(event)" class="btn-agregar">Agregar Propietario/Mandatario</button>
-                    </div>
-
-
-                    <!-- Tabla -->
+                    <!-- Tabla de registros de propietarios -->
                     <table class="tabla-registro-propietarios">
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Calidad del Suscrito</th>
+                                <th>Calidad</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Cédula / RUC</th>
                                 <th>Teléfono</th>
-                                <th>Correo Electrónico</th>
+                                <th>Correo</th>
                                 <th>Código Catastral</th>
-                                 <th>Firma</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Aquí se insertarán las filas dinámicamente -->
+                            <!--  Filas de ejemplo (opcional, puedes quitarla si quieres)  -->
+                            <tr class="fila-ejemplo-propietarios">
+                                <td>1</td>
+                                <td>Propietario</td>
+                                <td>Ejemplo Apellido</td>
+                                <td>1234567890</td>
+                                <td>0999999999</td>
+                                <td>ejemplo@correo.com</td>
+                                <td>
+                                    <button type="button" onclick="mostrarCodigoCatastral(0)" class="btn-ver-codigo">Ver</button>
+                                </td>
+                                <td>
+                                    <button onclick="eliminarRegistroPropietario(0)" class="eliminar-registro">Eliminar</button>
+                                </td>
+                            </tr>
+                            <!-- Las filas se agregarán aquí dinámicamente -->
+
                         </tbody>
                     </table>
                 </div>
             </div>
-
-            <!-- Modal para el Código Catastral -->
+            <!-- Modal para el Código Catastral (sin cambios) -->
             <div id="modalCodigoCatastral" class="modal">
                 <div class="modal-content">
                     <span class="close-button" onclick="cerrarModalCodigoCatastral()">×</span>
