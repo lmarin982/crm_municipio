@@ -36,7 +36,7 @@
                     <!-- Nombres y apellidos -->
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Nombre de la empresa</p>
+                            <p>Nombre de la empresa (*)</p>
                             <input type="text" class="solicitante-input" id="nombreEmpresaJuridica" />
                         </label>
                     </div>
@@ -44,7 +44,7 @@
                     <!-- RUC -->
                     <div class="solicitante-campo small">
                         <label class="solicitante-label">
-                            <p>R.U.C.</p>
+                            <p>R.U.C. (*)</p>
                             <input type="text" class="solicitante-input" id="rucJuridica" />
                         </label>
                     </div>
@@ -52,7 +52,7 @@
                     <!-- Dirección -->
                     <div class="solicitante-campo full">
                         <label class="solicitante-label">
-                            <p>Dirección exacta del domicilio</p>
+                            <p>Dirección exacta del domicilio (*)</p>
                             <input type="text" class="solicitante-input" id="direccionJuridica" />
                         </label>
                     </div>
@@ -60,7 +60,7 @@
                     <!-- Correo electrónico -->
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Correo electrónico</p>
+                            <p>Correo electrónico (*)</p>
                             <input type="email" class="solicitante-input" id="correoJuridica" />
                         </label>
                     </div>
@@ -68,21 +68,21 @@
                     <!-- Teléfono -->
                     <div class="solicitante-campo small">
                         <label class="solicitante-label">
-                            <p>Teléfono</p>
+                            <p>Teléfono (*)</p>
                             <input type="tel" class="solicitante-input" id="telefonoJuridica" />
                         </label>
                     </div>
 
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Nombre del reprensentante legal</p>
+                            <p>Nombre del reprensentante legal (*)</p>
                             <input type="text" class="solicitante-input" id="representanteLegalJuridica" />
                         </label>
                     </div>
 
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Identificacion del reprensentate legal</p>
+                            <p>Identificacion del reprensentate legal (*)</p>
                             <input type="text" class="solicitante-input" id="identificacionRepresentanteJuridica" />
                         </label>
                     </div>
@@ -91,7 +91,7 @@
                     <div class="solicitante-campo full">
                         <label class="solicitante-label">
                             <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap;">
-                                <p>Subir archivo del nombramiento del representate legal</p>
+                                <p>Subir archivo del nombramiento del representate legal (*)</p>
                                 <label for="registroFile" class="custom-file-upload">
                                     <img src="{!$Resource.BCFlechaArriba_Logo}" alt="Subir archivo" width="20px" />
                                 </label>
@@ -111,7 +111,7 @@
                     <!-- Nombres y apellidos -->
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Nombres y apellidos del representante</p>
+                            <p>Nombres y apellidos del representante (*)</p>
                             <input type="text" class="solicitante-input" id="nombresApellidosNatural" />
                         </label>
                     </div>
@@ -119,7 +119,7 @@
                     <!-- CC -->
                     <div class="solicitante-campo small">
                         <label class="solicitante-label">
-                            <p>C.C.</p>
+                            <p>C.C. (*)</p>
                             <input type="text" class="solicitante-input" id="ccNatural" />
                         </label>
                     </div>
@@ -127,7 +127,7 @@
                     <!-- Dirección -->
                     <div class="solicitante-campo full">
                         <label class="solicitante-label">
-                            <p>Dirección exacta del domicilio</p>
+                            <p>Dirección exacta del domicilio (*)</p>
                             <input type="text" class="solicitante-input" id="direccionNatural" />
                         </label>
                     </div>
@@ -135,7 +135,7 @@
                     <!-- Correo electrónico -->
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Correo electrónico</p>
+                            <p>Correo electrónico (*)</p>
                             <input type="email" class="solicitante-input" id="correoNatural" />
                         </label>
                     </div>
@@ -143,7 +143,7 @@
                     <!-- Teléfono -->
                     <div class="solicitante-campo small">
                         <label class="solicitante-label">
-                            <p>Teléfono</p>
+                            <p>Teléfono (*)</p>
                             <input type="tel" class="solicitante-input" id="telefonoNatural" />
                         </label>
                     </div>

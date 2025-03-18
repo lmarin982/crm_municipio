@@ -67,14 +67,20 @@ function eliminarRegistro(index) {
 function actualizarCheckbox(fileId, checkboxId, nombreArchivoId) {
     const archivo = document.getElementById(fileId);
     const checkbox = document.getElementById(checkboxId);
-    const nombreArchivoSpan = document.getElementById(nombreArchivoId);
+    const nombreArchivoSpan = document.getElementById(nombreArchivoId);  //  Make sure this element exists if you're using it
 
     if (archivo.files.length > 0) {
         checkbox.checked = true;
-        nombreArchivoSpan.textContent = archivo.files[0].name; // Muestra el nombre del archivo
+        if (nombreArchivoSpan) {
+            nombreArchivoSpan.textContent = archivo.files[0].name; // Muestra el nombre del archivo, if the element is defined
+        }
+
     } else {
         checkbox.checked = false;
-        nombreArchivoSpan.textContent = ''; // Limpia el nombre del archivo
+        if (nombreArchivoSpan) {
+            nombreArchivoSpan.textContent = ''; // Limpia el nombre del archivo, if the element is defined
+        }
+
     }
 }
 
@@ -178,6 +184,12 @@ function validarFormulario() {
         return false;
     }
 
+    //  Check if the address list is empty
+    if (registrosElementosSeguridad.length === 0) {
+        mostrarMensajeErrorJS('Debe agregar al menos un elemento de seguridad.');
+        return false;
+    }
+
     if (tipoPersona === 'juridica') {
         return validarFormularioJuridica();
     } else if (tipoPersona === 'natural') {
@@ -251,7 +263,7 @@ function actualizarTabla() {
         fila.classList.add('tabla-fila-entrada');
 
         fila.innerHTML = `
-            <td class="truncate" style="text-align: center;" title="${registro.tipoElemento}">${registro.tipoElemento.tipo}</td>
+            <td class="truncate" style="text-align: center;" title="${registro.tipoElemento.descripcion}">${registro.tipoElemento.tipo}</td>
             <td class="truncate" title="${registro.direccion}">${registro.direccion}</td>
             <td>${registro.coordenadas}</td>
             <td>${registro.tipoSolicitud}</td>
