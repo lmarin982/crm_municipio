@@ -21,7 +21,9 @@
 
             <!-- Selector de tipo de formulario -->
             <div class="formulario-contenedor selector-tipo">
-                <h2 class="tipoFormulario" for="tipoFormulario">Seleccionar el tipo de persona a registrar:</h2>
+                <h2 class="tipoFormulario" for="tipoFormulario">
+                    Seleccionar el tipo de persona a registrar:
+                </h2>
                 <select id="tipoFormulario" onchange="mostrarFormulario()">
                     <option value="">Seleccionar</option>
                     <option value="juridica">Persona jurídica</option>
@@ -36,7 +38,7 @@
                     <!-- Nombres y apellidos -->
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Nombre de la empresa (*)</p>
+                            <p>Nombre de la empresa</p>
                             <input type="text" class="solicitante-input" id="nombreEmpresaJuridica" />
                         </label>
                     </div>
@@ -44,7 +46,7 @@
                     <!-- RUC -->
                     <div class="solicitante-campo small">
                         <label class="solicitante-label">
-                            <p>R.U.C. (*)</p>
+                            <p>R.U.C.</p>
                             <input type="text" class="solicitante-input" id="rucJuridica" />
                         </label>
                     </div>
@@ -52,7 +54,7 @@
                     <!-- Dirección -->
                     <div class="solicitante-campo full">
                         <label class="solicitante-label">
-                            <p>Dirección exacta del domicilio (*)</p>
+                            <p>Dirección exacta del domicilio</p>
                             <input type="text" class="solicitante-input" id="direccionJuridica" />
                         </label>
                     </div>
@@ -60,7 +62,7 @@
                     <!-- Correo electrónico -->
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Correo electrónico (*)</p>
+                            <p>Correo electrónico</p>
                             <input type="email" class="solicitante-input" id="correoJuridica" />
                         </label>
                     </div>
@@ -68,21 +70,21 @@
                     <!-- Teléfono -->
                     <div class="solicitante-campo small">
                         <label class="solicitante-label">
-                            <p>Teléfono (*)</p>
+                            <p>Teléfono</p>
                             <input type="tel" class="solicitante-input" id="telefonoJuridica" />
                         </label>
                     </div>
 
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Nombre del reprensentante legal (*)</p>
+                            <p>Nombre del reprensentante legal</p>
                             <input type="text" class="solicitante-input" id="representanteLegalJuridica" />
                         </label>
                     </div>
 
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Identificacion del reprensentate legal (*)</p>
+                            <p>Identificacion del reprensentate legal</p>
                             <input type="text" class="solicitante-input" id="identificacionRepresentanteJuridica" />
                         </label>
                     </div>
@@ -90,14 +92,20 @@
                     <!-- Subir archivo -->
                     <div class="solicitante-campo full">
                         <label class="solicitante-label">
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap;">
-                                <p>Subir archivo del nombramiento del representate legal (*)</p>
+                            <div style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 10px;
+                  flex-flow: row wrap;
+                ">
+                                <p>Subir archivo del nombramiento del representate legal</p>
                                 <label for="registroFile" class="custom-file-upload">
                                     <img src="{!$Resource.BCFlechaArriba_Logo}" alt="Subir archivo" width="20px" />
                                 </label>
-                                <input type="file" id="registroFile" style="display:none;" onchange="actualizarCheckbox('registroFile', 'registroCheckbox')"
+                                <input type="file" id="registroFile" style="display: none" onchange="actualizarCheckbox('registroFile', 'registroCheckbox')"
                                 />
-                                <input type="checkbox" id="registroCheckbox" style="width: 20px; height: 20px; margin: 0;" disabled="true" />
+                                <input type="checkbox" id="registroCheckbox" style="width: 20px; height: 20px; margin: 0" disabled="true" />
                             </div>
                         </label>
                     </div>
@@ -111,7 +119,7 @@
                     <!-- Nombres y apellidos -->
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Nombres y apellidos del representante (*)</p>
+                            <p>Nombres y apellidos del representante</p>
                             <input type="text" class="solicitante-input" id="nombresApellidosNatural" />
                         </label>
                     </div>
@@ -119,7 +127,7 @@
                     <!-- CC -->
                     <div class="solicitante-campo small">
                         <label class="solicitante-label">
-                            <p>C.C. (*)</p>
+                            <p>C.C.</p>
                             <input type="text" class="solicitante-input" id="ccNatural" />
                         </label>
                     </div>
@@ -127,7 +135,7 @@
                     <!-- Dirección -->
                     <div class="solicitante-campo full">
                         <label class="solicitante-label">
-                            <p>Dirección exacta del domicilio (*)</p>
+                            <p>Dirección exacta del domicilio</p>
                             <input type="text" class="solicitante-input" id="direccionNatural" />
                         </label>
                     </div>
@@ -135,7 +143,7 @@
                     <!-- Correo electrónico -->
                     <div class="solicitante-campo">
                         <label class="solicitante-label">
-                            <p>Correo electrónico (*)</p>
+                            <p>Correo electrónico</p>
                             <input type="email" class="solicitante-input" id="correoNatural" />
                         </label>
                     </div>
@@ -143,7 +151,7 @@
                     <!-- Teléfono -->
                     <div class="solicitante-campo small">
                         <label class="solicitante-label">
-                            <p>Teléfono (*)</p>
+                            <p>Teléfono</p>
                             <input type="tel" class="solicitante-input" id="telefonoNatural" />
                         </label>
                     </div>
@@ -152,7 +160,8 @@
 
             <!-- Nota informativa -->
             <div class="nota-informativa">
-                <p>El presente formulario debe ser completado de manera digital y debe ser impreso para su firma de forma manual
+                <p>
+                    El presente formulario debe ser completado de manera digital y debe ser impreso para su firma de forma manual
                 </p>
             </div>
 
@@ -162,43 +171,108 @@
                     <h2>Requisitos a cumplir</h2>
                 </div>
 
-                <div style="display: flex; flex-direction: column; gap: 15px;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
-                        <p style="font-size: 0.9rem; margin: 0; width: 100%;">• Acta suscrita por todos los miembros que conforman el colectivo o comunidad solicitante.</p>
-                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap; width: 30%;">
-                            <label for="actaFile" class="custom-file-upload">Subir Archivo</label>
-                            <input type="file" id="actaFile" style="display:none;" onchange="actualizarCheckbox('actaFile', 'actaCheckbox')" />
-                            <input type="checkbox" id="actaCheckbox" style="width: 20px; height: 20px; margin: 0;" disabled="true" />
-                        </div>
-                    </div>
-
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
-                        <p style="font-size: 0.9rem; margin: 0; width: 100%;">• Planos del proyecto de los elementos de seguridad a instalarse con firma de responsabilidad técnica.
+                <div style="display: flex; flex-direction: column; gap: 15px">
+                    <div style="
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              gap: 20px;
+            ">
+                        <p style="font-size: 0.9rem; margin: 0; width: 100%">
+                            1.- Acta suscrita por todos los miembros que conforman el colectivo o comunidad solicitante.
                         </p>
-                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap; width: 30%;">
-                            <label for="planosFile" class="custom-file-upload">Subir Archivo</label>
-                            <input type="file" id="planosFile" style="display:none;" onchange="actualizarCheckbox('planosFile', 'planosCheckbox')" />
-                            <input type="checkbox" id="planosCheckbox" style="width: 20px; height: 20px; margin: 0;" disabled="true" />
-                        </div>
-                    </div>
-
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
-                        <p style="font-size: 0.9rem; margin: 0; width: 100%;">• Fotografías del sitio donde se propone instalar los elementos de seguridad en el espacio y vía
-                            pública. </p>
-                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap; width: 30%;">
-                            <label for="fotosFile" class="custom-file-upload">Subir Archivo</label>
-                            <input type="file" id="fotosFile" style="display:none;" onchange="actualizarCheckbox('fotosFile', 'fotosCheckbox')" />
-                            <input type="checkbox" id="fotosCheckbox" style="width: 20px; height: 20px; margin: 0;" disabled="true" />
-                        </div>
-                    </div>
-
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
-                        <p style="font-size: 0.9rem; margin: 0; width: 100%;">• Comprobante de Pago de Tasa por Servicios Administrativos. </p>
-                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap; width: 30%;">
-                            <label for="comprobanteFile" class="custom-file-upload">Subir Archivo</label>
-                            <input type="file" id="comprobanteFile" style="display:none;" onchange="actualizarCheckbox('comprobanteFile', 'comprobanteCheckbox')"
+                        <div style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                flex-flow: row wrap;
+                width: 30%;
+              ">
+                            <label for="actaFile" class="custom-file-upload">Subir Acta</label>
+                            <input type="file" id="actaFile" style="display: none" onchange="actualizarCheckbox('actaFile', 'actaCheckbox', 'actaNombreArchivo')"
                             />
-                            <input type="checkbox" id="comprobanteCheckbox" style="width: 20px; height: 20px; margin: 0;" disabled="true" />
+                            <input type="checkbox" id="actaCheckbox" style="width: 20px; height: 20px; margin: 0" disabled="true" />
+                            <span id="actaNombreArchivo"></span>
+                            <!-- Elemento para mostrar el nombre del archivo -->
+                        </div>
+                    </div>
+
+                    <div style="
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              gap: 20px;
+            ">
+                        <p style="font-size: 0.9rem; margin: 0; width: 100%">
+                            2.- Planos del proyecto de los elementos de seguridad a instalarse con firma de responsabilidad técnica.
+                        </p>
+                        <div style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                flex-flow: row wrap;
+                width: 30%;
+              ">
+                            <label for="planosFile" class="custom-file-upload">Subir Plano</label>
+                            <input type="file" id="planosFile" style="display: none" onchange="actualizarCheckbox('planosFile', 'planosCheckbox', 'planosNombreArchivo')"
+                            />
+                            <input type="checkbox" id="planosCheckbox" style="width: 20px; height: 20px; margin: 0" disabled="true" />
+                            <span id="planosNombreArchivo"></span>
+                            <!-- Elemento para mostrar el nombre del archivo -->
+                        </div>
+                    </div>
+
+                    <div style="
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              gap: 20px;
+            ">
+                        <p style="font-size: 0.9rem; margin: 0; width: 100%">
+                            3.- Fotografías del sitio donde se propone instalar los elementos de seguridad en el espacio y vía pública.
+                        </p>
+                        <div style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                flex-flow: row wrap;
+                width: 30%;
+              ">
+                            <label for="fotosFile" class="custom-file-upload">Subir PDF</label>
+                            <input type="file" id="fotosFile" style="display: none" onchange="actualizarCheckbox('fotosFile', 'fotosCheckbox', 'fotosNombreArchivo')"
+                            />
+                            <input type="checkbox" id="fotosCheckbox" style="width: 20px; height: 20px; margin: 0" disabled="true" />
+                            <span id="fotosNombreArchivo"></span>
+                            <!-- Elemento para mostrar el nombre del archivo -->
+                        </div>
+                    </div>
+
+                    <div style="
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              gap: 20px;
+            ">
+                        <p style="font-size: 0.9rem; margin: 0; width: 100%">
+                            4.- Comprobante de Pago de Tasa por Servicios Administrativos.
+                        </p>
+                        <div style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                flex-flow: row wrap;
+                width: 30%;
+              ">
+                            <label for="comprobanteFile" class="custom-file-upload">Subir Comprobante</label>
+                            <input type="file" id="comprobanteFile" style="display: none" onchange="actualizarCheckbox('comprobanteFile', 'comprobanteCheckbox', 'comprobanteNombreArchivo')"
+                            />
+                            <input type="checkbox" id="comprobanteCheckbox" style="width: 20px; height: 20px; margin: 0" disabled="true" />
+                            <span id="comprobanteNombreArchivo"></span>
+                            <!-- Elemento para mostrar el nombre del archivo -->
                         </div>
                     </div>
                 </div>
@@ -224,19 +298,27 @@
                         <!-- Opciones -->
                         <tbody>
                             <tr>
-                                <td style="text-align: justify">PORTONES METÁLICOS EN VÍAS PEATONALES</td>
+                                <td style="text-align: justify">
+                                    PORTONES METÁLICOS EN VÍAS PEATONALES
+                                </td>
                                 <td>TIPO 1</td>
                             </tr>
                             <tr>
-                                <td style="text-align: justify">PORTONES METÁLICOS EN CALLES VEHICULARES CON ACERAS MENORES A 1,50 METROS</td>
+                                <td style="text-align: justify">
+                                    PORTONES METÁLICOS EN CALLES VEHICULARES CON ACERAS MENORES A 1,50 METROS
+                                </td>
                                 <td>TIPO 2</td>
                             </tr>
                             <tr>
-                                <td style="text-align: justify">PORTONES METÁLICOS EN CALLES VEHICULARES CON ACERAS IGUALES O MAYORES A 1,50 METROS</td>
+                                <td style="text-align: justify">
+                                    PORTONES METÁLICOS EN CALLES VEHICULARES CON ACERAS IGUALES O MAYORES A 1,50 METROS
+                                </td>
                                 <td>TIPO 3</td>
                             </tr>
                             <tr>
-                                <td style="text-align: justify">OTROS ELEMENTOS DE SEGURIDAD</td>
+                                <td style="text-align: justify">
+                                    OTROS ELEMENTOS DE SEGURIDAD
+                                </td>
                                 <td>OTROS</td>
                             </tr>
                         </tbody>
@@ -287,33 +369,39 @@
                         </div>
                     </div>
                     <div class="elemento-accion">
-                        <button type="button" onclick="agregarRegistro(event)" class="btn-agregar">Agregar elemento</button>
+                        <button type="button" onclick="agregarRegistro(event)" class="btn-agregar">
+                            Agregar elemento
+                        </button>
                     </div>
 
                     <!-- Tabla de registros -->
                     <table class="tabla-registro">
                         <thead>
                             <tr>
-                                <th>Tipo de elemento</th>
-                                <th>Dirección de instalación</th>
-                                <th>Coordenadas</th>
-                                <th>Tipo de solicitud</th>
-                                <th>Acciones</th>
+                                <th style="width: 20%; text-align: center">Tipo de elemento</th>
+                                <!-- Ajusta los anchos según sea necesario -->
+                                <th style="width: 40%; text-align: center">
+                                    Dirección de instalación
+                                </th>
+                                <th style="width: 15%; text-align: center">Coordenadas</th>
+                                <th style="width: 15%; text-align: center">
+                                    Tipo de solicitud
+                                </th>
+                                <th style="width: 10%; text-align: center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="fila-ejemplo">
                                 <td>EJEMPLO</td>
-                                <td>Alborada 7ma etapa mz 715 villa 1 y mz 702 villa 8 ubicada en la calle 17 NE</td>
+                                <td>
+                                    Alborada 7ma etapa mz 715 villa 1 y mz 702 villa 8 ubicada en la calle 17 NE
+                                </td>
                                 <td>-2.141993, -79.902016</td>
                                 <td>REGULARIZACIÓN</td>
                                 <td></td>
-                                <!-- Empty cell for alignment -->
                             </tr>
                             <!--  The added rows will go here -->
-                            <tr id="registrosContainer"></tr>
                         </tbody>
-
                     </table>
                 </div>
             </div>
