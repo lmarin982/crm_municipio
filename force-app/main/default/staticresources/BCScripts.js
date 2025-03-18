@@ -18,46 +18,38 @@ const registrosElementosSeguridad = [];
 // --- Function to Add a New Row ---
 function agregarRegistro(event) {
     if (event) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
     }
 
-    // Get references to the select elements
     const tipoElementoSelect = document.getElementById('tipoElemento');
     const tipoSolicitudSelect = document.getElementById('tipoSolicitud');
 
-    // Get the input values
     const direccion = document.getElementById('direccionElemento').value;
     const latitud = document.getElementById('latitudElemento').value;
     const longitud = document.getElementById('longitudElemento').value;
 
-    // Get selected *text* from dropdowns (for display)
-    const tipoElementoText = tipoElementoSelect.options[tipoElementoSelect.selectedIndex].text;
     const tipoSolicitudText = tipoSolicitudSelect.options[tipoSolicitudSelect.selectedIndex].text;
-
-    // Get selected *values* from dropdowns (for potential server-side use)
-    const tipoElementoValue = tipoElementoSelect.value;
     const tipoSolicitudValue = tipoSolicitudSelect.value;
-    // Validate: Ensure all fields are filled
+
+    const tipoElementoValue = tipoElementoSelect.value;
+    const tipoElementoSeleccionado = tiposElementosSeguridad.find(elemento => elemento.tipo === tipoElementoValue); // Encuentra el objeto correspondiente
+
     if (!tipoElementoValue || !direccion || !latitud || !longitud || !tipoSolicitudValue) {
-        mostrarMensajeErrorJS('Por favor complete todos los campos del registro'); // Use your error function
+        mostrarMensajeErrorJS('Por favor complete todos los campos del registro');
         return;
     }
 
-    // Combine latitude and longitude
     const coordenadas = `${latitud}, ${longitud}`;
 
-    // Create the new record object
     registrosElementosSeguridad.push({
-        tipoElemento: tipoElementoText, // Store the text
+        tipoElemento: tipoElementoSeleccionado, // Guarda el objeto completo
         direccion,
         coordenadas,
-        tipoSolicitud: tipoSolicitudText // Store the text
+        tipoSolicitud: tipoSolicitudText
     });
 
-    // Update the table
     actualizarTabla();
 
-    // Clear *only* the input fields, *NOT* the dropdowns
     document.getElementById('direccionElemento').value = '';
     document.getElementById('latitudElemento').value = '';
     document.getElementById('longitudElemento').value = '';
@@ -72,11 +64,18 @@ function eliminarRegistro(index) {
 }
 
 // --- Function to Update Checkbox Based on File Input ---
-function actualizarCheckbox(fileId, checkboxId) {
+function actualizarCheckbox(fileId, checkboxId, nombreArchivoId) {
     const archivo = document.getElementById(fileId);
     const checkbox = document.getElementById(checkboxId);
+    const nombreArchivoSpan = document.getElementById(nombreArchivoId);
 
-    checkbox.checked = archivo.files.length > 0; // Concise way to set checked state
+    if (archivo.files.length > 0) {
+        checkbox.checked = true;
+        nombreArchivoSpan.textContent = archivo.files[0].name; // Muestra el nombre del archivo
+    } else {
+        checkbox.checked = false;
+        nombreArchivoSpan.textContent = ''; // Limpia el nombre del archivo
+    }
 }
 
 // --- Function to Show/Hide Forms Based on Type ---
@@ -158,7 +157,7 @@ function limpiarTodosLosCampos() {
 }
 
 // --- Function to Clear *ONLY* Address Input Fields ---
-// **CORRECTED:** This now *only* clears the input fields, NOT the dropdowns
+// **CORRECTED:** This now *only* clears the input fields, *NOT* the dropdowns
 function limpiarFormularioDirecciones() {
     document.getElementById('direccionElemento').value = '';
     document.getElementById('latitudElemento').value = '';
@@ -243,25 +242,61 @@ function validarArchivosRequeridos() {
 
 // --- Function to Update the Table ---
 function actualizarTabla() {
-    const contenedorRegistros = document.getElementById('registrosContainer');
-    contenedorRegistros.innerHTML = ''; // Clear existing rows
+    const tablaRegistro = document.querySelector('.tabla-registro');
+    const tbody = tablaRegistro.querySelector('tbody');
+    tbody.innerHTML = '';
 
     registrosElementosSeguridad.forEach((registro, index) => {
-        const fila = document.createElement('div');
+        const fila = document.createElement('tr');
         fila.classList.add('tabla-fila-entrada');
 
         fila.innerHTML = `
-            <div class="tabla-celda-entrada">${registro.tipoElemento}</div>
-            <div class="tabla-celda-entrada">${registro.direccion}</div>
-            <div class="tabla-celda-entrada">${registro.coordenadas}</div>
-            <div class="tabla-celda-entrada">${registro.tipoSolicitud}</div>
-            <div class="tabla-celda-entrada">
+            <td class="truncate" style="text-align: center;" title="${registro.tipoElemento}">${registro.tipoElemento.tipo}</td>
+            <td class="truncate" title="${registro.direccion}">${registro.direccion}</td>
+            <td>${registro.coordenadas}</td>
+            <td>${registro.tipoSolicitud}</td>
+            <td>
                 <button onclick="eliminarRegistro(${index})" class="eliminar-registro">
                     Eliminar
                 </button>
-            </div>
+            </td>
         `;
-        contenedorRegistros.appendChild(fila);
+        tbody.appendChild(fila);
+
+        truncarTextoTabla();
+        agregarEventosHover();
+    });
+}
+
+function truncarTextoTabla() {
+    const celdasTruncadas = document.querySelectorAll('.tabla-registro td.truncate');
+
+    celdasTruncadas.forEach(celda => {
+        const textoCompleto = celda.textContent;
+        const limite = 50; // Define el límite de caracteres antes de truncar
+
+        if (textoCompleto.length > limite) {
+            const textoTruncado = textoCompleto.substring(0, limite) + '...';
+            celda.textContent = textoTruncado;
+            celda.setAttribute('title', textoCompleto); // Agrega tooltip
+        }
+    });
+}
+
+function agregarEventosHover() {
+    const celdasTruncadas = document.querySelectorAll('.tabla-registro td.truncate');
+
+    celdasTruncadas.forEach(celda => {
+        const textoTruncado = celda.textContent;
+        const textoCompleto = celda.getAttribute('title');
+
+        celda.addEventListener('mouseover', function () {
+            celda.textContent = textoCompleto; // Muestra el texto completo
+        });
+
+        celda.addEventListener('mouseout', function () {
+            celda.textContent = textoTruncado; // Restaura el texto truncado
+        });
     });
 }
 
@@ -305,4 +340,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Call mostrarFormulario to handle initial visibility (if needed)
     mostrarFormulario();
+
+    truncarTextoTabla(); // Trunca el texto al cargar la página
+    agregarEventosHover();
 });

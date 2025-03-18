@@ -1,12 +1,10 @@
 body {
   background-color: #f8f9fa;
   font-family: 'Barlow', sans-serif !important;
-  /* Se movió desde main> */
 }
 
 /* Estilos para el contenedor principal */
 main.main {
-  /* Corregido para que aplique solo a la etiqueta main con clase .main */
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -43,22 +41,22 @@ h1.formulario-titulo {
 /* Modificar los estilos de los formularios */
 .formulario-juridica,
 .formulario-natural {
-    display: none; /* Oculto por defecto */
-    opacity: 0;
-    height: 0; /* Añadir altura 0 cuando está oculto */
-    overflow: hidden; /* Ocultar el contenido */
-    margin: 0; /* Eliminar márgenes cuando está oculto */
-    padding: 0; /* Eliminar padding cuando está oculto */
-    transition: opacity 0.3s ease-in-out;
+  display: none; /* Oculto por defecto */
+  opacity: 0;
+  height: 0; /* Añadir altura 0 cuando está oculto */
+  overflow: hidden; /* Ocultar el contenido */
+  margin: 0; /* Eliminar márgenes cuando está oculto */
+  padding: 0; /* Eliminar padding cuando está oculto */
+  transition: opacity 0.3s ease-in-out;
 }
 
 .formulario-juridica.visible,
 .formulario-natural.visible {
-    display: block;
-    opacity: 1;
-    height: auto; /* Restaurar altura automática */
-    margin-bottom: 20px; /* Restaurar margen cuando es visible */
-    padding: 20px; /* Restaurar padding cuando es visible */
+  display: block;
+  opacity: 1;
+  height: auto; /* Restaurar altura automática */
+  margin-bottom: 20px; /* Restaurar margen cuando es visible */
+  padding: 20px; /* Restaurar padding cuando es visible */
 }
 
 /* Estilos para el contenedor del formulario */
@@ -149,6 +147,13 @@ h1.formulario-titulo {
   background: #f8f9fa;
   padding: 20px;
   border-radius: 8px;
+}
+
+.tabla-celda-entrada {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
 }
 
 .solicitante-campo {
@@ -244,10 +249,8 @@ h1.formulario-titulo {
   border-collapse: collapse;
   background: #fff;
   border-radius: 8px;
-  /* Añadido border-radius */
   border: 1px solid #000080;
   overflow: hidden;
-  /* Para que el border-radius funcione correctamente */
 }
 
 .elementos-seguridad-tabla th,
@@ -293,13 +296,8 @@ h1.formulario-titulo {
 
 .elementos-inputs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-}
-
-.elemento-campo {
-  /* No need for flex here, grid handles it */
-  /* min-width: 200px;  Removed min-width, let grid and content determine width */
 }
 
 .elemento-accion {
@@ -320,8 +318,8 @@ h1.formulario-titulo {
 }
 
 .btn-agregar:hover {
-    background: #000066;
-    transform: translateY(-2px);
+  background: #000066;
+  transform: translateY(-2px);
 }
 
 /* Estilos para la tabla */
@@ -332,23 +330,26 @@ h1.formulario-titulo {
   background: white;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  overflow: hidden; /* Important for border-radius on the table */
+  overflow: hidden;
+  table-layout: fixed; /* Mantiene las columnas con ancho fijo */
 }
 
 .tabla-registro th {
   background: #000080;
   color: white;
   padding: 12px;
-  text-align: left; /* Align text to the left */
+  text-align: left;
   font-weight: 500;
   font-size: 0.9rem;
-  white-space: nowrap; /* Prevent text wrapping in headers */
+  white-space: nowrap;
 }
 
 .tabla-registro td {
   padding: 12px;
   border-bottom: 1px solid #e0e0e0;
   font-size: 0.9rem;
+  vertical-align: top;
+  word-break: break-word; /* Permite romper palabras largas */
 }
 
 /* Style the example row */
@@ -357,11 +358,7 @@ h1.formulario-titulo {
   color: #666;
   font-style: italic;
 }
-/*No es necesario, se eliminara despues
-.fila-ejemplo td {
-  border-bottom: 1px solid #e0e0e0;
-}
-*/
+
 /* Estilo para el botón eliminar dentro de la tabla */
 .eliminar-registro {
   background: #dc3545;
@@ -372,6 +369,7 @@ h1.formulario-titulo {
   cursor: pointer;
   font-size: 0.8rem;
   transition: all 0.2s ease;
+  white-space: nowrap; /* Evita que el texto se rompa */
 }
 
 .eliminar-registro:hover {
@@ -445,7 +443,6 @@ h1.formulario-titulo {
   color: #333;
   text-align: center;
   white-space: nowrap;
-  /* Evita que el texto se rompa */
 }
 
 .custom-file-upload:hover {
@@ -477,28 +474,47 @@ h1.formulario-titulo {
 .solicitante-input:required,
 .tabla-input:required,
 .tabla-select:required {
-    border-left: 3px solid #dc3545;
+  border-left: 3px solid #dc3545;
 }
 
 /* Estilo para inputs inválidos */
 .solicitante-input:invalid,
 .tabla-input:invalid {
-    border-color: #dc3545;
-    background-color: #fff8f8;
+  border-color: #dc3545;
+  background-color: #fff8f8;
 }
 
 /* Agregar estos estilos para las coordenadas */
 .coordenadas-grupo {
-     /* Toma más espacio que los otros campos  flex: 2 !important; */
-     display: flex;
-     flex-direction: column;
+  /* Toma más espacio que los otros campos  flex: 2 !important; */
+  display: flex;
+  flex-direction: column;
 }
 
 .coordenadas-inputs {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .coordenadas-inputs input {
-    width: 50%; /* Each input takes half the space within coordenadas-inputs */
+  width: 50%;
+  /* Each input takes half the space within coordenadas-inputs */
+}
+
+/* Estilos para truncar el texto en las celdas */
+.tabla-registro td.truncate {
+  max-width: 200px; /* Ajusta el ancho máximo según sea necesario */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tabla-registro td.truncate:hover {
+  overflow: visible;
+  white-space: normal;
+  position: relative;
+  z-index: 1;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px;
 }
