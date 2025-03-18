@@ -172,23 +172,11 @@
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 15px">
-                    <div style="
-              display: flex;
-              justify-content: space-between;
-              align-items: flex-start;
-              gap: 20px;
-            ">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
                         <p style="font-size: 0.9rem; margin: 0; width: 100%">
                             1.- Acta suscrita por todos los miembros que conforman el colectivo o comunidad solicitante.
                         </p>
-                        <div style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-                flex-flow: row wrap;
-                width: 30%;
-              ">
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap;                width: 30%;              ">
                             <label for="actaFile" class="custom-file-upload">Subir Acta</label>
                             <input type="file" id="actaFile" style="display: none" onchange="actualizarCheckbox('actaFile', 'actaCheckbox', 'actaNombreArchivo')"
                             />
@@ -198,23 +186,11 @@
                         </div>
                     </div>
 
-                    <div style="
-              display: flex;
-              justify-content: space-between;
-              align-items: flex-start;
-              gap: 20px;
-            ">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
                         <p style="font-size: 0.9rem; margin: 0; width: 100%">
                             2.- Planos del proyecto de los elementos de seguridad a instalarse con firma de responsabilidad técnica.
                         </p>
-                        <div style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-                flex-flow: row wrap;
-                width: 30%;
-              ">
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap; width: 30%;">
                             <label for="planosFile" class="custom-file-upload">Subir Plano</label>
                             <input type="file" id="planosFile" style="display: none" onchange="actualizarCheckbox('planosFile', 'planosCheckbox', 'planosNombreArchivo')"
                             />
@@ -224,23 +200,11 @@
                         </div>
                     </div>
 
-                    <div style="
-              display: flex;
-              justify-content: space-between;
-              align-items: flex-start;
-              gap: 20px;
-            ">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
                         <p style="font-size: 0.9rem; margin: 0; width: 100%">
                             3.- Fotografías del sitio donde se propone instalar los elementos de seguridad en el espacio y vía pública.
                         </p>
-                        <div style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-                flex-flow: row wrap;
-                width: 30%;
-              ">
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap; width: 30%;">
                             <label for="fotosFile" class="custom-file-upload">Subir PDF</label>
                             <input type="file" id="fotosFile" style="display: none" onchange="actualizarCheckbox('fotosFile', 'fotosCheckbox', 'fotosNombreArchivo')"
                             />
@@ -250,23 +214,11 @@
                         </div>
                     </div>
 
-                    <div style="
-              display: flex;
-              justify-content: space-between;
-              align-items: flex-start;
-              gap: 20px;
-            ">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
                         <p style="font-size: 0.9rem; margin: 0; width: 100%">
                             4.- Comprobante de Pago de Tasa por Servicios Administrativos.
                         </p>
-                        <div style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-                flex-flow: row wrap;
-                width: 30%;
-              ">
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap; width: 30%;">
                             <label for="comprobanteFile" class="custom-file-upload">Subir Comprobante</label>
                             <input type="file" id="comprobanteFile" style="display: none" onchange="actualizarCheckbox('comprobanteFile', 'comprobanteCheckbox', 'comprobanteNombreArchivo')"
                             />
@@ -326,7 +278,6 @@
                 </div>
             </div>
 
-            <!-- Registro de direcciones -->
             <!-- Registro de direcciones -->
             <div class="formulario-contenedor">
                 <div class="registro-elementos-titulo">
@@ -405,6 +356,102 @@
                             <!--  The added rows will go here -->
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <!-- Registro de Propietarios/Mandatarios -->
+            <div class="formulario-contenedor">
+                <h2 class="solicitante-titulo">Registro de Propietarios/Mandatarios</h2>
+                <div class="registro-propietarios-container">
+
+                    <!-- Campos de entrada (inputs) -->
+                     <div class="propietarios-inputs">
+                        <div class="propietario-campo">
+                            <label class="solicitante-label">
+                                <p>Calidad del Suscrito</p>
+                                <select id="calidadSuscrito" class="solicitante-input">
+                                    <option value="">Seleccione...</option>
+                                    <option value="Propietario">Propietario</option>
+                                    <option value="Mandatario">Mandatario</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="propietario-campo">
+                            <label class="solicitante-label">
+                                <p>Nombres y Apellidos</p>
+                                <input type="text" id="nombresApellidosPropietario" class="solicitante-input" placeholder="Ingrese nombres y apellidos" />
+                            </label>
+                        </div>
+
+                         <div class="propietario-campo">
+                            <label class="solicitante-label">
+                                <p>Cédula / RUC</p>
+                                <input type="text" id="cedulaRucPropietario" class="solicitante-input" placeholder="Ingrese cédula o RUC" />
+                            </label>
+                        </div>
+
+                        <div class="propietario-campo">
+                            <label class="solicitante-label">
+                                <p>Teléfono</p>
+                                <input type="tel" id="telefonoPropietario" class="solicitante-input" placeholder="Ingrese teléfono" />
+                            </label>
+                        </div>
+
+                        <div class="propietario-campo">
+                            <label class="solicitante-label">
+                                <p>Correo Electrónico</p>
+                                <input type="email" id="correoPropietario" class="solicitante-input" placeholder="Ingrese correo electrónico" />
+                            </label>
+                        </div>
+
+                        <!-- Botón para abrir el modal del código catastral -->
+                        <div class="propietario-campo">
+                            <button type="button" onclick="abrirModalCodigoCatastral()" class="btn-codigo-catastral">Ingresar Código Catastral</button>
+                        </div>
+                    </div>
+
+                    <div class="propietario-accion">
+                         <button type="button" onclick="agregarRegistroPropietario(event)" class="btn-agregar">Agregar Propietario/Mandatario</button>
+                    </div>
+
+
+                    <!-- Tabla -->
+                    <table class="tabla-registro-propietarios">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Calidad del Suscrito</th>
+                                <th>Nombres y Apellidos</th>
+                                <th>Cédula / RUC</th>
+                                <th>Teléfono</th>
+                                <th>Correo Electrónico</th>
+                                <th>Código Catastral</th>
+                                 <th>Firma</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aquí se insertarán las filas dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Modal para el Código Catastral -->
+            <div id="modalCodigoCatastral" class="modal">
+                <div class="modal-content">
+                    <span class="close-button" onclick="cerrarModalCodigoCatastral()">×</span>
+                    <h2>Código Catastral</h2>
+                    <div class="modal-inputs">
+                        <input type="number" id="seccionCatastral" placeholder="SECT" />
+                        <input type="number" id="manzanaCatastral" placeholder="MANZ" />
+                        <input type="number" id="loteCatastral" placeholder="LOTE" />
+                        <input type="number" id="divisionCatastral" placeholder="DIV." />
+                        <input type="number" id="phvCatastral" placeholder="PHV." />
+                        <input type="number" id="phhCatastral" placeholder="PHH." />
+                    </div>
+                    <button type="button" onclick="guardarCodigoCatastral()" class="btn-guardar-catastral">Guardar</button>
                 </div>
             </div>
 

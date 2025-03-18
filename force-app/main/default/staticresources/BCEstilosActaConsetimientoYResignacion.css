@@ -546,3 +546,61 @@ h1.formulario-titulo {
   border: 1px solid #ccc;
   padding: 5px;
 }
+
+.modal {
+  display: none; /* Inicialmente oculto */
+  position: fixed;
+  z-index: 1000; /* Encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); /* Fondo oscuro semi-transparente */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* Centrado */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* O el ancho que desees */
+  max-width: 600px; /* Ancho máximo */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.modal-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 10px; /* Espacio entre los inputs */
+  margin-bottom: 20px;
+}
+
+.modal-inputs input {
+  width: 100%; /* Ocupar todo el ancho de su columna */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Incluir padding y border en el ancho */
+}
+.btn-codigo-catastral,
+.btn-guardar-catastral
+{
+  padding: 8px 16px;
+  font-size: 1em;
+}
