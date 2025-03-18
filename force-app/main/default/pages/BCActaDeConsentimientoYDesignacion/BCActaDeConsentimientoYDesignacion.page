@@ -441,7 +441,7 @@
                                 <td>0999999999</td>
                                 <td>ejemplo@correo.com</td>
                                 <td>
-                                    <button type="button" onclick="mostrarCodigoCatastral(0)" class="btn-ver-codigo">Ver</button>
+                                    <button type="button" onclick="abrirModalCodigoCatastral()" class="btn-ver-codigo">Ver</button>
                                 </td>
                                 <td>
                                     <button onclick="eliminarRegistroPropietario(0)" class="eliminar-registro">Eliminar</button>
@@ -453,6 +453,7 @@
                     </table>
                 </div>
             </div>
+
             <!-- Modal para el Código Catastral (sin cambios) -->
             <div id="modalCodigoCatastral" class="modal">
                 <div class="modal-content">

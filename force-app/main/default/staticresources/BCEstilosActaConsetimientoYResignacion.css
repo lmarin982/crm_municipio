@@ -646,8 +646,14 @@ h1.formulario-titulo {
 
 .btn-codigo-catastral,
 .btn-guardar-catastral {
-  padding: 8px 16px;
-  font-size: 1em;
+  background: #000080;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 /* Estilos adicionales para botones (opcional) */

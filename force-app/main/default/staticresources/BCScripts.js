@@ -56,8 +56,8 @@ function agregarRegistro(event) {
     document.getElementById('direccionElemento').value = '';
     document.getElementById('latitudElemento').value = '';
     document.getElementById('longitudElemento').value = '';
-     document.getElementById('tipoSolicitud').value = '';
-     document.getElementById('tipoElemento').value = '';
+    document.getElementById('tipoSolicitud').value = '';
+    document.getElementById('tipoElemento').value = '';
 }
 function eliminarRegistro(index) {
     if (confirm('¿Está seguro de que desea eliminar este registro?')) {
@@ -92,7 +92,7 @@ function actualizarTabla() {
     });
 }
 
-// --- Funciones para propietarios/mandatarios (MODIFICADAS PARA LISTA) ---
+// --- Funciones para propietarios/mandatarios (AHORA CON TABLA) ---
 
 function abrirModalCodigoCatastral() {
     // Limpiar campos del modal
@@ -124,7 +124,7 @@ function guardarCodigoCatastral() {
         return;
     }
 
-     codigoCatastralTemporal = `${seccion}-${manzana}-${lote}-${division || '000'}-${phv || '000'}-${phh || '000'}`;
+    codigoCatastralTemporal = `${seccion}-${manzana}-${lote}-${division || '000'}-${phv || '000'}-${phh || '000'}`;
     cerrarModalCodigoCatastral();
 }
 
@@ -140,7 +140,7 @@ function agregarRegistroPropietario(event) {
     const telefono = document.getElementById('telefonoPropietario').value;
     const correo = document.getElementById('correoPropietario').value;
     const calidadSuscritoText = calidadSuscritoSelect.options[calidadSuscritoSelect.selectedIndex].text;
-	const calidadSuscritoValue = calidadSuscritoSelect.value;
+    const calidadSuscritoValue = calidadSuscritoSelect.value;
 
 
     if (!calidadSuscritoValue || !nombresApellidos || !cedulaRuc || !telefono || !correo || !codigoCatastralTemporal) {
@@ -158,7 +158,7 @@ function agregarRegistroPropietario(event) {
     };
 
     registrosPropietarios.push(nuevoRegistro);
-    actualizarListaPropietarios(); // Actualiza la LISTA
+    actualizarTablaPropietarios(); // Usa la función correcta
 
     // Limpiar los campos del formulario principal
     document.getElementById('calidadSuscrito').value = '';
@@ -172,35 +172,39 @@ function agregarRegistroPropietario(event) {
 function eliminarRegistroPropietario(index) {
     if (confirm('¿Está seguro?')) {
         registrosPropietarios.splice(index, 1);
-        actualizarListaPropietarios(); // Actualiza la LISTA
+        actualizarTablaPropietarios(); // Usa la función correcta
     }
 }
 
-
-function actualizarListaPropietarios() {
-    const lista = document.getElementById('listaRegistrosPropietarios');
-    lista.innerHTML = ''; // Limpiar la lista
+// Función para ACTUALIZAR LA TABLA de propietarios
+function actualizarTablaPropietarios() {
+    const tabla = document.querySelector('.tabla-registro-propietarios tbody'); // Selecciona el tbody
+    tabla.innerHTML = ''; // Limpia el contenido actual de la tabla
 
     registrosPropietarios.forEach((registro, index) => {
-        const item = document.createElement('li');
-        item.classList.add('registro-item-propietario');
+        const fila = document.createElement('tr'); // Crea una nueva fila (tr)
+        fila.classList.add('tabla-fila-propietario');
 
         // Botón para mostrar el código catastral (llama a mostrarCodigoCatastral)
-        const botonVerCodigo = `<button type="button" onclick="mostrarCodigoCatastral(${index})" class="btn-ver-codigo">Ver Código</button>`;
+        const botonVerCodigo = `<button type="button" onclick="mostrarCodigoCatastral(${index})" class="btn-ver-codigo">Ver</button>`;
 
-
-        item.innerHTML = `
-            <strong>Calidad:</strong> ${registro.calidadSuscrito},
-            <strong>Nombres:</strong> ${registro.nombresApellidos},
-            <strong>Cédula/RUC:</strong> ${registro.cedulaRuc},
-            <strong>Tel:</strong> ${registro.telefono},
-            <strong>Correo:</strong> ${registro.correo},
-            <strong>Código:</strong> ${botonVerCodigo}
-            <button onclick="eliminarRegistroPropietario(${index})" class="eliminar-registro">Eliminar</button>
+        // Crea las celdas (td) y las llena con los datos del registro
+        fila.innerHTML = `
+            <td style="text-align: center;">${index + 1}</td>
+            <td style="text-align: center;">${registro.calidadSuscrito}</td>
+            <td style="text-align: center;">${registro.nombresApellidos}</td>
+            <td style="text-align: center;">${registro.cedulaRuc}</td>
+            <td style="text-align: center;">${registro.telefono}</td>
+            <td style="text-align: center;">${registro.correo}</td>
+            <td style="display: flex; justify-content: center; align-items: center; width: 100%;">${botonVerCodigo}</td>
+            <td>
+                <button onclick="eliminarRegistroPropietario(${index})" class="eliminar-registro">Eliminar</button>
+            </td>
         `;
-        lista.appendChild(item);
+        tabla.appendChild(fila); // Agrega la fila al tbody de la tabla
     });
 }
+
 
 //Mostrar codigo Catastral
 function mostrarCodigoCatastral(index) {
@@ -215,7 +219,7 @@ function mostrarCodigoCatastral(index) {
         document.getElementById('phhCatastral').value = partes[5] || '';
 
         document.getElementById('modalCodigoCatastral').style.display = 'block';
-		  codigoCatastralTemporal = registro.codigoCatastral; //Importante
+        // codigoCatastralTemporal = registro.codigoCatastral;  //IMPORTANTE:  No necesitas actualizar esto aquí
     }
 }
 
@@ -300,12 +304,12 @@ function limpiarTodosLosCampos() {
         if (elemento) elemento.checked = false;
     });
 
-     // Limpia los campos de las tablas/listas
+    // Limpia los campos de las tablas/listas
     limpiarFormularioDirecciones(); // Elementos de seguridad
     registrosElementosSeguridad.length = 0; // Elementos, seguridad
     registrosPropietarios.length = 0;     // Propietarios
     actualizarTabla();                // Refresca tabla elementos
-    actualizarListaPropietarios();   // Refresca LISTA propietarios
+    actualizarTablaPropietarios();   // Refresca TABLA propietarios
 
     const aceptaTerminos = document.getElementById('aceptaTerminos');
     if (aceptaTerminos) aceptaTerminos.checked = false;
@@ -332,14 +336,14 @@ function validarFormulario() {
     }
 
     if (registrosElementosSeguridad.length === 0) {
-      mostrarMensajeErrorJS('Debe agregar al menos un elemento de seguridad.');
-      return false;
+        mostrarMensajeErrorJS('Debe agregar al menos un elemento de seguridad.');
+        return false;
     }
 
-	if(registrosPropietarios.length === 0){
-		mostrarMensajeErrorJS('Debe agregar al menos un propietario/mandatario.');
-      return false;
-	}
+    if (registrosPropietarios.length === 0) {
+        mostrarMensajeErrorJS('Debe agregar al menos un propietario/mandatario.');
+        return false;
+    }
 
     if (tipoPersona === 'juridica') {
         return validarFormularioJuridica();
@@ -358,11 +362,71 @@ function enviarFormulario() {
         return;
     }
 
+    // ---  AQUÍ AÑADIMOS EL CONSOLE.LOG ---
+    const formData = obtenerDatosFormulario();
+    console.log("Datos del formulario a enviar:", formData);
+    // --- FIN DEL CONSOLE.LOG ---
+
+
     mostrarMensajeConfirmacionJS();
     limpiarTodosLosCampos();
     mostrarFormulario();
 }
 
+function obtenerDatosFormulario() {
+    const tipoPersona = document.getElementById('tipoFormulario').value;
+    let datos = {
+        tipoPersona: tipoPersona,
+        elementosSeguridad: [...registrosElementosSeguridad], // Usamos el operador spread (...)
+        propietarios: [...registrosPropietarios], // Usamos el operador spread (...)
+        aceptaTerminos: document.getElementById('aceptaTerminos').checked
+    };
+
+    if (tipoPersona === 'juridica') {
+        datos.datosJuridica = {
+            nombreEmpresa: document.getElementById('nombreEmpresaJuridica').value,
+            ruc: document.getElementById('rucJuridica').value,
+            direccion: document.getElementById('direccionJuridica').value,
+            correo: document.getElementById('correoJuridica').value,
+            telefono: document.getElementById('telefonoJuridica').value,
+            representanteLegal: document.getElementById('representanteLegalJuridica').value,
+            identificacionRepresentante: document.getElementById('identificacionRepresentanteJuridica').value
+        };
+    } else if (tipoPersona === 'natural') {
+        datos.datosNatural = {
+            nombresApellidos: document.getElementById('nombresApellidosNatural').value,
+            cedula: document.getElementById('ccNatural').value,
+            direccion: document.getElementById('direccionNatural').value,
+            correo: document.getElementById('correoNatural').value,
+            telefono: document.getElementById('telefonoNatural').value
+        };
+    }
+
+    // Recolectar datos de archivos (solo si están presentes y tienen archivos)
+      datos.archivos = {};
+
+        const archivosInfo = [
+          { id: 'registroFile', key: 'registro' },
+          { id: 'actaFile', key: 'acta' },
+          { id: 'planosFile', key: 'planos' },
+          { id: 'fotosFile', key: 'fotos' },
+          { id: 'comprobanteFile', key: 'comprobante' }
+      ];
+
+      archivosInfo.forEach(info => {
+          const fileInput = document.getElementById(info.id);
+          if (fileInput && fileInput.files.length > 0) {
+              //En un entorno de servidor, normalmente no enviarías el archivo *completo* aquí.
+              //Aquí solo incluimos el nombre y tamaño como ejemplo demostrativo.  En la práctica,
+              //el archivo se subiría a través de una petición separada (ej. FormData)
+              datos.archivos[info.key] = {
+                  nombre: fileInput.files[0].name,
+                  tamaño: fileInput.files[0].size,
+              };
+          }
+      });
+    return datos;
+}
 function validarFormularioJuridica() {
     const campos = [
         'nombreEmpresaJuridica', 'rucJuridica', 'direccionJuridica',
@@ -370,12 +434,12 @@ function validarFormularioJuridica() {
         'identificacionRepresentanteJuridica'
     ];
     const rucValido = validarRUC(document.getElementById('rucJuridica').value);
-     if (!rucValido) {
+    if (!rucValido) {
         mostrarMensajeErrorJS('Por favor, ingrese un RUC válido.');
         return false;
     }
     const idRepresentanteValido = validarCedula(document.getElementById('identificacionRepresentanteJuridica').value);
-    if(!idRepresentanteValido) {
+    if (!idRepresentanteValido) {
         mostrarMensajeErrorJS('Por favor, ingrese una cédula válida para el representante legal.');
         return false;
     }
@@ -391,8 +455,8 @@ function validarFormularioNatural() {
 
     const cedulaValida = validarCedula(document.getElementById('ccNatural').value);
     if (!cedulaValida) {
-         mostrarMensajeErrorJS('Por favor, ingrese una cédula válida.');
-         return false;
+        mostrarMensajeErrorJS('Por favor, ingrese una cédula válida.');
+        return false;
     }
 
     return validarCamposRequeridos(campos, 'natural');
@@ -541,10 +605,10 @@ function agregarEventosHover() {
         const textoTruncado = celda.textContent; // Texto ya truncado
         const textoCompleto = celda.getAttribute('title');
 
-        celda.addEventListener('mouseover', function() {
+        celda.addEventListener('mouseover', function () {
             celda.textContent = textoCompleto; // Muestra completo
         });
-        celda.addEventListener('mouseout', function() {
+        celda.addEventListener('mouseout', function () {
             celda.textContent = textoTruncado; // Vuelve a truncar
         });
     });
