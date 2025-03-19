@@ -5,8 +5,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Formulario de Solicitud</title>
-        <apex:stylesheet value="{!URLFOR($Resource.BCStylesAndIcons, 'css/styles.css')}" />
-        <apex:includeScript value="{!URLFOR($Resource.BCScripts, 'BCScripts.js')}" />
+        <apex:stylesheet value="{!URLFOR($Resource.BCStylesAndIcons, 'BCEstilosActaConsetimientoYResignacion.css')}" />
+        <apex:includeScript value="{!URLFOR($Resource.BCStylesAndIcons, 'BCScripts.js')}" />
         <apex:pageMessages id="mensajes" />
     </head>
 
