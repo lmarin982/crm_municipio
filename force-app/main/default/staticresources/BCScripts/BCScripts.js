@@ -1,35 +1,42 @@
 const datosPersonas = {
-    "1234567890": { // Cédula de ejemplo 1
+    "1717756712": { // Cédula válida
         tipo: "natural",
         nombresApellidos: "Juan Pérez Gómez",
         direccion: "Av. Siempre Viva 123",
         correo: "juan.perez@example.com",
         telefono: "0991234567"
     },
-    "0987654321": { // Cédula de ejemplo 2
+    "0925451720": { // Cédula válida
         tipo: "natural",
         nombresApellidos: "María Rodríguez López",
         direccion: "Calle Falsa 456",
         correo: "maria.rodriguez@example.com",
         telefono: "0989876543"
     },
-    "1712345678001": {  // RUC de ejemplo (persona jurídica)
+    "1712345678001": {  // RUC de persona jurídica (válido)
         tipo: "juridica",
         nombreEmpresa: "Empresa Ejemplo S.A.",
         direccion: "Av. Principal 789",
         correo: "info@empresa.com",
         telefono: "0221234567",
-        representanteLegal: "Ana García",          // Datos que *SÍ* se rellenan
-        identificacionRepresentante: "1002003004" // en persona jurídica.
+        representanteLegal: "Ana García",
+        identificacionRepresentante: "1002003004" // Cédula válida
     },
-    "1798765432001": {
+    "1798765432001": { // RUC de persona jurídica (válido)
         tipo: "juridica",
         nombreEmpresa: "ACME Corp",
         direccion: "123 Main Street",
         correo: "info@acme.com",
         telefono: "555-123-4567",
-        representanteLegal: "",          // Datos que *NO* se rellenan
+        representanteLegal: "",          // Datos que NO se rellenan
         identificacionRepresentante: "" // en persona jurídica.
+    },
+    "1753177179001": { // RUC de persona natural (válido)
+        tipo: "natural",  // <-- Mantenemos "natural" para RUC de persona natural
+        nombresApellidos: "Carlos Andrade Marin", // Usamos nombres/apellidos
+        direccion: "Calle Principal y Secundaria",
+        correo: "carlos.andrade@example.com",
+        telefono: "0991112233"
     }
 };
 
@@ -70,11 +77,7 @@ const tiposElementosSeguridad = [
     { descripcion: "OTROS ELEMENTOS DE SEGURIDAD", tipo: "OTROS" }
 ];
 
-const tipos_de_solicitus = [
-    "Regularización",
-    "Primera vez",
-    "Renovación"
-];
+const tipos_de_solicitudes = ["Primera vez", "Renovación", "Regularización"];
 
 // --- Arrays to Store Added Rows ---
 const registrosElementosSeguridad = [];
@@ -123,16 +126,18 @@ function agregarRegistro(event) {
     document.getElementById('tipoSolicitud').value = '';
     document.getElementById('tipoElemento').value = '';
 }
+
 function eliminarRegistro(index) {
     if (confirm('¿Está seguro de que desea eliminar este registro?')) {
         registrosElementosSeguridad.splice(index, 1); // Remove the correct element
         actualizarTabla(); // Re-render the table
     }
 }
+
 function actualizarTabla() {
     const tablaRegistro = document.querySelector('.tabla-registro');
     const tbody = tablaRegistro.querySelector('tbody');
-    tbody.innerHTML = '';
+    /* tbody.innerHTML = ''; */
 
     registrosElementosSeguridad.forEach((registro, index) => {
         const fila = document.createElement('tr');
@@ -250,7 +255,7 @@ function eliminarRegistroPropietario(index) {
 // Función para ACTUALIZAR LA TABLA de propietarios
 function actualizarTablaPropietarios() {
     const tabla = document.querySelector('.tabla-registro-propietarios tbody'); // Selecciona el tbody
-    tabla.innerHTML = ''; // Limpia el contenido actual de la tabla
+    /* tabla.innerHTML = ''; // Limpia el contenido actual de la tabla */
 
     registrosPropietarios.forEach((registro, index) => {
         const fila = document.createElement('tr'); // Crea una nueva fila (tr)
@@ -759,8 +764,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const tipoSolicitudSelect = document.getElementById('tipoSolicitud');
-    tipoSolicitudSelect.innerHTML = '<option value="">Seleccione...</option>';
-    tipos_de_solicitus.forEach(tipo => {
+    /* tipoSolicitudSelect.innerHTML = '<option value="">Seleccione...</option>'; */
+    tipos_de_solicitudes.forEach(tipo => {
         const option = document.createElement('option');
         option.value = tipo;
         option.textContent = tipo.toUpperCase();
