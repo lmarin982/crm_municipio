@@ -1,6 +1,6 @@
 <apex:page contentType="text/html;charset=UTF-8" showHeader="true" sidebar="true" standardStylesheets="false">
-    <apex:stylesheet value="{!$Resource.BCEstilosActaConsetimientoYResignacion}" />
-    <apex:includeScript value="{!$Resource.BCScripts}" />
+    <apex:stylesheet value="{!URLFOR($Resource.BCStylesAndIcons, 'BCEstilosActaConsetimientoYResignacion.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.BCStylesAndIcons, 'BCScripts.js')}" />
 
     <apex:pageMessages id="mensajes" />
 
@@ -9,8 +9,9 @@
         <main class="main">
             <!-- Header con logos -->
             <div class="header-logos">
-                <img src="{!$Resource.BCMIMG_Logo}" alt="Muy ilustre Municipio de Guayaquil" class="logo" />
-                <img src="{!$Resource.BCDireccionUEVP_Logo}" alt="Dirección de uso del Espacio y via Pública" class="logo" />
+                <img src="{!$Resource.BCStylesAndIcons.BCMIMG_Logo}" alt="Muy ilustre Municipio de Guayaquil" class="logo" />
+                <img src="{!$Resource.BCStylesAndIcons.BCDireccionUEVP_Logo}" alt="Dirección de uso del Espacio y via Pública" class="logo"
+                />
             </div>
 
             <!-- Título del formulario -->
@@ -101,7 +102,7 @@
                 ">
                                 <p>Subir archivo del nombramiento del representate legal (*)</p>
                                 <label for="registroFile" class="custom-file-upload">
-                                    <img src="{!$Resource.BCFlechaArriba_Logo}" alt="Subir archivo" width="20px" />
+                                    <img src="{!$Resource.BCStylesAndIcons.BCFlechaArriba_Logo}" alt="Subir archivo" width="20px" />
                                 </label>
                                 <input type="file" id="registroFile" style="display: none" onchange="actualizarCheckbox('registroFile', 'registroCheckbox')"
                                 />

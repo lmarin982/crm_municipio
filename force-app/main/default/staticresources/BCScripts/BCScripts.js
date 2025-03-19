@@ -1,3 +1,67 @@
+const datosPersonas = {
+    "1234567890": { // Cédula de ejemplo 1
+        tipo: "natural",
+        nombresApellidos: "Juan Pérez Gómez",
+        direccion: "Av. Siempre Viva 123",
+        correo: "juan.perez@example.com",
+        telefono: "0991234567"
+    },
+    "0987654321": { // Cédula de ejemplo 2
+        tipo: "natural",
+        nombresApellidos: "María Rodríguez López",
+        direccion: "Calle Falsa 456",
+        correo: "maria.rodriguez@example.com",
+        telefono: "0989876543"
+    },
+    "1712345678001": {  // RUC de ejemplo (persona jurídica)
+        tipo: "juridica",
+        nombreEmpresa: "Empresa Ejemplo S.A.",
+        direccion: "Av. Principal 789",
+        correo: "info@empresa.com",
+        telefono: "0221234567",
+        representanteLegal: "Ana García",          // Datos que *SÍ* se rellenan
+        identificacionRepresentante: "1002003004" // en persona jurídica.
+    },
+    "1798765432001": {
+        tipo: "juridica",
+        nombreEmpresa: "ACME Corp",
+        direccion: "123 Main Street",
+        correo: "info@acme.com",
+        telefono: "555-123-4567",
+        representanteLegal: "",          // Datos que *NO* se rellenan
+        identificacionRepresentante: "" // en persona jurídica.
+    }
+};
+
+function autocompletarDatos(cedulaRuc) {
+    const datos = datosPersonas[cedulaRuc];
+
+    if (datos) {
+        // Determinar el tipo de formulario y mostrarlo
+        document.getElementById('tipoFormulario').value = datos.tipo;
+        mostrarFormulario(); // Asegúrate de que esta función exista y funcione
+
+        if (datos.tipo === "natural") {
+            document.getElementById('nombresApellidosNatural').value = datos.nombresApellidos || '';
+            document.getElementById('direccionNatural').value = datos.direccion || '';
+            document.getElementById('correoNatural').value = datos.correo || '';
+            document.getElementById('telefonoNatural').value = datos.telefono || '';
+            document.getElementById('ccNatural').value = cedulaRuc; // Rellenar la cédula
+
+        } else if (datos.tipo === "juridica") {
+            document.getElementById('nombreEmpresaJuridica').value = datos.nombreEmpresa || '';
+            document.getElementById('rucJuridica').value = cedulaRuc; // Rellenar el RUC
+            document.getElementById('direccionJuridica').value = datos.direccion || '';
+            document.getElementById('correoJuridica').value = datos.correo || '';
+            document.getElementById('telefonoJuridica').value = datos.telefono || '';
+
+            //No se autocompletan los campos de representante.
+            // document.getElementById('representanteLegalJuridica').value = datos.representanteLegal || '';
+            // document.getElementById('identificacionRepresentanteJuridica').value = datos.identificacionRepresentante || '';
+        }
+    }
+}
+
 // --- Data for Dropdowns ---
 const tiposElementosSeguridad = [
     { descripcion: "PORTONES METÁLICOS EN VÍAS PEATONALES", tipo: "TIPO 1" },
@@ -147,6 +211,13 @@ function agregarRegistroPropietario(event) {
         mostrarMensajeErrorJS('Complete todos los campos, incluido el código.');
         return;
     }
+
+    //Validar cedula o RUC antes de agregar.
+    if (!validarCedulaORUC(cedulaRuc)) {
+        mostrarMensajeErrorJS('Por favor, ingrese una cédula o RUC válido.');
+        return; // Importante: Detener la ejecución si no es válido
+    }
+
 
     const nuevoRegistro = {
         calidadSuscrito: calidadSuscritoText,  // Texto, no valor
@@ -403,36 +474,43 @@ function obtenerDatosFormulario() {
     }
 
     // Recolectar datos de archivos (solo si están presentes y tienen archivos)
-      datos.archivos = {};
+    datos.archivos = {};
 
-        const archivosInfo = [
-          { id: 'registroFile', key: 'registro' },
-          { id: 'actaFile', key: 'acta' },
-          { id: 'planosFile', key: 'planos' },
-          { id: 'fotosFile', key: 'fotos' },
-          { id: 'comprobanteFile', key: 'comprobante' }
-      ];
+    const archivosInfo = [
+        { id: 'registroFile', key: 'registro' },
+        { id: 'actaFile', key: 'acta' },
+        { id: 'planosFile', key: 'planos' },
+        { id: 'fotosFile', key: 'fotos' },
+        { id: 'comprobanteFile', key: 'comprobante' }
+    ];
 
-      archivosInfo.forEach(info => {
-          const fileInput = document.getElementById(info.id);
-          if (fileInput && fileInput.files.length > 0) {
-              //En un entorno de servidor, normalmente no enviarías el archivo *completo* aquí.
-              //Aquí solo incluimos el nombre y tamaño como ejemplo demostrativo.  En la práctica,
-              //el archivo se subiría a través de una petición separada (ej. FormData)
-              datos.archivos[info.key] = {
-                  nombre: fileInput.files[0].name,
-                  tamaño: fileInput.files[0].size,
-              };
-          }
-      });
+    archivosInfo.forEach(info => {
+        const fileInput = document.getElementById(info.id);
+        if (fileInput && fileInput.files.length > 0) {
+            //En un entorno de servidor, normalmente no enviarías el archivo *completo* aquí.
+            //Aquí solo incluimos el nombre y tamaño como ejemplo demostrativo.  En la práctica,
+            //el archivo se subiría a través de una petición separada (ej. FormData)
+            datos.archivos[info.key] = {
+                nombre: fileInput.files[0].name,
+                tamaño: fileInput.files[0].size,
+            };
+        }
+    });
     return datos;
 }
+
+//Se modifican estas funciones de validacion del formulario para validar en tiempo real.
 function validarFormularioJuridica() {
     const campos = [
         'nombreEmpresaJuridica', 'rucJuridica', 'direccionJuridica',
         'correoJuridica', 'telefonoJuridica', 'representanteLegalJuridica',
         'identificacionRepresentanteJuridica'
     ];
+    //Se llama a esta funcion para validar en tiempo real.
+    if (!validarCamposRequeridos(campos, 'jurídica')) {
+        return false;
+    }
+
     const rucValido = validarRUC(document.getElementById('rucJuridica').value);
     if (!rucValido) {
         mostrarMensajeErrorJS('Por favor, ingrese un RUC válido.');
@@ -444,7 +522,7 @@ function validarFormularioJuridica() {
         return false;
     }
 
-    return validarCamposRequeridos(campos, 'jurídica');
+    return true;
 }
 
 function validarFormularioNatural() {
@@ -453,13 +531,17 @@ function validarFormularioNatural() {
         'correoNatural', 'telefonoNatural'
     ];
 
+    //Se llama a esta funcion para validar en tiempo real.
+    if (!validarCamposRequeridos(campos, 'natural')) {
+        return false;
+    }
+
     const cedulaValida = validarCedula(document.getElementById('ccNatural').value);
     if (!cedulaValida) {
         mostrarMensajeErrorJS('Por favor, ingrese una cédula válida.');
         return false;
     }
-
-    return validarCamposRequeridos(campos, 'natural');
+    return true;
 }
 
 function validarCamposRequeridos(campos, tipoPersona) {
@@ -538,49 +620,92 @@ function validarRUC(ruc) {
 
     let coeficientes = [];
     let verificador = parseInt(ruc.charAt(9));
+    //AQUI el digito verificador es el decimo digito.
+    let digitoVerificador = parseInt(ruc.charAt(9));
+
     let suma = 0;
 
     if (tercerDigito < 6) {
         coeficientes = [2, 1, 2, 1, 2, 1, 2, 1, 2];
+        //Para persona natural el modulo es 10.
+        let modulo = suma % 10;
+        let validador = 0; // Inicializar validador
+        if (modulo != 0) {
+            validador = 10 - modulo; // Corrección: Calcular el validador
+        }
+        //Se compara el validador con el digito verificador.
+        if (validador != digitoVerificador) {
+            return false;
+        }
     } else if (tercerDigito === 6) {
+        //Para sociedades privadas el modulo es 11.
         coeficientes = [3, 2, 7, 6, 5, 4, 3, 2, 0];
-        verificador = parseInt(ruc.charAt(8));
+        verificador = parseInt(ruc.charAt(8)); // Octavo dígito para RUC de sociedad privada
+        let modulo = suma % 11;
+        let validador = 0; // Inicializar validador
+        if (modulo != 0) {
+            validador = 11 - modulo; // Corrección: Calcular el validador
+        }
+        if (validador != verificador) {
+            return false
+        }
+
     } else if (tercerDigito === 9) {
         coeficientes = [4, 3, 2, 7, 6, 5, 4, 3, 2];
+        //Para entidades publicas el modulo es 11.
+        let modulo = suma % 11;
+        let validador = 0;
+        if (modulo != 0) {
+            validador = 11 - modulo;
+        }
+        //Se compara el validador con el digito verificador.
+        if (validador != verificador) {
+            return false
+        }
     } else {
-        return false
+
+        return false;
     }
 
     for (let i = 0; i < coeficientes.length; i++) {
         let digito = parseInt(ruc.charAt(i));
         digito = digito * coeficientes[i];
-        if (digito > 9 && tercerDigito < 6) {
+        //Ya no se resta 9.
+        /* if (digito > 9 && tercerDigito < 6) {
             digito = digito - 9;
-        }
+        }*/
         suma = suma + digito;
     }
 
-    let modulo = suma % 11;
-    let validador = 0;
-    if (modulo != 0) {
-        validador = 11 - modulo;
-    }
 
-    if (validador != verificador) {
-        return false
-    }
 
     return true;
 }
 
-function agregarValidacionEnTiempoReal(inputId, funcionValidacion) {
+//Esta funcion valida en tiempo real
+function agregarValidacionEnTiempoReal(inputId, funcionValidacion, autocompletar = false) {
     const inputElement = document.getElementById(inputId);
     if (inputElement) {
+        // Evento 'blur' (cuando el campo pierde el foco)
         inputElement.addEventListener('blur', function () {
             if (!funcionValidacion(this.value)) {
                 mostrarMensajeErrorJS(`El valor ingresado en ${this.placeholder} no es válido.`);
+            } else if (autocompletar) {
+                autocompletarDatos(this.value); // Llama a autocompletar si la validacion fue exitosa
             }
         });
+
+        // Evento 'keyup' (al soltar una tecla) con debounce
+        inputElement.addEventListener('keyup', debounce(function () {
+            if (autocompletar) {
+                if (!funcionValidacion(this.value)) {
+                    //No muestra el mensaje aqui, porque se valida en blur
+                    // mostrarMensajeErrorJS(`El valor ingresado en ${this.placeholder} no es válido.`);
+                    return; // Si no es válido, no hacemos nada.
+                }
+                autocompletarDatos(this.value); // Solo autocompleta si la validación es OK
+            }
+        }, 300)); // Espera 300ms después de la última pulsación de tecla
     }
 }
 
@@ -647,12 +772,13 @@ document.addEventListener('DOMContentLoaded', function () {
     if (formularioJuridica) formularioJuridica.style.display = 'none';
     if (formularioNatural) formularioNatural.style.display = 'none';
 
+
     mostrarFormulario();
     truncarTextoTabla(); // Para la tabla de elementos
     agregarEventosHover(); //Y eventos hover
 
-    agregarValidacionEnTiempoReal('ccNatural', validarCedula);
-    agregarValidacionEnTiempoReal('rucJuridica', validarRUC);
+    agregarValidacionEnTiempoReal('ccNatural', validarCedula, true);  // Autocompletar para persona natural
+    agregarValidacionEnTiempoReal('rucJuridica', validarRUC, true); // Autocompletar para persona juridica
     agregarValidacionEnTiempoReal('identificacionRepresentanteJuridica', validarCedula);
     agregarValidacionEnTiempoReal('cedulaRucPropietario', validarCedulaORUC);
 });
@@ -662,4 +788,13 @@ function validarCedulaORUC(valor) {
         return true;
     }
     return validarRUC(valor);
+}
+
+function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+    };
 }

@@ -2,17 +2,22 @@
     applyBodyTag="false">
     <apex:stylesheet value="{!$Resource.BCInformeFactibilidadSocial_Styles}" />
 
-    <body>
-        <!-- Use a <body> tag, even with applyBodyTag="false" -->
+    <head>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
 
+    <body>
+        <!-- Mantenemos el <body> -->
         <div class="header">
             <img src="{!$Resource.BCMIMG_Logo}" alt="Muy ilustre Municipio de Guayaquil" />
-            <p style="font-size: 10px;">Gobierno Autónomo Descentralizado Municipal de Guayaquil</p>
+            <p style="font-size: 9px;">Gobierno Autónomo Descentralizado Municipal de Guayaquil</p>
         </div>
 
         <div class="content">
             <!-- Main Content -->
-            
+            <div style="display: flex; items">
+                <p class="text-xl font-semibold">{!FormatoFecha}</p>
+            </div>
         </div>
 
         <div class="footer">
@@ -21,6 +26,5 @@
                 <span class="pagecount" />
             </div>
         </div>
-
     </body>
 </apex:page>
