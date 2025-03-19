@@ -1,6 +1,7 @@
 <apex:page contentType="text/html;charset=UTF-8" showHeader="true" sidebar="true" standardStylesheets="false">
     <apex:stylesheet value="{!URLFOR($Resource.BCStylesAndIcons, 'BCEstilosActaConsetimientoYResignacion.css')}" />
-    <apex:includeScript value="{!URLFOR($Resource.BCStylesAndIcons, 'BCScripts.js')}" />
+     <!-- Corrected:  The JavaScript file should be included using apex:includeScript, and the path *within* the static resource is relative. -->
+    <apex:includeScript value="{!URLFOR($Resource.BCScripts, 'BCScripts.js')}" />
 
     <apex:pageMessages id="mensajes" />
 
@@ -9,8 +10,9 @@
         <main class="main">
             <!-- Header con logos -->
             <div class="header-logos">
-                <img src="{!$Resource.BCStylesAndIcons.BCMIMG_Logo}" alt="Muy ilustre Municipio de Guayaquil" class="logo" />
-                <img src="{!$Resource.BCStylesAndIcons.BCDireccionUEVP_Logo}" alt="Dirección de uso del Espacio y via Pública" class="logo"
+                <!-- Corrected: Use URLFOR for images within static resources.  This is the *correct* and reliable way. -->
+                <img src="{!URLFOR($Resource.BCStylesAndIcons, 'BCMIMG_Logo.png')}" alt="Muy ilustre Municipio de Guayaquil" class="logo" />
+                <img src="{!URLFOR($Resource.BCStylesAndIcons, 'BCDireccionUEVP_Logo.png')}" alt="Dirección de uso del Espacio y via Pública" class="logo"
                 />
             </div>
 
@@ -101,8 +103,9 @@
                   flex-flow: row wrap;
                 ">
                                 <p>Subir archivo del nombramiento del representate legal (*)</p>
+                                <!-- Corrected: Use URLFOR for the image within the custom file upload label -->
                                 <label for="registroFile" class="custom-file-upload">
-                                    <img src="{!$Resource.BCStylesAndIcons.BCFlechaArriba_Logo}" alt="Subir archivo" width="20px" />
+                                    <img src="{!URLFOR($Resource.BCStylesAndIcons, 'BCFlechaArriba_Logo.png')}" alt="Subir archivo" width="20px" />
                                 </label>
                                 <input type="file" id="registroFile" style="display: none" onchange="actualizarCheckbox('registroFile', 'registroCheckbox')"
                                 />
@@ -177,7 +180,7 @@
                         <p style="font-size: 0.9rem; margin: 0; width: 100%">
                             1.- Acta suscrita por todos los miembros que conforman el colectivo o comunidad solicitante.
                         </p>
-                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap;                width: 30%;              ">
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap;">
                             <label for="actaFile" class="custom-file-upload">Subir Acta</label>
                             <input type="file" id="actaFile" style="display: none" onchange="actualizarCheckbox('actaFile', 'actaCheckbox', 'actaNombreArchivo')"
                             />
@@ -191,7 +194,7 @@
                         <p style="font-size: 0.9rem; margin: 0; width: 100%">
                             2.- Planos del proyecto de los elementos de seguridad a instalarse con firma de responsabilidad técnica.
                         </p>
-                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap; width: 30%;">
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap;">
                             <label for="planosFile" class="custom-file-upload">Subir Plano</label>
                             <input type="file" id="planosFile" style="display: none" onchange="actualizarCheckbox('planosFile', 'planosCheckbox', 'planosNombreArchivo')"
                             />
@@ -205,7 +208,7 @@
                         <p style="font-size: 0.9rem; margin: 0; width: 100%">
                             3.- Fotografías del sitio donde se propone instalar los elementos de seguridad en el espacio y vía pública.
                         </p>
-                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap; width: 30%;">
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap;">
                             <label for="fotosFile" class="custom-file-upload">Subir PDF</label>
                             <input type="file" id="fotosFile" style="display: none" onchange="actualizarCheckbox('fotosFile', 'fotosCheckbox', 'fotosNombreArchivo')"
                             />
@@ -219,7 +222,7 @@
                         <p style="font-size: 0.9rem; margin: 0; width: 100%">
                             4.- Comprobante de Pago de Tasa por Servicios Administrativos.
                         </p>
-                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap; width: 30%;">
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-flow: row wrap;">
                             <label for="comprobanteFile" class="custom-file-upload">Subir Comprobante</label>
                             <input type="file" id="comprobanteFile" style="display: none" onchange="actualizarCheckbox('comprobanteFile', 'comprobanteCheckbox', 'comprobanteNombreArchivo')"
                             />
