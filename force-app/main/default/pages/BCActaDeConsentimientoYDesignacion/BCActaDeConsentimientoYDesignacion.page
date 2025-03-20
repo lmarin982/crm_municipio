@@ -395,7 +395,7 @@
                                     <input type="email" id="correoPropietario" class="input" placeholder="Correo Electrónico" name="correoPropietario" />
                                 </div>
                                 <!--  Campo para el nombre del representante (cuando es mandatario) -->
-                                <div id="mandatario-campo" class="oculto">
+                                <div id="representante-campo" style="display: none;">
                                     <label class="label text-center" for="nombreRepresentante">
                                         Representante legal
                                         <span class="tooltip-container">
@@ -403,21 +403,18 @@
                                             <span class="tooltip-content">Ingrese el nombre completo del representante legal.</span>
                                         </span>
                                     </label>
-                                    <input type="text" id="nombreRepresentante" class="input" placeholder="Nombre del Representante" name="nombreRepresentante"
-                                    />
+                                    <input type="text" id="nombreRepresentante" class="input" placeholder="Nombre del Representante" name="nombreRepresentante" />
                                 </div>
-
-                                <!--  Campo para la identificación del representante (cuando es mandatario) -->
-                                <div id="mandatario-campo" class="oculto">
-                                    <label class="label text-center" for="nombreRepresentante">
+                                
+                                <div id="id-representante-campo" style="display: none;">
+                                    <label class="label text-center" for="idRepresentanteLegal">
                                         Identificación del Representante Legal
                                         <span class="tooltip-container">
                                             <span class="tooltip-trigger">?</span>
-                                            <span class="tooltip-content">Ingrese la identificacion del representante legal.</span>
+                                            <span class="tooltip-content">Ingrese la identificación del representante legal.</span>
                                         </span>
                                     </label>
-                                    <input type="text" id="idRepresentanteLegal" class="input" placeholder="Cédula / RUC / Pasaporte" name="idRepresentanteLegal"
-                                        pattern="\d{10}" title="Debe contener 10 dígitos" />
+                                    <input type="text" id="idRepresentanteLegal" class="input" placeholder="Cédula / RUC / Pasaporte" name="idRepresentanteLegal" />
                                 </div>
                             </div>
                             <div class="propietario-campo" style="width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 1rem;">
