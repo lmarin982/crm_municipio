@@ -69,9 +69,7 @@ h1.formulario-titulo {
   line-height: 1.4;
 }
 
-.formulario-juridica,
 .formulario-natural {
-  display: none;
   opacity: 0;
   height: 0;
   overflow: hidden;
@@ -80,9 +78,8 @@ h1.formulario-titulo {
   transition: opacity 0.3s ease-in-out;
 }
 
-.formulario-juridica.visible,
 .formulario-natural.visible {
-  display: block;
+
   opacity: 1;
   height: auto;
   margin-bottom: 20px;
@@ -172,7 +169,7 @@ h1.formulario-titulo {
 /* Estilos para el contenedor unificado de datos del solicitante */
 .solicitante-datos {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   gap: 20px;
   background: #f8f9fa;
   padding: 20px;
@@ -198,6 +195,10 @@ h1.formulario-titulo {
 
 .solicitante-campo.full {
   flex: 100%;
+}
+
+.solicitante-campo.label {
+  width: 100%;
 }
 
 .solicitante-label {

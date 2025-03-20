@@ -30,134 +30,8 @@
                     vía pública
                 </h1>
 
-                <!-- Selector de tipo de formulario -->
-                <div class="formulario-contenedor section">
-                    <h2 class="tipoFormulario label" for="tipoFormulario">
-                        Seleccionar el tipo de persona a registrar:
-                    </h2>
-                    <select id="tipoFormulario" class="input" onchange="mostrarFormulario()">
-                        <option value="">Seleccionar</option>
-                        <option value="juridica">Persona jurídica</option>
-                        <option value="natural">Persona natural</option>
-                    </select>
-                </div>
-
-
-                <!-- Formulario para Persona Jurídica -->
-                <div class="formulario-contenedor formulario-juridica section">
-                    <h2 class="solicitante-titulo label">Solicitante - Persona Jurídica</h2>
-                    <div class="solicitante-datos">
-                        <!-- Nombres y apellidos -->
-                        <div class="solicitante-campo">
-                            <label class="label" for="nombreEmpresaJuridica">
-                                <!-- Añadido 'for' -->
-                                Nombre de la empresa (*)
-                            </label>
-                            <input type="text" class="input" id="nombreEmpresaJuridica" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese el nombre de la empresa, tal como aparece en el RUC.</span>
-                            </span>
-                        </div>
-
-                        <!-- RUC -->
-                        <div class="solicitante-campo small">
-                            <label class="label" for="rucJuridica">
-                                <!-- Añadido 'for' -->
-                                R.U.C. (*)
-                            </label>
-                            <input type="text" class="input" id="rucJuridica" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese el número de RUC de la empresa (13 dígitos), sin guiones ni espacios.</span>
-                            </span>
-                        </div>
-
-                        <!-- Dirección -->
-                        <div class="solicitante-campo full">
-                            <label class="label" for="direccionJuridica">
-                                <!-- Añadido 'for' -->
-                                Dirección exacta del domicilio (*)
-                            </label>
-                            <input type="text" class="input" id="direccionJuridica" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese la dirección completa del domicilio de la empresa. Sea lo más específico posible.</span>
-                            </span>
-                        </div>
-
-                        <!-- Correo electrónico -->
-                        <div class="solicitante-campo">
-                            <label class="label" for="correoJuridica">
-                                <!-- Añadido 'for' -->
-                                Correo electrónico (*)
-                            </label>
-                            <input type="email" class="input" id="correoJuridica" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese una dirección de correo electrónico válida.</span>
-                            </span>
-                        </div>
-
-                        <!-- Teléfono -->
-                        <div class="solicitante-campo small">
-                            <label class="label" for="telefonoJuridica">
-                                <!-- Añadido 'for' -->
-                                Teléfono (*)
-                            </label>
-                            <input type="tel" class="input" id="telefonoJuridica" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese un número de teléfono de contacto.</span>
-                            </span>
-                        </div>
-
-                        <div class="solicitante-campo">
-                            <label class="label" for="representanteLegalJuridica">
-                                <!-- Añadido 'for' -->
-                                Nombre del representante legal (*)
-                            </label>
-                            <input type="text" class="input" id="representanteLegalJuridica" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese el nombre completo del representante legal de la empresa.</span>
-                            </span>
-                        </div>
-
-                        <div class="solicitante-campo">
-                            <label class="label" for="identificacionRepresentanteJuridica">
-                                <!-- Añadido 'for' -->
-                                Identificación del representante legal (*)
-                            </label>
-                            <input type="text" class="input" id="identificacionRepresentanteJuridica" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese el número de cédula o RUC del representante legal.</span>
-                            </span>
-                        </div>
-
-                        <!-- Subir archivo -->
-                        <div class="solicitante-campo full">
-                            <label class="label" for="registroFile">
-                                <!-- Añadido 'for' -->
-                                <!-- Corrected:  Removed inline styles, used utility classes -->
-                                <div class="flex justify-center items-center gap-2 flex-wrap">
-                                    Subir archivo del nombramiento del representante legal (*)
-                                    <!-- Corrected: Use URLFOR for the image within the custom file upload label -->
-                                    <label for="registroFile" class="btn btn-light custom-file-upload">
-                                        <!-- Usamos clases .btn y .btn-light -->
-                                        <img src="{!URLFOR($Resource.BCStylesAndIcons, 'BCFlechaArriba_Logo.png')}" alt="Subir archivo" width="20px" /> Subir Archivo
-                                    </label>
-                                    <input type="file" id="registroFile" class="hidden" onchange="actualizarCheckbox('registroFile', 'registroCheckbox')" />
-                                    <input type="checkbox" id="registroCheckbox" class="checkbox-estilo" disabled="true" />
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Formulario para Persona Natural -->
-                <div class="formulario-contenedor formulario-natural section">
+                <div class="formulario-contenedor">
                     <h2 class="solicitante-titulo label">Solicitante - Persona Natural</h2>
                     <div class="solicitante-datos">
                         <!-- Nombres y apellidos -->
@@ -165,12 +39,13 @@
                             <label class="label" for="nombresApellidosNatural">
                                 <!-- Añadido 'for' -->
                                 Nombres y apellidos del representante (*)
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese sus nombres y apellidos completos, tal como aparecen en su cédula.</span>
+                                </span>
                             </label>
                             <input type="text" class="input" id="nombresApellidosNatural" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese sus nombres y apellidos completos, tal como aparecen en su cédula.</span>
-                            </span>
+
                         </div>
 
                         <!-- CC -->
@@ -178,12 +53,13 @@
                             <label class="label" for="ccNatural">
                                 <!-- Añadido 'for' -->
                                 C.C. (*)
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese su número de cédula (10 dígitos).</span>
+                                </span>
                             </label>
                             <input type="text" class="input" id="ccNatural" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese su número de cédula (10 dígitos).</span>
-                            </span>
+
                         </div>
 
                         <!-- Dirección -->
@@ -191,12 +67,13 @@
                             <label class="label" for="direccionNatural">
                                 <!-- Añadido 'for' -->
                                 Dirección exacta del domicilio (*)
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese su dirección completa. Sea lo más específico posible.</span>
+                                </span>
                             </label>
                             <input type="text" class="input" id="direccionNatural" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese su dirección completa. Sea lo más específico posible.</span>
-                            </span>
+
                         </div>
 
                         <!-- Correo electrónico -->
@@ -204,12 +81,13 @@
                             <label class="label" for="correoNatural">
                                 <!-- Añadido 'for' -->
                                 Correo electrónico (*)
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese una dirección de correo electrónico válida.</span>
+                                </span>
                             </label>
                             <input type="email" class="input" id="correoNatural" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese una dirección de correo electrónico válida.</span>
-                            </span>
+
                         </div>
 
                         <!-- Teléfono -->
@@ -217,12 +95,13 @@
                             <label class="label" for="telefonoNatural">
                                 <!-- Añadido 'for' -->
                                 Teléfono (*)
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese un número de teléfono de contacto.</span>
+                                </span>
                             </label>
                             <input type="tel" class="input" id="telefonoNatural" />
-                            <span class="tooltip-container">
-                                <span class="tooltip-trigger">?</span>
-                                <span class="tooltip-content">Ingrese un número de teléfono de contacto.</span>
-                            </span>
+
                         </div>
                     </div>
                 </div>
@@ -302,37 +181,37 @@
                     </div>
 
                     <!-- Elementos de Seguridad -->
-                    <div class="elementos-seguridad-container flex justify-center items-center w-full text-center">
-                        <table class="elementos-seguridad-tabla table table--bordered w-70">
+                    <div class="elementos-seguridad-container">
+                        <table class="elementos-seguridad-tabla">
                             <!-- Encabezado -->
                             <thead>
                                 <tr>
-                                    <th class="text-sm uppercase">Elemento de seguridad instalado o por instalar</th>
+                                    <th class="text-sm uppercase">Elementos de seguridad instalado o por instalar</th>
                                     <th class="text-sm uppercase">Tipo</th>
                                 </tr>
                             </thead>
                             <!-- Opciones -->
                             <tbody>
                                 <tr>
-                                    <td class="text-left">
+                                    <td style="text-align: justify;">
                                         PORTONES METÁLICOS EN VÍAS PEATONALES
                                     </td>
                                     <td>TIPO 1</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-left">
+                                    <td style="text-align: justify;">
                                         PORTONES METÁLICOS EN CALLES VEHICULARES CON ACERAS MENORES A 1,50 METROS
                                     </td>
                                     <td>TIPO 2</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-left">
+                                    <td style="text-align: justify;">
                                         PORTONES METÁLICOS EN CALLES VEHICULARES CON ACERAS IGUALES O MAYORES A 1,50 METROS
                                     </td>
                                     <td>TIPO 3</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-left">
+                                    <td style="text-align: justify;">
                                         OTROS ELEMENTOS DE SEGURIDAD
                                     </td>
                                     <td>OTROS</td>
