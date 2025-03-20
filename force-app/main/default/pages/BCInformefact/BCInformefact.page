@@ -1,6 +1,93 @@
-<apex:page >
-<!-- Begin Default Content REMOVE THIS -->
-<h1>Congratulations</h1>
-This is your new Page
-<!-- End Default Content REMOVE THIS -->
+<apex:page showHeader="false" controller="BC_Informefact"  sidebar="false" standardStylesheets="false" renderAs="pdf" docType="html-5.0" applyBodyTag="false" applyHtmlTag="false">
+    <head>    
+        <!--<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />    -->
+        <style type="text/css" media="print">
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            text-align: center;
+        }
+        .header-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header-img {
+            width: 500px;
+            height: auto; 
+        }
+        .field {
+            border-bottom: 1px solid black;
+            display: inline-block;
+            min-width: 100px;
+        }
+        .content {
+            width: 100%;
+            margin: 0 auto;
+            text-align: right
+
+        
+        }
+
+        .Asunto {
+            text-align: center;
+            width: 100%;
+            font-size: 12px
+
+        }
+        .Consideracion {
+            text-align: left;
+            width: 100%;
+            margin: 0 auto;
+            font-size: 12px
+
+        }
+
+        
+    </style> 
+ </head>
+    
+    <div class="header-container">
+        <apex:image url="{!$Resource.BCLogocabecera}" styleClass="header-img"/>
+    </div>
+
+  
+    <div class="content">
+        <p>{!FormatoFecha} </p>
+        <p>Memorando No </p> 
+        <p>Pág </p>
+</div>
+<div class= "Asunto" >
+        <p><strong>PARA:</strong> Ing. Jorge Arévalo Muñoz - Director General de Urbanismo Movilidad Catastro y Edificaciones</p>
+        <p><strong>DE:</strong> Econ. Andrés Concha Bucaram - Director General de Uso del Espacio y Vía Pública</p>
+        <p><strong>CC:</strong> Abg. Andreina González Morán - Jefe Departamental de Vía Pública</p>
+        <p><strong>ASUNTO:</strong> Solicitud de informe de factibilidad técnica de los elementos de seguridad en el ejercicio de vía pública en la dirección <span class="field">______________________________</span>, relacionado al Requerimiento No. <span class="field">___________</span></p>
+    </div>     
+<div class = "Consideracion">
+        <p>De nuestra consideración:</p>
+        <p>A efectos de dar continuidad al requerimiento signado con No. <span class="field">___________</span>, ingresado por <span class="field">______________________</span>, en su calidad de <span class="field">______________________</span>, expongo:</p>
+        
+        <p>Se adjuntan los siguientes documentos, los cuales contienen los análisis técnicos de factibilidad técnica y viabilidad para la instalación de los elementos de seguridad:</p>
+    </div>
+    <div class="Planos">
+        <ol style="display: inline-block; text-align: left;">
+            <li>Memorando No. <span class="field">___________</span> de <span class="field">___________</span>, suscrito por <span class="field">___________</span>.</li>
+            <li>Informe N° <span class="field">___________</span> de fecha <span class="field">___________</span>, elaborado por <span class="field">___________</span>.</li>
+            <li>Plano con ubicación de los elementos de seguridad, contenido en el documento <span class="field">___________</span>.</li>
+            <li>Otros documentos de referencia que sustentan la viabilidad del proyecto.</li>
+        </ol>
+    </div>
+    <br/>
+    <div class="Cierre">
+        <p>En atención a lo antes expuesto y conforme con el análisis técnico realizado, se concluye que <span class="field">____________________________________________________________________</span>.</p>
+
+        <br/><br/>
+        <p>Atentamente,</p>
+        <br/><br/><br/>
+        <p><strong>__________________________</strong></p>
+        <p>Firma</p>
+    </div>
 </apex:page>
