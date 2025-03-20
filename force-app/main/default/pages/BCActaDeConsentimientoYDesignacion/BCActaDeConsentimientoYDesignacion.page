@@ -44,7 +44,7 @@
                                     <span class="tooltip-content">Ingrese sus nombres y apellidos completos, tal como aparecen en su cédula.</span>
                                 </span>
                             </label>
-                            <input type="text" class="input" id="nombresApellidosNatural" />
+                            <input type="text" class="input" id="nombresApellidosNatural" name="nombresApellidosNatural" />
                         </div>
 
                         <!-- CC -->
@@ -57,7 +57,7 @@
                                     <span class="tooltip-content">Ingrese su número de cédula (10 dígitos).</span>
                                 </span>
                             </label>
-                            <input type="text" class="input" id="ccNatural" />
+                            <input type="text" class="input" id="ccNatural" name="ccNatural" />
 
                         </div>
 
@@ -71,7 +71,7 @@
                                     <span class="tooltip-content">Ingrese su dirección completa. Sea lo más específico posible.</span>
                                 </span>
                             </label>
-                            <input type="text" class="input" id="direccionNatural" />
+                            <input type="text" class="input" id="direccionNatural" name="direccionNatural" />
 
                         </div>
 
@@ -85,7 +85,7 @@
                                     <span class="tooltip-content">Ingrese una dirección de correo electrónico válida.</span>
                                 </span>
                             </label>
-                            <input type="email" class="input" id="correoNatural" />
+                            <input type="email" class="input" id="correoNatural" name="correoNatural" />
 
                         </div>
 
@@ -99,7 +99,7 @@
                                     <span class="tooltip-content">Ingrese un número de teléfono de contacto.</span>
                                 </span>
                             </label>
-                            <input type="tel" class="input" id="telefonoNatural" />
+                            <input type="tel" class="input" id="telefonoNatural" name="telefonoNatural" />
 
                         </div>
                     </div>
@@ -256,7 +256,8 @@
                                             la ubicación. Sea lo más detallado posible.</span>
                                     </span>
                                 </label>
-                                <input id="direccionElemento" type="text" class="input" placeholder="Ingrese la dirección exacta" required="required" />
+                                <input id="direccionElemento" type="text" class="input" placeholder="Ingrese la dirección exacta" required="required" name="direccionElemento"
+                                />
                             </div>
                             <div class="elemento-campo coordenadas-grupo">
                                 <label class="label text-center" for="latitudElemento" style="font-size: 10pt;">
@@ -269,8 +270,10 @@
                                     </span>
                                 </label>
                                 <div class="coordenadas-inputs">
-                                    <input id="latitudElemento" type="number" step="any" class="input" placeholder="Latitud" required="required" />
-                                    <input id="longitudElemento" type="number" step="any" class="input" placeholder="Longitud" required="required" />
+                                    <input id="latitudElemento" type="number" step="any" class="input" placeholder="Latitud" required="required" name="latitudElemento"
+                                    />
+                                    <input id="longitudElemento" type="number" step="any" class="input" placeholder="Longitud" required="required" name="longitudElemento"
+                                    />
                                 </div>
                             </div>
                             <div class="elemento-campo">
@@ -294,7 +297,7 @@
                         </div>
 
                         <!-- Tabla de registros -->
-                        <table class="table table--bordered table--responsive">
+                        <table class="table table--bordered table--responsive tabla-registro">
                             <thead>
                                 <tr>
                                     <th class="text-center" style="width: 20%;">Tipo de elemento</th>
@@ -328,125 +331,154 @@
 
                         <!-- Campos de entrada (en línea) -->
                         <div class="propietarios-inputs">
-                            <div class="propietario-campo">
-                                <label class="label text-center" for="calidadSuscrito">
-                                    Calidad
-                                    <span class="tooltip-container">
-                                        <span class="tooltip-trigger">?</span>
-                                        <span class="tooltip-content">Seleccione si usted es el "Propietario" del inmueble o un "Mandatario" (representante
-                                            legal con poder notariado).</span>
-                                    </span>
-                                </label>
-                                <select id="calidadSuscrito" class="input">
-                                    <option value="">Seleccione...</option>
-                                    <option value="Propietario">Propietario</option>
-                                    <option value="Mandatario">Mandatario</option>
-                                </select>
-                            </div>
-                            <div class="propietario-campo">
-                                <label class="label text-center" for="nombresApellidosPropietario">
-                                    Nombre Completo
-                                    <span class="tooltip-container">
-                                        <span class="tooltip-trigger">?</span>
-                                        <span class="tooltip-content">Ingrese los nombres y apellidos completos, tal como aparecen en su documento de identidad
-                                            (cédula o RUC). Si es mandatario, ingrese sus propios datos, no los del propietario.</span>
-                                    </span>
-                                </label>
-                                <input type="text" id="nombresApellidosPropietario" class="input" placeholder="Nombres y Apellidos" />
-                            </div>
-                            <div class="propietario-campo">
-                                <label class="label text-center" for="cedulaRucPropietario">
-                                    Cédula / RUC
-                                    <span class="tooltip-container">
-                                        <span class="tooltip-trigger">?</span>
-                                        <span class="tooltip-content">Ingrese su número de cédula (10 dígitos) o RUC (13 dígitos), sin guiones ni espacios.
-                                            Este campo es obligatorio.</span>
-                                    </span>
-                                </label>
-                                <input type="text" id="cedulaRucPropietario" class="input" placeholder="Cédula / RUC" />
-                            </div>
-                            <div class="propietario-campo">
-                                <label class="label text-center" for="telefonoPropietario">
-                                    Teléfono
-                                    <span class="tooltip-container">
-                                        <span class="tooltip-trigger">?</span>
-                                        <span class="tooltip-content">Ingrese un número de teléfono de contacto, preferiblemente un número celular. Incluya
-                                            el código de área si corresponde.</span>
-                                    </span>
-                                </label>
-                                <input type="tel" id="telefonoPropietario" class="input" placeholder="Teléfono" />
-                            </div>
-                            <div class="propietario-campo">
-                                <label class="label text-center" for="correoPropietario">
-                                    Correo
-                                    <span class="tooltip-container">
-                                        <span class="tooltip-trigger">?</span>
-                                        <span class="tooltip-content">Ingrese una dirección de correo electrónico válida. Esta dirección se utilizará para
-                                            comunicaciones oficiales.</span>
-                                    </span>
-                                </label>
-                                <input type="email" id="correoPropietario" class="input" placeholder="Correo Electrónico" />
-                            </div>
-                            <div class="propietario-campo" style="flex: 0 0 auto;">
-                                <div class="flex justify-center gap-3 flex-col">
-                                    <button type="button" onclick="abrirModalCodigoCatastral()" class="btn btn-primary">Código Catastral</button>
-                                    <button type="button" onclick="agregarRegistroPropietario(event)" class="btn btn-primary">Agregar</button>
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; width: 100%">
+                                <div class="propietario-campo">
+                                    <label class="label text-center" for="calidadSuscrito">
+                                        Calidad
+                                        <span class="tooltip-container">
+                                            <span class="tooltip-trigger">?</span>
+                                            <span class="tooltip-content">Seleccione si usted es el "Propietario" del inmueble o un "Mandatario" (representante
+                                                legal con poder notariado).</span>
+                                        </span>
+                                    </label>
+                                    <select id="calidadSuscrito" class="input" name="calidadSuscrito">
+                                        <option value="">Seleccione...</option>
+                                        <option value="Propietario">Propietario</option>
+                                        <option value="Mandatario">Mandatario</option>
+                                    </select>
+                                </div>
+                                <div class="propietario-campo">
+                                    <label class="label text-center" for="nombresApellidosPropietario">
+                                        Nombre Completo
+                                        <span class="tooltip-container">
+                                            <span class="tooltip-trigger">?</span>
+                                            <span class="tooltip-content">Ingrese los nombres y apellidos completos, tal como aparecen en su documento
+                                                de identidad (cédula o RUC). Si es mandatario, ingrese sus propios datos,
+                                                no los del propietario.</span>
+                                        </span>
+                                    </label>
+                                    <input type="text" id="nombresApellidosPropietario" class="input" placeholder="Nombres y Apellidos" name="nombresApellidosPropietario"
+                                    />
+                                </div>
+                                <div class="propietario-campo">
+                                    <label class="label text-center" for="cedulaRucPropietario">
+                                        Cédula / RUC
+                                        <span class="tooltip-container">
+                                            <span class="tooltip-trigger">?</span>
+                                            <span class="tooltip-content">Ingrese su número de cédula (10 dígitos) o RUC (13 dígitos), sin guiones ni espacios.
+                                                Este campo es obligatorio.</span>
+                                        </span>
+                                    </label>
+                                    <input type="text" id="cedulaRucPropietario" class="input" placeholder="Cédula / RUC" name="cedulaRucPropietario" />
+                                </div>
+                                <div class="propietario-campo">
+                                    <label class="label text-center" for="telefonoPropietario">
+                                        Teléfono
+                                        <span class="tooltip-container">
+                                            <span class="tooltip-trigger">?</span>
+                                            <span class="tooltip-content">Ingrese un número de teléfono de contacto, preferiblemente un número celular.
+                                                Incluya el código de área si corresponde.</span>
+                                        </span>
+                                    </label>
+                                    <input type="tel" id="telefonoPropietario" class="input" placeholder="Teléfono" name="telefonoPropietario" />
+                                </div>
+                                <div class="propietario-campo">
+                                    <label class="label text-center" for="correoPropietario">
+                                        Correo
+                                        <span class="tooltip-container">
+                                            <span class="tooltip-trigger">?</span>
+                                            <span class="tooltip-content">Por favor, ingrese una dirección de correo electrónico válida. Esta dirección
+                                                será utilizada para comunicaciones oficiales y notificaciones importantes.</span>
+
+                                        </span>
+                                    </label>
+                                    <input type="email" id="correoPropietario" class="input" placeholder="Correo Electrónico" name="correoPropietario" />
+                                </div>
+                                <!--  Campo para el nombre del representante (cuando es mandatario) -->
+                                <div id="mandatario-campo" class="oculto">
+                                    <label class="label text-center" for="nombreRepresentante">
+                                        Representante legal
+                                        <span class="tooltip-container">
+                                            <span class="tooltip-trigger">?</span>
+                                            <span class="tooltip-content">Ingrese el nombre completo del representante legal.</span>
+                                        </span>
+                                    </label>
+                                    <input type="text" id="nombreRepresentante" class="input" placeholder="Nombre del Representante" name="nombreRepresentante"
+                                    />
+                                </div>
+
+                                <!--  Campo para la identificación del representante (cuando es mandatario) -->
+                                <div id="mandatario-campo" class="oculto">
+                                    <label class="label text-center" for="nombreRepresentante">
+                                        Identificación del Representante Legal
+                                        <span class="tooltip-container">
+                                            <span class="tooltip-trigger">?</span>
+                                            <span class="tooltip-content">Ingrese la identificacion del representante legal.</span>
+                                        </span>
+                                    </label>
+                                    <input type="text" id="idRepresentanteLegal" class="input" placeholder="Cédula / RUC / Pasaporte" name="idRepresentanteLegal"
+                                        pattern="\d{10}" title="Debe contener 10 dígitos" />
                                 </div>
                             </div>
-                        </div>
+                            <div class="propietario-campo" style="width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 1rem;">
+                                <button type="button" onclick="abrirModalCodigoCatastral()" class="btn btn-primary">Código Catastral</button>
+                                <button type="button" onclick="agregarRegistroPropietario(event)" class="btn btn-primary">Agregar</button>
+                            </div>
 
-                        <!-- Tabla de registros de propietarios -->
-                        <table class="table table--bordered table--responsive" id="tabla-registro-propietarios">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">No.</th>
-                                    <th class="text-center">Calidad</th>
-                                    <th class="text-center">Nombres y Apellidos</th>
-                                    <th class="text-center">Cédula / RUC</th>
-                                    <th class="text-center">Teléfono</th>
-                                    <th class="text-center">Correo</th>
-                                    <th class="text-center">Código Catastral</th>
-                                    <th class="text-center">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Filas de ejemplo (opcional) -->
-                                <tr class="fila-ejemplo">
-                                    <td class="text-center">0</td>
-                                    <td class="text-center">Propietario</td>
-                                    <td class="text-center">Ejemplo Apellido</td>
-                                    <td class="text-center">1234567890</td>
-                                    <td class="text-center">0999999999</td>
-                                    <td class="text-center">ejemplo@correo.com</td>
-                                    <td class="flex justify-center items-center">
-                                        <button type="button" onclick="abrirModalCodigoCatastral()" class="btn btn-success">Ver</button>
-                                    </td>
-                                    <!-- <td class="flex justify-center items-center">
+                            <!-- Tabla de registros de propietarios -->
+                            <table class="table table--bordered table--responsive tabla-registro-propietarios">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">No.</th>
+                                        <th class="text-center">Calidad</th>
+                                        <th class="text-center">Nombres y Apellidos</th>
+                                        <th class="text-center">Cédula / RUC</th>
+                                        <th class="text-center">Teléfono</th>
+                                        <th class="text-center">Correo</th>
+                                        <th class="text-center">Código Catastral</th>
+                                        <th class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Filas de ejemplo (opcional) -->
+                                    <tr class="fila-ejemplo">
+                                        <td class="text-center">0</td>
+                                        <td class="text-center">Propietario</td>
+                                        <td class="text-center">Ejemplo Apellido</td>
+                                        <td class="text-center">1234567890</td>
+                                        <td class="text-center">0999999999</td>
+                                        <td class="text-center">ejemplo@correo.com</td>
+                                        <td class="flex justify-center items-center">
+                                            <button type="button" onclick="abrirModalCodigoCatastral()" class="btn btn-success">Ver</button>
+                                        </td>
+                                        <!-- <td class="flex justify-center items-center">
                                         <button type="button" onclick="eliminarRegistroPropietario(0)" class="btn btn-danger">Eliminar</button>
                                     </td> -->
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Modal para el Código Catastral -->
-                <div id="modalCodigoCatastral" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button" onclick="cerrarModalCodigoCatastral()">×</span>
-                        <h2 class="text-primary text-lg text-center uppercase">Código Catastral</h2>
-                        <div class="modal-inputs">
-                            <input type="number" id="seccionCatastral" class="input" placeholder="SECT" />
-                            <input type="number" id="manzanaCatastral" class="input" placeholder="MANZ" />
-                            <input type="number" id="loteCatastral" class="input" placeholder="LOTE" />
-                            <input type="number" id="divisionCatastral" class="input" placeholder="DIV." />
-                            <input type="number" id="phvCatastral" class="input" placeholder="PHV." />
-                            <input type="number" id="phhCatastral" class="input" placeholder="PHH." />
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <button type="button" onclick="guardarCodigoCatastral()" class="btn btn-primary">Guardar</button>
                     </div>
-                </div>
 
+                    <!-- Modal para el Código Catastral -->
+                    <div id="modalCodigoCatastral" class="modal">
+                        <div class="modal-content">
+                            <span class="close-button" onclick="cerrarModalCodigoCatastral()">×</span>
+                            <h2 class="text-primary text-lg text-center uppercase">Código Catastral</h2>
+                            <div class="modal-inputs">
+                                <input type="number" id="seccionCatastral" class="input" placeholder="SECT" />
+                                <input type="number" id="manzanaCatastral" class="input" placeholder="MANZ" />
+                                <input type="number" id="loteCatastral" class="input" placeholder="LOTE" />
+                                <input type="number" id="divisionCatastral" class="input" placeholder="DIV." />
+                                <input type="number" id="phvCatastral" class="input" placeholder="PHV." />
+                                <input type="number" id="phhCatastral" class="input" placeholder="PHH." />
+                            </div>
+                            <button type="button" onclick="guardarCodigoCatastral()" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+
+
+                </div>
                 <!-- Declaración -->
                 <div class="declaracion-container section">
                     <!-- Título -->

@@ -416,6 +416,24 @@ h1.formulario-titulo {
   font-style: italic;
 }
 
+.oculto {
+  /* O el nombre que prefieras */
+  display: none;
+}
+
+.eliminar-registro {
+  background: #ca3544;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
 /* Estilo para el botón eliminar dentro de la tabla */
 .eliminar-registro:hover {
   background: #c82333;
@@ -603,6 +621,7 @@ h1.formulario-titulo {
 .propietario-campo {
   margin-bottom: 10px;
 }
+
 /* Estilos para la fila de ejemplo (si la usas) */
 .fila-ejemplo-propietarios {
   background: #f8f9fa;

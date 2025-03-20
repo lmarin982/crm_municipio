@@ -197,6 +197,17 @@ function guardarCodigoCatastral() {
     cerrarModalCodigoCatastral();
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const calidadSuscritoSelect = document.getElementById('calidadSuscrito');
+    calidadSuscritoSelect.addEventListener("change", (event) => {
+        const camposMandatario = document.getElementById("mandatario-campo");
+        if (event.target.value === "Mandatario") {
+            camposMandatario.style.display = "block";
+        } else {
+            camposMandatario.style.display = "none"; // Importante para ocultar de nuevo
+        }
+    });
+});
 
 function agregarRegistroPropietario(event) {
     if (event) {
@@ -204,6 +215,7 @@ function agregarRegistroPropietario(event) {
     }
 
     const calidadSuscritoSelect = document.getElementById('calidadSuscrito');
+
     const nombresApellidos = document.getElementById('nombresApellidosPropietario').value;
     const cedulaRuc = document.getElementById('cedulaRucPropietario').value;
     const telefono = document.getElementById('telefonoPropietario').value;
