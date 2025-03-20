@@ -197,6 +197,21 @@ function guardarCodigoCatastral() {
     cerrarModalCodigoCatastral();
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const calidadSuscritoSelect = document.getElementById('calidadSuscrito');
+    calidadSuscritoSelect.addEventListener("change", (event) => {
+        const camposMandatario = document.getElementById("representante-campo");
+        const idRepresentanteCampo = document.getElementById("id-representante-campo"); // Asegúrate de que este ID sea correcto
+
+        if (event.target.value === "Mandatario") {
+            camposMandatario.style.display = "block";
+            idRepresentanteCampo.style.display = "block"; // Mostrar el campo de identificación
+        } else {
+            camposMandatario.style.display = "none"; // Ocultar ambos campos
+            idRepresentanteCampo.style.display = "none"; // Ocultar el campo de identificación
+        }
+    });
+});
 
 function agregarRegistroPropietario(event) {
     if (event) {
@@ -204,34 +219,36 @@ function agregarRegistroPropietario(event) {
     }
 
     const calidadSuscritoSelect = document.getElementById('calidadSuscrito');
+
     const nombresApellidos = document.getElementById('nombresApellidosPropietario').value;
     const cedulaRuc = document.getElementById('cedulaRucPropietario').value;
     const telefono = document.getElementById('telefonoPropietario').value;
     const correo = document.getElementById('correoPropietario').value;
     const calidadSuscritoText = calidadSuscritoSelect.options[calidadSuscritoSelect.selectedIndex].text;
     const calidadSuscritoValue = calidadSuscritoSelect.value;
+    const camposMandatario = document.getElementById("representante-campo").value;
+    const idRepresentanteCampo = document.getElementById("id-representante-campo").value;
 
+    if (!calidadSuscritoValue || !nombresApellidos || !cedulaRuc || !telefono || !correo || !codigoCatastralTemporal) return mostrarMensajeErrorJS('Complete todos los campos, incluido el código.');
+    if (!validarCedulaORUC(cedulaRuc)) return mostrarMensajeErrorJS('Por favor, ingrese una cédula o RUC válido.');
 
-    if (!calidadSuscritoValue || !nombresApellidos || !cedulaRuc || !telefono || !correo || !codigoCatastralTemporal) {
-        mostrarMensajeErrorJS('Complete todos los campos, incluido el código.');
-        return;
-    }
-
-    //Validar cedula o RUC antes de agregar.
-    if (!validarCedulaORUC(cedulaRuc)) {
-        mostrarMensajeErrorJS('Por favor, ingrese una cédula o RUC válido.');
-        return; // Importante: Detener la ejecución si no es válido
-    }
-
-
-    const nuevoRegistro = {
-        calidadSuscrito: calidadSuscritoText,  // Texto, no valor
+    const nuevoRegistro = calidadSuscritoSelect.value == "Mandatario" ? {
+        calidadSuscrito: calidadSuscritoText,
         nombresApellidos,
         cedulaRuc,
         telefono,
         correo,
-        codigoCatastral: codigoCatastralTemporal, // Usar temporal
-    };
+        codigoCatastral: codigoCatastralTemporal,
+        camposMandatario,
+        idRepresentanteCampo
+    } : {
+        calidadSuscrito: calidadSuscritoText,
+        nombresApellidos,
+        cedulaRuc,
+        telefono,
+        correo,
+        codigoCatastral: codigoCatastralTemporal
+    }
 
     registrosPropietarios.push(nuevoRegistro);
     actualizarTablaPropietarios(); // Usa la función correcta
