@@ -234,7 +234,7 @@
                         <!-- Campos de entrada -->
                         <div class="elementos-inputs">
                             <div class="elemento-campo">
-                                <label class="label text-center" for="tipoElemento">
+                                <label class="label text-center" for="tipoElemento" style="font-size: 10pt;">
                                     Tipo de elemento de seguridad
                                     <span class="tooltip-container">
                                         <span class="tooltip-trigger">?</span>
@@ -247,7 +247,7 @@
                                 </select>
                             </div>
                             <div class="elemento-campo">
-                                <label class="label text-center" for="direccionElemento">
+                                <label class="label text-center" for="direccionElemento" style="font-size: 10pt;">
                                     Dirección exacta de instalación
                                     <span class="tooltip-container">
                                         <span class="tooltip-trigger">?</span>
@@ -259,7 +259,7 @@
                                 <input id="direccionElemento" type="text" class="input" placeholder="Ingrese la dirección exacta" required="required" />
                             </div>
                             <div class="elemento-campo coordenadas-grupo">
-                                <label class="label text-center" for="latitudElemento">
+                                <label class="label text-center" for="latitudElemento" style="font-size: 10pt;">
                                     Coordenadas georreferenciadas
                                     <span class="tooltip-container">
                                         <span class="tooltip-trigger">?</span>
@@ -274,7 +274,7 @@
                                 </div>
                             </div>
                             <div class="elemento-campo">
-                                <label class="label text-center" for="tipoSolicitud">
+                                <label class="label text-center" for="tipoSolicitud" style="font-size: 10pt;">
                                     Tipo de solicitud
                                     <span class="tooltip-container">
                                         <span class="tooltip-trigger">?</span>
@@ -396,7 +396,7 @@
                         </div>
 
                         <!-- Tabla de registros de propietarios -->
-                        <table class="table table--bordered table--responsive">
+                        <table class="table table--bordered table--responsive" id="tabla-registro-propietarios">
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>
@@ -421,9 +421,9 @@
                                     <td class="flex justify-center items-center">
                                         <button type="button" onclick="abrirModalCodigoCatastral()" class="btn btn-success">Ver</button>
                                     </td>
-                                    <td class="flex justify-center items-center">
+                                    <!-- <td class="flex justify-center items-center">
                                         <button type="button" onclick="eliminarRegistroPropietario(0)" class="btn btn-danger">Eliminar</button>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             </tbody>
                         </table>
@@ -435,7 +435,7 @@
                     <div class="modal-content">
                         <span class="close-button" onclick="cerrarModalCodigoCatastral()">×</span>
                         <h2 class="text-primary text-lg text-center uppercase">Código Catastral</h2>
-                        <div class="modal-inputs grid grid-cols-3 gap-2 mb-4">
+                        <div class="modal-inputs">
                             <input type="number" id="seccionCatastral" class="input" placeholder="SECT" />
                             <input type="number" id="manzanaCatastral" class="input" placeholder="MANZ" />
                             <input type="number" id="loteCatastral" class="input" placeholder="LOTE" />

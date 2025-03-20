@@ -38,7 +38,7 @@ body {
 main.main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -194,7 +194,8 @@ h1.formulario-titulo {
   /* Espacio entre texto y tooltip */
   color: var(--color-text-tertiary);
   /* Usa variable */
-  font-weight: 500;
+  font-weight: 700;
+  width: 100%;
 }
 
 .input {
@@ -481,7 +482,7 @@ h1.formulario-titulo {
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
-  background-color: #c0e1e7;
+  background-color: #e2ebed;
   border-radius: 4px;
   font-size: 0.8rem;
   color: #333;
@@ -506,7 +507,7 @@ h1.formulario-titulo {
 }
 
 .custom-file-upload:hover {
-  background-color: #eee;
+  background-color: #c5e1ee;
 }
 
 .input-archivo {
@@ -602,7 +603,6 @@ h1.formulario-titulo {
 .propietario-campo {
   margin-bottom: 10px;
 }
-
 /* Estilos para la fila de ejemplo (si la usas) */
 .fila-ejemplo-propietarios {
   background: #f8f9fa;
@@ -667,9 +667,11 @@ h1.formulario-titulo {
 }
 
 .modal-content {
+  width: 70%;
   background-color: #fefefe;
   margin: 15% auto;
   border-radius: 8px;
+  padding: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -691,6 +693,7 @@ h1.formulario-titulo {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-bottom: 20px;
+  gap: 1rem;
 }
 
 .modal-inputs input {
