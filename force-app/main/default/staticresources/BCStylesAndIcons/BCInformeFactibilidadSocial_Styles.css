@@ -64,13 +64,18 @@ body {
 .content {
     font-size: 12pt;
     /* Consistent font size */
-    text-align: justify;
-    /* Justify the main text content */
     line-height: 1.5;
     /* Add some line spacing for readability */
     margin-top: 150px;
     /* Adjust as needed to position content */
     width: 100%;
     /*Use all space available*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
 
+.head-content {
+    text-align: right;
 }

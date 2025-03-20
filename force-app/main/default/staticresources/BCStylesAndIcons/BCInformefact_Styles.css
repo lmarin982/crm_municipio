@@ -1,76 +1,45 @@
 @page {
     size: A4;
-    /* Or Letter, etc. */
-    margin-top: 150px;
-    /* Adjust top margin for header */
-    margin-bottom: 30px;
-    /* Adjust bottom margin for footer */
-    margin-left: 20px;
-    margin-right: 20px;
-
-
-    @top-center {
-        content: element(header);
-    }
-
-    @bottom-left {
-        content: element(footer);
-    }
+    margin: 2cm;
 }
 
 body {
-    font-family: Arial Unicode MS, Arial, sans-serif;
-    /* Fallback fonts */
-}
-
-.header {
-    position: running(header);
-    top: 0;
-    /* Position at the top */
-    width: 100%;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
     text-align: center;
-    /* Center the header content */
-    padding: 10px;
-    font-size: 11pt;
 }
 
-.header img {
-    display: block;
-    /* Important for centering */
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;
+.header-container {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.footer {
-    position: running(footer);
-    bottom: 0;
-    /* Position at the bottom */
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    font-size: 8pt;
+.header-img {
+    width: 500px;
+    height: auto;
 }
 
-.pagenumber:before {
-    content: counter(page);
-}
-
-.pagecount:before {
-    content: counter(pages);
+.field {
+    border-bottom: 1px solid black;
+    display: inline-block;
+    min-width: 100px;
 }
 
 .content {
-    font-size: 12pt;
-    /* Consistent font size */
-    text-align: justify;
-    /* Justify the main text content */
-    line-height: 1.5;
-    /* Add some line spacing for readability */
-    margin-top: 150px;
-    /* Adjust as needed to position content */
     width: 100%;
-    /*Use all space available*/
+    margin: 0 auto;
+    text-align: right
+}
 
+.Asunto {
+    text-align: center;
+    width: 100%;
+    font-size: 12px
+}
+
+.Consideracion {
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 12px
 }

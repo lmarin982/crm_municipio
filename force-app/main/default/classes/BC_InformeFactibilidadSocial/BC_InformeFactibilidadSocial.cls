@@ -9,10 +9,24 @@ public with sharing class BC_InformeFactibilidadSocial {
         private set;  //Setter privado, no queremos que visualforce cambie este valor
     }
 
+    @AuraEnabled
+    public String MemoData {
+        get { return GetMemorandumData(); }
+        private set;
+    }
+
 
     //Constructor para inicializar el valor.
     public BC_InformeFactibilidadSocial() {
       //  FormatoFecha = formatFechaPriv();  //Ahora la propiedad se inicializa en el constructor.
+    }
+
+    private static String GetMemorandumData() {
+        try {
+            return 'Memorándum No. DVC-AyP-2024-1087';
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
     }
 
     //Metodo privado para formatear, ahora es una funcion que se llama desde el getter.
