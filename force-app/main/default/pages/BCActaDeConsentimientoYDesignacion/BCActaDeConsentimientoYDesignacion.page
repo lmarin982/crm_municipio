@@ -45,7 +45,6 @@
                                 </span>
                             </label>
                             <input type="text" class="input" id="nombresApellidosNatural" />
-
                         </div>
 
                         <!-- CC -->
@@ -120,56 +119,59 @@
                     </div>
 
                     <div class="flex flex-col gap-3">
-                        <div class="fila-formulario">
-                            <p class="descripcion-item">
-                                1.- Acta suscrita por todos los miembros que conforman el colectivo o comunidad solicitante.
-                            </p>
-                            <div class="contenedor-boton-checkbox">
-                                <label for="actaFile" class="btn btn-light custom-file-upload">Subir Acta</label>
-                                <input type="file" id="actaFile" class="hidden" onchange="actualizarCheckbox('actaFile', 'actaCheckbox', 'actaNombreArchivo')"
-                                />
-                                <input type="checkbox" id="actaCheckbox" class="checkbox-estilo" disabled="true" />
-                                <span id="actaNombreArchivo"></span>
+                        <!-- WRAPPER ADDED HERE -->
+                        <div class="requisitos-upload-section">
+                            <div class="fila-formulario">
+                                <p class="descripcion-item">
+                                    1.- Acta suscrita por todos los miembros que conforman el colectivo o comunidad solicitante.
+                                </p>
+                                <div class="contenedor-boton-checkbox">
+                                    <label for="actaFile" class="btn btn-light custom-file-upload">Subir Acta</label>
+                                    <input type="file" id="actaFile" class="hidden" onchange="actualizarCheckbox('actaFile', 'actaCheckbox', 'actaNombreArchivo')"
+                                    />
+                                    <input type="checkbox" id="actaCheckbox" class="checkbox-estilo" disabled="true" />
+                                    <span id="actaNombreArchivo"></span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="fila-formulario">
-                            <p class="descripcion-item">
-                                2.- Planos del proyecto de los elementos de seguridad a instalarse con firma de responsabilidad técnica.
-                            </p>
-                            <div class="contenedor-boton-checkbox">
-                                <label for="planosFile" class="btn btn-light custom-file-upload">Subir Plano</label>
-                                <input type="file" id="planosFile" class="hidden" onchange="actualizarCheckbox('planosFile', 'planosCheckbox', 'planosNombreArchivo')"
-                                />
-                                <input type="checkbox" id="planosCheckbox" class="checkbox-estilo" disabled="true" />
-                                <span id="planosNombreArchivo"></span>
+                            <div class="fila-formulario">
+                                <p class="descripcion-item">
+                                    2.- Planos del proyecto de los elementos de seguridad a instalarse con firma de responsabilidad técnica.
+                                </p>
+                                <div class="contenedor-boton-checkbox">
+                                    <label for="planosFile" class="btn btn-light custom-file-upload">Subir Plano</label>
+                                    <input type="file" id="planosFile" class="hidden" onchange="actualizarCheckbox('planosFile', 'planosCheckbox', 'planosNombreArchivo')"
+                                    />
+                                    <input type="checkbox" id="planosCheckbox" class="checkbox-estilo" disabled="true" />
+                                    <span id="planosNombreArchivo"></span>
+                                </div>
+                            </div>
+                            <div class="fila-formulario">
+                                <p class="descripcion-item">
+                                    3.- Fotografías del sitio donde se propone instalar los elementos de seguridad en el espacio y vía pública.
+                                </p>
+                                <div class="contenedor-boton-checkbox">
+                                    <label for="fotosFile" class="btn btn-light custom-file-upload">Subir PDF</label>
+                                    <input type="file" id="fotosFile" class="hidden" onchange="actualizarCheckbox('fotosFile', 'fotosCheckbox', 'fotosNombreArchivo')"
+                                    />
+                                    <input type="checkbox" id="fotosCheckbox" class="checkbox-estilo" disabled="true" />
+                                    <span id="fotosNombreArchivo"></span>
+                                </div>
+                            </div>
+                            <div class="fila-formulario">
+                                <p class="descripcion-item">
+                                    4.- Comprobante de Pago de Tasa por Servicios Administrativos.
+                                </p>
+                                <div class="contenedor-boton-checkbox">
+                                    <label for="comprobanteFile" class="btn btn-light custom-file-upload">Subir Comprobante</label>
+                                    <input type="file" id="comprobanteFile" class="hidden" onchange="actualizarCheckbox('comprobanteFile', 'comprobanteCheckbox', 'comprobanteNombreArchivo')"
+                                    />
+                                    <input type="checkbox" id="comprobanteCheckbox" class="checkbox-estilo" disabled="true" />
+                                    <span id="comprobanteNombreArchivo"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="fila-formulario">
-                            <p class="descripcion-item">
-                                3.- Fotografías del sitio donde se propone instalar los elementos de seguridad en el espacio y vía pública.
-                            </p>
-                            <div class="contenedor-boton-checkbox">
-                                <label for="fotosFile" class="btn btn-light custom-file-upload">Subir PDF</label>
-                                <input type="file" id="fotosFile" class="hidden" onchange="actualizarCheckbox('fotosFile', 'fotosCheckbox', 'fotosNombreArchivo')"
-                                />
-                                <input type="checkbox" id="fotosCheckbox" class="checkbox-estilo" disabled="true" />
-                                <span id="fotosNombreArchivo"></span>
-                            </div>
-                        </div>
-                        <div class="fila-formulario">
-                            <p class="descripcion-item">
-                                4.- Comprobante de Pago de Tasa por Servicios Administrativos.
-                            </p>
-                            <div class="contenedor-boton-checkbox">
-                                <label for="comprobanteFile" class="btn btn-light custom-file-upload">Subir Comprobante</label>
-                                <input type="file" id="comprobanteFile" class="hidden" onchange="actualizarCheckbox('comprobanteFile', 'comprobanteCheckbox', 'comprobanteNombreArchivo')"
-                                />
-                                <input type="checkbox" id="comprobanteCheckbox" class="checkbox-estilo" disabled="true" />
-                                <span id="comprobanteNombreArchivo"></span>
-                            </div>
-                        </div>
-
+                        <!-- END WRAPPER -->
                     </div>
 
                     <div class="requisitos-especificos p-2 rounded-lg" style="border-left: 4px solid var(--color-primary);">
