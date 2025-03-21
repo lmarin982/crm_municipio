@@ -488,7 +488,7 @@
                     <!-- Contenido de la declaración -->
                     <div class="declaracion-contenido">
                         <p class="text-sm mb-0 leading-normal">
-                            1. <strong><span id="id_nombres_1" /></strong> Cuando en un procedimiento sancionador se determine el retiro de un elemento de seguridad y el representante responsable
+                            1. <span id="id_nombres_1" /> Cuando en un procedimiento sancionador se determine el retiro de un elemento de seguridad y el representante responsable
                             del colectivo o comunidad no solicite la devolución en el plazo de 30 días contemplado en la
                             Ordenanza que regula la ocupación del espacio o vía pública mediante la instalación de elementos
                             de seguridad en el cantón Guayaquil, en mi calidad de representante responsable acepto expresamente
@@ -497,12 +497,12 @@
                         </p>
 
                         <p class="text-sm mb-0 leading-normal">
-                            2. <strong><span id="id_nombres_2" /></strong> En mi calidad de representante responsable del colectivo o comunidad, mediante la suscripción del presente formulario
+                            2. <span id="id_nombres_2" /> En mi calidad de representante responsable del colectivo o comunidad, mediante la suscripción del presente formulario
                             acepto ser notificado mediante el correo electrónico que se declara en la presente solicitud.
                         </p>
 
                         <p class="text-sm mb-0 leading-normal">
-                            3. <strong><span id="id_nombres_3" /></strong> En mi calidad de representante responsable del colectivo o comunidad declaro de manera libre y voluntaria, que la información
+                            3. <span id="id_nombres_3" /> En mi calidad de representante responsable del colectivo o comunidad declaro de manera libre y voluntaria, que la información
                             proporcionada se sujeta estrictamente a la verdad, dejando constancia que me someto a las sanciones
                             penales y tributarias establecidas en la ley, para el caso de incurrir en falsedades.
                         </p>

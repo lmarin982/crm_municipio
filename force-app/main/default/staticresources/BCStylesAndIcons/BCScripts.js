@@ -225,9 +225,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const cedula = cedulaInput.value;
 
         // Usamos un condicional para construir el texto de forma más flexible.
-        if (nombres && cedula) outputText1.textContent = `Yo, ${nombres}, con número de cédula ${cedula}.`;
-        if (nombres && cedula) outputText2.textContent = `Yo, ${nombres}, con número de cédula ${cedula}.`;
-        if (nombres && cedula) outputText3.textContent = `Yo, ${nombres}, con número de cédula ${cedula}.`;
+        if (nombres && cedula) outputText1.textContent = `Yo, <strong>${nombres}</strong>, con número de cédula <strong>${cedula}</strong>.`;
+        if (nombres && cedula) outputText2.textContent = `Yo, <strong>${nombres}</strong>, con número de cédula <strong>${cedula}</strong>.`;
+        if (nombres && cedula) outputText3.textContent = `Yo, <strong>${nombres}</strong>, con número de cédula <strong>${cedula}</strong>.`;
     }
 
     // Añadimos los listeners a AMBOS campos.
