@@ -1,3 +1,5 @@
+import InformeFac from '../../classes/BC_InformeFactibilidadSocial'
+
 const datosPersonas = {
     "1717756712": { // Cédula válida
         tipo: "natural",
@@ -209,6 +211,33 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             camposMandatario.style.display = "none"; // Ocultar ambos campos
             idRepresentanteCampo.style.display = "none"; // Ocultar el campo de identificación
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const cedulaInput = document.getElementById('ccNatural');
+    cedulaInput.addEventListener("input", function () {
+        const cedula = cedulaInput.value;
+        if (cedula.length === 10) {
+            // Llamada a la clase Apex para verificar la cédula
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.BC_InformeFactibilidadSocial.getDataCiudadano}', cedula,
+                function (result, event) {
+                    if (event.status) {
+                        // Manejo de éxito
+                        
+                        /* document.getElementById('nombresApellidosNatural').value = result.dataResult.nombres || '';
+                        document.getElementById('direccionNatural').value = result.dataResult.direccionResidencia || '';
+                        document.getElementById('correoNatural').value = result.dataResult.Email || '';
+                        document.getElementById('telefonoNatural').value = result.dataResult.TelefonoCelular || ''; */
+                        console.log('Datos del ciudadano:', result);
+                    } else {
+                        // Manejo de error
+                        console.error('Error al verificar la cédula: ' + event.message);
+                    }
+                },
+                { escape: true }
+            );
         }
     });
 });
