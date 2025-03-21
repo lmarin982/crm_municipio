@@ -1,5 +1,3 @@
-import InformeFac from '../../classes/BC_InformeFactibilidadSocial'
-
 const datosPersonas = {
     "1717756712": { // Cédula válida
         tipo: "natural",
@@ -217,28 +215,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const cedulaInput = document.getElementById('ccNatural');
+
+    // Función para llamar a Apex (la separamos para mayor claridad)
+    function llamarApex(cedula) {
+        debugger;
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.BC_InformeFactibilidadSocial.getDataCiudadano}',
+            cedula,
+            function (result, event) {
+                if (event.status) {
+                    // Manejo de éxito
+                    console.log('Datos del ciudadano:', result);
+                    // Actualiza los campos solo si la respuesta es válida
+                    if (result && result.dataResult) {  // <-- Importante:  Verificar que result y result.dataResult existan
+                        document.getElementById('nombresApellidosNatural').value = result.dataResult.nombres || '';
+                        document.getElementById('direccionNatural').value = result.dataResult.direccionResidencia || '';
+                        document.getElementById('correoNatural').value = result.dataResult.email || ''; // Corregido: .email, no .Email
+                        document.getElementById('telefonoNatural').value = result.dataResult.telefonoCelular || '';
+                    }
+                } else {
+                    // Manejo de error
+                    console.error('Error al verificar la cédula:', event.message);
+                    // Opcional: Limpiar los campos en caso de error.
+                    document.getElementById('nombresApellidosNatural').value = '';
+                    document.getElementById('direccionNatural').value = '';
+                    document.getElementById('correoNatural').value = '';
+                    document.getElementById('telefonoNatural').value = '';
+                }
+            },
+            { escape: true }
+        );
+    }
+
+    // Función debounced (aplicamos debounce a llamarApex)
+    const llamarApexDebounced = debounce(llamarApex, 300); // 300ms de retraso (ajusta según necesidad)
+
+    // Event listener con validación y debounce
     cedulaInput.addEventListener("input", function () {
         const cedula = cedulaInput.value;
-        if (cedula.length === 10) {
-            // Llamada a la clase Apex para verificar la cédula
-            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.BC_InformeFactibilidadSocial.getDataCiudadano}', cedula,
-                function (result, event) {
-                    if (event.status) {
-                        // Manejo de éxito
-                        
-                        /* document.getElementById('nombresApellidosNatural').value = result.dataResult.nombres || '';
-                        document.getElementById('direccionNatural').value = result.dataResult.direccionResidencia || '';
-                        document.getElementById('correoNatural').value = result.dataResult.Email || '';
-                        document.getElementById('telefonoNatural').value = result.dataResult.TelefonoCelular || ''; */
-                        console.log('Datos del ciudadano:', result);
-                    } else {
-                        // Manejo de error
-                        console.error('Error al verificar la cédula: ' + event.message);
-                    }
-                },
-                { escape: true }
-            );
+
+        if (!validarCedula(cedula)) { //Usar ! para que sea mas legible
+            // Opcional: Mostrar un mensaje de error si la cédula no es válida
+            // (Esto dependería de cómo esté implementada tu función validarCedula)
+            return; // Salir si la cédula no es válida
         }
+
+
+        llamarApexDebounced(cedula); // Llamar a la versión debounced de la función
     });
 });
 
@@ -398,26 +421,16 @@ function actualizarCheckbox(fileId, checkboxId, nombreArchivoId) {
 }
 
 function mostrarFormulario() {
-    const tipoSeleccionado = document.getElementById('tipoFormulario').value;
-    const formularioJuridica = document.querySelector('.formulario-juridica');
     const formularioNatural = document.querySelector('.formulario-natural');
 
-    formularioJuridica.classList.remove('visible');
     formularioNatural.classList.remove('visible');
 
     setTimeout(() => {
-        formularioJuridica.style.display = 'none';
         formularioNatural.style.display = 'none';
 
-        if (tipoSeleccionado === 'juridica') {
-            formularioJuridica.style.display = 'block';
-            formularioJuridica.offsetHeight;
-            formularioJuridica.classList.add('visible');
-        } else if (tipoSeleccionado === 'natural') {
-            formularioNatural.style.display = 'block';
-            formularioNatural.offsetHeight;
-            formularioNatural.classList.add('visible');
-        }
+        formularioNatural.style.display = 'block';
+        formularioNatural.offsetHeight;
+        formularioNatural.classList.add('visible');
     }, 300);
 }
 

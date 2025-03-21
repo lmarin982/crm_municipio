@@ -164,7 +164,7 @@ h1.formulario-titulo {
   /* Cambiado a grid */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   /* Distribución flexible */
-  gap: 1.5rem;
+  gap: 2rem;
   /* Espaciado consistente */
   padding: 1.5rem;
   background: var(--color-light);

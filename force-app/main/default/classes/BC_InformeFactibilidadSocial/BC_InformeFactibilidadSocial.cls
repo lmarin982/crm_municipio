@@ -30,6 +30,7 @@ public with sharing class BC_InformeFactibilidadSocial {
     }
 
     // Método para obtener datos del ciudadano (CORREGIDO y MEJORADO)
+    @AuraEnabled
     public static BC_CiudadanoResult getDataCiudadano(String cedula) {
         try {
 			// --- Validaciones ---
