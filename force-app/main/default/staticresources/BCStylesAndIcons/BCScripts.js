@@ -213,6 +213,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const nombresInput = document.getElementById('nombresApellidosNatural');
+    const cedulaInput = document.getElementById('ccNatural');
+    const outputText1 = document.getElementById('id_nombres_1');
+    const outputText2 = document.getElementById('id_nombres_2');
+    const outputText3 = document.getElementById('id_nombres_3');
+
+    function actualizarTexto() {
+        const nombres = nombresInput.value;
+        const cedula = cedulaInput.value;
+
+        // Usamos un condicional para construir el texto de forma más flexible.
+        if (nombres && cedula) outputText1.textContent = `Yo, ${nombres}, con número de cédula ${cedula}.`;
+        if (nombres && cedula) outputText2.textContent = `Yo, ${nombres}, con número de cédula ${cedula}.`;
+        if (nombres && cedula) outputText3.textContent = `Yo, ${nombres}, con número de cédula ${cedula}.`;
+    }
+
+    // Añadimos los listeners a AMBOS campos.
+    nombresInput.addEventListener("change", actualizarTexto);
+    cedulaInput.addEventListener("change", actualizarTexto);
+
+    //Opcional: llamar a actualizarTexto(); al inicio si quieres que compruebe si hay algo precargado en los campos.
+    actualizarTexto();
+
+    //Mejora: usar el evento "input" en lugar de "change". (Más responsivo)
+    nombresInput.addEventListener("input", actualizarTexto);
+    cedulaInput.addEventListener("input", actualizarTexto);
+    nombresInput.removeEventListener("change", actualizarTexto);
+    cedulaInput.removeEventListener("change", actualizarTexto);
+
+});
+
 function agregarRegistroPropietario(event) {
     if (event) {
         event.preventDefault();
