@@ -242,7 +242,7 @@
                                             alarma, cerco eléctrico, botón de pánico, etc.).</span>
                                     </span>
                                 </label>
-                                <select id="tipoElemento" class="input" required="required">
+                                <select id="tipoElemento" class="input">
                                     <option value="">Seleccione...</option>
                                 </select>
                             </div>
