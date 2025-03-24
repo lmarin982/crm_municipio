@@ -21,6 +21,7 @@ global with sharing class BC_Ciudadano {
             if (bcCiudadano == null) {
                 System.debug('Error: No se encontró la configuración de BCCiudadano__c para el usuario actual.');
                 // Opcional: Podrías intentar obtener los valores predeterminados de la organización
+                // como respaldo:
                 bcCiudadano = BCCiudadano__c.getOrgDefaults();
                 if (bcCiudadano == null) {
                     System.debug('Error: No se encontró la configuración de BCCiudadano__c.');
@@ -34,8 +35,14 @@ global with sharing class BC_Ciudadano {
             if (String.isBlank(url_api_municipio)) {
                 System.debug('Error: El campo BCUrl__c está vacío en la configuración de BCCiudadano__c.');
             }
+
+            //Opcional, si getInstance, tiene sentido que se use para este caso.
+            //BCCiudadano__c ciudadano = BCCiudadano__c.getInstance(endpointURL);
             
+            
+            //BCCiudadano__c bcCiudadano = BCCiudadano__c.getOrgDefaults();
             String endpointURL = url_api_municipio + '?tipoIdentificacion=C&identificacion=' + cedula; // Reemplaza con la URL real
+            //String endpointURL = 'https://tu-endpoint-externo.com/consulta?cedula=' + EncodingUtil.urlEncode(cedula, 'UTF-8'); // Reemplaza con la URL real
             BC_Request externalRequest = new BC_Request(endpointURL, 'GET', null, false);  // GET request, body nulo, no requerido
             String externalResponseString = externalRequest.executeRequest();
             

@@ -1,4 +1,3 @@
-/* --- Variables Globales --- */
 :root {
   --color-primary: #000080;
   --color-primary-dark: #000066;
@@ -30,86 +29,175 @@
   --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Global Styles --- */
 body {
-  background-color: var(--color-light);
-  font-family: var(--font-family-base) !important;
+  background-color: #f8f9fa;
+  font-family: 'Barlow', sans-serif !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--color-primary);
-  margin: 0;
-}
-
-button {
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* --- Layout Containers --- */
+/* Estilos para el contenedor principal */
 main.main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--spacing-sm);
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: 30px;
 }
 
+/* Estilos para el header con logos */
 .header-logos {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--spacing-md);
+  gap: 20px;
 }
 
-.formulario-contenedor {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  background: var(--color-light);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow);
-  padding: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
+/* Estilos para los logos */
+.logo {
+  max-width: 180px;
+  height: auto;
 }
 
-/* --- Typography --- */
+/* Estilos para el título del formulario */
 h1.formulario-titulo {
   text-transform: uppercase;
-  font-size: var(--font-size-lg);
+  font-size: 1.2rem;
   text-align: center;
-  color: var(--color-primary);
+  color: #002060;
   line-height: 1.4;
 }
 
+.formulario-natural {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.formulario-natural.visible {
+  opacity: 1;
+  height: auto;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+
+/* Estilos para el contenedor del formulario */
+.formulario-contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Estilos para la fecha */
+.fecha-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.fecha-item {
+  flex: 1;
+  min-width: 150px;
+}
+
+.fecha-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fecha-label p {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #244261;
+}
+
+.fecha-input {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+
 .solicitante-titulo,
 .tipoFormulario {
-  color: var(--color-primary);
-  font-size: var(--font-size-base);
+  color: #000080;
+  font-size: 1rem;
   text-transform: uppercase;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 15px;
 }
 
-.nota-informativa {
+.selector-tipo {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
   align-items: center;
-  background-color: var(--color-accent);
-  color: white;
-  text-align: center;
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-sm);
-  margin: var(--spacing-xs) 0;
+  margin-bottom: 0;
 }
 
-.nota-informativa p {
-  font-weight: 500;
-  margin: 0;
+.selector-tipo select {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  width: 200px;
 }
 
-/* --- Forms --- */
+
+/* Estilos para el contenedor de datos del solicitante */
+.solicitante-datos {
+  display: grid;
+  /* Cambiado a grid */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Distribución flexible */
+  gap: 2rem;
+  /* Espaciado consistente */
+  padding: 1.5rem;
+  background: var(--color-light);
+  /* Usa variable */
+  border-radius: var(--border-radius);
+  /* Usa variable */
+}
+
+.tabla-celda-entrada {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.solicitante-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* Espacio entre texto y tooltip */
+  color: var(--color-text-tertiary);
+  /* Usa variable */
+  font-weight: 700;
+  width: 100%;
+}
+
 .input {
   width: 100%;
   padding: 0.65rem;
@@ -125,44 +213,633 @@ h1.formulario-titulo {
   box-shadow: 0 0 0 2px rgba(0, 0, 128, 0.1);
 }
 
+/* Estilos para inputs inválidos (Mejorado) */
 .input:invalid {
   border-color: var(--color-danger);
+  /* Usa variable */
   box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+  /* Resaltado más sutil */
   background-color: #fff8f8;
+  /* Mantenido */
 }
 
-.selector-tipo select {
-  padding: var(--spacing-sm);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
+.input:focus:invalid {
+  outline: none;
+}
+
+
+/* Estilos para inputs requeridos */
+.input:required {
+  /* border-left: 3px solid #dc3545; Mantenido */
+  /* outline: none;  Importante para la accesibilidad, no quitar el outline por defecto */
+}
+
+
+/* Estilos para la nota informativa */
+.nota-informativa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(75, 171, 174);
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+}
+
+.nota-informativa p {
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Estilos para los requisitos a cumplir */
+.requisitos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.requisitos-titulo {
+  background: #000080;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.requisitos-titulo h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin: 0;
+  width: 100%;
+}
+
+/* Estilos para los elementos de seguridad */
+.elementos-seguridad-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.elementos-seguridad-tabla {
+  width: 70%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #000080;
+  overflow: hidden;
+}
+
+.elementos-seguridad-tabla th,
+.elementos-seguridad-tabla td {
+  border: 1px solid #000080;
+  padding: 12px;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+.elementos-seguridad-tabla th {
+  background: #000080;
+  color: white;
+  text-transform: uppercase;
+}
+
+.elementos-seguridad-tabla td {
+  background: #f8f9fa;
+}
+
+/* Estilos para los requisitos específicos (con los archivos) */
+.requisitos-especificos {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #000080;
+}
+
+.requisitos-especificos p {
+  font-size: 0.8rem;
+  color: #244261;
+  margin: 0;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Estilos para el registro de elementos */
+.registro-elementos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.registro-elementos-titulo {
+  background: #000080;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.registro-elementos-titulo h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin: 0;
+  width: 100%;
+}
+
+.elementos-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.elemento-accion {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.btn-agregar {
+  background: #000080;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-agregar:hover {
+  background: #000066;
+  transform: translateY(-2px);
+}
+
+.tabla-registro {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  table-layout: fixed;
+}
+
+.tabla-registro th {
+  background: #000080;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.tabla-registro td {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+  vertical-align: top;
+  word-break: break-word;
+}
+
+/* Style the example row */
+.fila-ejemplo {
+  background: #f8f9fa;
+  color: #666;
+  font-style: italic;
+}
+
+.eliminar-registro {
+  background: #ca3544;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Estilo para el botón eliminar dentro de la tabla */
+.eliminar-registro:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+/* Estilos para la declaración */
+.declaracion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.declaracion-titulo {
+  background: #000080;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.declaracion-titulo h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.declaracion-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.declaracion-contenido p {
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Estilos para la sección de aceptación de términos */
+.terminos-condiciones {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.terminos-condiciones p {
+  font-size: 0.8rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Estilos para los labels de los inputs de tipo file */
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #e2ebed;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #333;
+  text-align: center;
+  width: 150px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.requisitos-upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.custom-file-upload:hover {
+  background-color: #c5e1ee;
+}
+
+.input-archivo {
+  visibility: hidden;
+}
+
+/* Contenedor para alinear botón y checkbox */
+.contenedor-boton-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+  justify-content: flex-start;
+}
+
+/* Estilos del checkbox */
+.checkbox-estilo {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+/* Contenedor para las filas */
+.fila-formulario {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.descripcion-item {
+  font-size: 0.9rem;
+  margin: 0;
+  width: 100%;
+}
+
+.enviar-formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.enviar-formulario button {
+  background: #000080;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.enviar-formulario button:hover {
+  background: #002060;
+  transition: all 0.3s ease;
+  transform: scale(1.02);
+}
+
+.coordenadas-grupo {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.coordenadas-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.coordenadas-inputs input {
+  width: 50%;
+}
+
+/* Estilos para truncar el texto en las celdas */
+.tabla-registro td.truncate {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tabla-registro td.truncate:hover {
+  overflow: visible;
+  white-space: normal;
+  position: relative;
+  z-index: 1;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+/* Estilos generales (opcional, pero recomendado) */
+.elemento-campo,
+.propietario-campo {
+  margin-bottom: 10px;
+}
+
+/* Estilos para la fila de ejemplo (si la usas) */
+.fila-ejemplo-propietarios {
+  background: #f8f9fa;
+  color: #666;
+  font-style: italic;
+}
+
+/* Estilos para los inputs DENTRO de la sección de propietarios */
+.propietarios-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.propietarios-inputs .solicitante-input {
+  margin-bottom: 5px;
+}
+
+.propietario-campo {
+  flex: 1 1 150px;
+}
+
+/* Estilos para los botones (adaptados) */
+.btn-codigo-catastral,
+.btn-guardar-catastral,
+.btn-ver-codigo,
+.btn-agregar {
+  background: #000080;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.btn-codigo-catastral:hover,
+.btn-guardar-catastral:hover,
+.btn-ver-codigo:hover,
+.btn-agregar:hover {
+  background: #000066;
+}
+
+.btn-ver-codigo {
+  background-color: #4CAF50;
+}
+
+/* Estilos para el modal (sin grandes cambios, solo ajustes) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  width: 70%;
+  background-color: #fefefe;
+  margin: 15% auto;
+  border-radius: 8px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.modal-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 20px;
+  gap: 1rem;
+}
+
+.modal-inputs input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* TOOLTIP */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.tooltip-trigger {
+  display: flex;
+  /* Centra el '?' */
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  /* Ligeramente más pequeño */
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--color-info);
+  /* Usa variable */
+  color: white;
+  font-size: var(--font-size-sm);
+  cursor: help;
+  /* Cursor más apropiado */
+  border: none;
+}
+
+.tooltip-trigger:hover {
+  background-color: #0056b3;
+}
+
+.tooltip-content {
+  visibility: hidden;
+  opacity: 0;
   width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
-/* --- Tables --- */
+.tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Mostrar el tooltip al hacer hover sobre el contenedor */
+.tooltip-container:hover .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Ajustes para el contenedor de selección de tipo de persona */
+.formulario-contenedor.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+}
+
+
+
+/* Ajustes para la sección de solicitante */
+.solicitante-titulo.label {
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+
+
+
+/* Ajustes para las tablas */
 .table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: var(--spacing-md);
-  background: var(--color-light);
+  margin-top: 1rem;
+  background: white;
   border-radius: var(--border-radius);
   overflow: hidden;
+}
+
+.table--bordered {
+  border: 1px solid var(--color-border);
+}
+
+.table--responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table th {
   background: var(--color-primary);
   color: white;
-  padding: var(--spacing-sm);
+  padding: 1rem;
   text-align: center;
   font-weight: 500;
 }
 
 .table td {
-  padding: var(--spacing-sm);
+  padding: 1rem;
   border-bottom: 1px solid var(--color-border);
   text-align: center;
 }
 
-/* --- Buttons --- */
+/* Ajustes para los botones */
 .btn {
   padding: 0.75rem 1.5rem;
   border-radius: var(--border-radius);
@@ -192,26 +869,95 @@ h1.formulario-titulo {
   transform: translateY(-1px);
 }
 
-/* --- Responsive Design --- */
-@media (max-width:768px) {
+/* Utilidades flex */
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+
   .solicitante-datos {
     grid-template-columns: 1fr;
+    /* Una sola columna en pantallas pequeñas */
   }
-  
+
   .tabla-registro {
     display: block;
     width: 100%;
     overflow-x: auto;
   }
-  
+
+  .tabla-registro thead {
+    display: none;
+  }
+
+  .tabla-registro tr {
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+  }
+
+  .tabla-registro td {
+    display: block;
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border-bottom: none;
+  }
+
   .tabla-registro td::before {
     content: attr(data-label);
     position: absolute;
     left: 0;
     width: 45%;
-    padding-left: var(--spacing-sm);
+    padding-left: 15px;
     font-weight: bold;
     text-align: left;
     white-space: nowrap;
+  }
+
+  .btn-codigo-catastral,
+  .btn-guardar-catastral,
+  .btn-ver-codigo,
+  .btn-agregar,
+  .eliminar-registro {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .propietarios-inputs {
+    justify-content: center;
   }
 }

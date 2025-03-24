@@ -117,7 +117,7 @@ const utils = {
 // Módulo: api (Simulación de llamadas a la API)
 const api = {
     consultar_datos_ciudadano: async function (cedula) {
-        const url = 'https://municipioguayaquil--dev01.sandbox.my.salesforce-setup.com/services/apexrest/Ciudadano/?cedula=' + cedula; // Reemplaza con la URL correcta
+        const url = '/services/apexrest/Ciudadano/?cedula=' + cedula; // Reemplaza con la URL correcta
         try {
             const response = await fetch(url, {
                 method: 'GET',

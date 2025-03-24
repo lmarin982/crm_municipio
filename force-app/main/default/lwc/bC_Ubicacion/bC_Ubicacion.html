@@ -1,10 +1,18 @@
 <template>
-    <lightning-card title="Ubicación en Mapa">
-        <template if:true={coordenadas}>
-            <div class="map-container" lwc:dom="manual"></div>
-        </template>
-        <template if:false={coordenadas}>
-            <p>No se encontraron coordenadas para este caso.</p>
-        </template>
-    </lightning-card>
+    <template if:true={hasMarkers}>
+        <lightning-map
+            map-markers={mapMarkers}
+            markers-title="Ubicaciones de los Elementos"
+            zoom-level="12"
+            list-view="auto">
+        </lightning-map>
+    </template>
+
+    <template if:true={error}>
+        <p class="slds-text-color_error">Error al cargar los datos del mapa.</p>
+    </template>
+
+    <template if:true={noData}>
+        <p>No se encontraron coordenadas para este caso.</p>
+    </template>
 </template>

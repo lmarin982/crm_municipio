@@ -143,8 +143,8 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Objeto utilizado para registrar los elementos de seguridad de una solicitud</description>
-    <enableActivities>false</enableActivities>
+    <description>Objeto utilizado para registrar el elemento de seguridad</description>
+    <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
@@ -154,15 +154,14 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <gender>Masculine</gender>
-    <label>Elemento</label>
+    <gender>Feminine</gender>
+    <label>Elemento de seguridad</label>
     <nameField>
-        <displayFormat>{0000000000}</displayFormat>
-        <label>Elemento</label>
+        <label>Elemento No.</label>
         <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>Elementos</pluralLabel>
+    <pluralLabel>Elementos de seguridad</pluralLabel>
     <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
