@@ -3,5 +3,6 @@
     <apiVersion>63.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>BCInformefact</label>
+    <description>Página predeterminada de página/datos no encontrados de Plataforma Lightning</description>
+    <label>FileNotFound</label>
 </ApexPage>

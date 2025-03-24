@@ -4,41 +4,38 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Formulario de Solicitud</title>
-        <apex:stylesheet value="{!URLFOR($Resource.BCStylesAndIcons, 'BCEstilosActaConsetimientoYResignacion.css')}" />
-        <apex:includeScript value="{!URLFOR($Resource.BCStylesAndIcons, 'BCScripts.js')}" />
+        <apex:component >
+            <apex:stylesheet value="{!URLFOR($Resource.BCStylesAndIcons, 'src/styles/BCEstilosActaConsetimientoYResignacion.css')}" />
+            <apex:includeScript value="{!URLFOR($Resource.BCStylesAndIcons, 'index.js')}" />
+        </apex:component>
         <apex:pageMessages id="mensajes" />
     </head>
 
     <body>
-
         <apex:form id="formulario">
-            <!-- ¡IMPORTANTE!  Envolver todo en un apex:form -->
-
-            <main class="main">
-                <!-- Header con logos -->
+            <div class="main">
+                <!-- Header with logos -->
                 <div class="header-logos">
-                    <img src="{!URLFOR($Resource.BCStylesAndIcons, 'BCMIMG_Logo.png')}" alt="Muy Ilustre Municipio de Guayaquil" class="logo"
+                    <img src="{!URLFOR($Resource.BCStylesAndIcons, 'src/img/BCMIMG_Logo.png')}" alt="Muy Ilustre Municipio de Guayaquil" class="logo"
                     />
-                    <img src="{!URLFOR($Resource.BCStylesAndIcons, 'BCDireccionUEVP_Logo.png')}" alt="Dirección de uso del Espacio y vía Pública"
+                    <img src="{!URLFOR($Resource.BCStylesAndIcons, 'src/img/BCDireccionUEVP_Logo.png')}" alt="Dirección de uso del Espacio y vía Pública"
                         class="logo" />
                 </div>
 
                 <!-- Título del formulario -->
-                <h1 class="formulario-titulo">
-                    Formulario de solicitud para obtención del permiso temporal para la instalación de elementos de seguridad en el espacio y
-                    vía pública
-                </h1>
+                <div class="formulario-titulo">
+                    <h2>Formulario de solicitud para obtención del permiso temporal para la instalación de elementos de seguridad
+                        en el espacio y vía pública</h2>
+                </div>
 
                 <!-- Formulario para Persona Natural -->
                 <div class="formulario-contenedor">
-                    <h2 class="solicitante-titulo label">Solicitante - Persona Natural</h2>
+                    <h2 class="solicitante-titulo">Solicitante - Persona Natural</h2>
                     <div class="solicitante-datos">
                         <!-- Nombres y apellidos -->
                         <div class="solicitante-campo">
                             <label class="label" for="nombresApellidosNatural">
-                                <!-- Añadido 'for' -->
-                                Nombres y apellidos del representante (*)
+                                Nombres y apellidos (*)
                                 <span class="tooltip-container">
                                     <span class="tooltip-trigger">?</span>
                                     <span class="tooltip-content">Ingrese sus nombres y apellidos completos, tal como aparecen en su cédula.</span>
@@ -48,9 +45,8 @@
                         </div>
 
                         <!-- CC -->
-                        <div class="solicitante-campo small">
+                        <div class="solicitante-campo">
                             <label class="label" for="ccNatural">
-                                <!-- Añadido 'for' -->
                                 C.C. (*)
                                 <span class="tooltip-container">
                                     <span class="tooltip-trigger">?</span>
@@ -58,13 +54,11 @@
                                 </span>
                             </label>
                             <input type="text" class="input" id="ccNatural" name="ccNatural" />
-
                         </div>
 
                         <!-- Dirección -->
-                        <div class="solicitante-campo full">
+                        <div class="solicitante-campo">
                             <label class="label" for="direccionNatural">
-                                <!-- Añadido 'for' -->
                                 Dirección exacta del domicilio (*)
                                 <span class="tooltip-container">
                                     <span class="tooltip-trigger">?</span>
@@ -72,13 +66,11 @@
                                 </span>
                             </label>
                             <input type="text" class="input" id="direccionNatural" name="direccionNatural" />
-
                         </div>
 
                         <!-- Correo electrónico -->
                         <div class="solicitante-campo">
                             <label class="label" for="correoNatural">
-                                <!-- Añadido 'for' -->
                                 Correo electrónico (*)
                                 <span class="tooltip-container">
                                     <span class="tooltip-trigger">?</span>
@@ -86,13 +78,11 @@
                                 </span>
                             </label>
                             <input type="email" class="input" id="correoNatural" name="correoNatural" />
-
                         </div>
 
                         <!-- Teléfono -->
-                        <div class="solicitante-campo small">
+                        <div class="solicitante-campo">
                             <label class="label" for="telefonoNatural">
-                                <!-- Añadido 'for' -->
                                 Teléfono (*)
                                 <span class="tooltip-container">
                                     <span class="tooltip-trigger">?</span>
@@ -100,122 +90,115 @@
                                 </span>
                             </label>
                             <input type="tel" class="input" id="telefonoNatural" name="telefonoNatural" />
-
                         </div>
                     </div>
                 </div>
 
                 <!-- Nota informativa -->
-                <div class="nota-informativa p-3 rounded-lg text-center">
-                    <p class="font-bold">
-                        El presente formulario debe ser completado de manera digital y debe ser impreso para su firma de forma manual
-                    </p>
+                <div class="nota-informativa">
+                    <h2>El presente formulario debe ser completado de manera digital y debe ser impreso para su firma de forma
+                        manual
+                    </h2>
                 </div>
 
                 <!-- Requisitos a cumplir -->
                 <div class="requisitos-container section">
-                    <div class="requisitos-titulo">
-                        <h2 class="text-sm uppercase mb-0 w-full">Requisitos a cumplir</h2>
-                    </div>
+                    <h2 class="solicitante-titulo">Requisitos a cumplir</h2>
 
-                    <div class="flex flex-col gap-3">
-                        <!-- WRAPPER ADDED HERE -->
-                        <div class="requisitos-upload-section">
-                            <div class="fila-formulario">
-                                <p class="descripcion-item">
-                                    1.- Acta suscrita por todos los miembros que conforman el colectivo o comunidad solicitante.
-                                </p>
-                                <div class="contenedor-boton-checkbox">
-                                    <label for="actaFile" class="btn btn-light custom-file-upload">Subir Acta</label>
-                                    <input type="file" id="actaFile" class="hidden" onchange="actualizarCheckbox('actaFile', 'actaCheckbox', 'actaNombreArchivo')"
-                                    />
-                                    <input type="checkbox" id="actaCheckbox" class="checkbox-estilo" disabled="true" />
-                                    <span id="actaNombreArchivo"></span>
-                                </div>
-                            </div>
+                    <div class="requisitos-upload-section">
 
-                            <div class="fila-formulario">
-                                <p class="descripcion-item">
-                                    2.- Planos del proyecto de los elementos de seguridad a instalarse con firma de responsabilidad técnica.
-                                </p>
-                                <div class="contenedor-boton-checkbox">
-                                    <label for="planosFile" class="btn btn-light custom-file-upload">Subir Plano</label>
-                                    <input type="file" id="planosFile" class="hidden" onchange="actualizarCheckbox('planosFile', 'planosCheckbox', 'planosNombreArchivo')"
-                                    />
-                                    <input type="checkbox" id="planosCheckbox" class="checkbox-estilo" disabled="true" />
-                                    <span id="planosNombreArchivo"></span>
-                                </div>
-                            </div>
-                            <div class="fila-formulario">
-                                <p class="descripcion-item">
-                                    3.- Fotografías del sitio donde se propone instalar los elementos de seguridad en el espacio y vía pública.
-                                </p>
-                                <div class="contenedor-boton-checkbox">
-                                    <label for="fotosFile" class="btn btn-light custom-file-upload">Subir PDF</label>
-                                    <input type="file" id="fotosFile" class="hidden" onchange="actualizarCheckbox('fotosFile', 'fotosCheckbox', 'fotosNombreArchivo')"
-                                    />
-                                    <input type="checkbox" id="fotosCheckbox" class="checkbox-estilo" disabled="true" />
-                                    <span id="fotosNombreArchivo"></span>
-                                </div>
-                            </div>
-                            <div class="fila-formulario">
-                                <p class="descripcion-item">
-                                    4.- Comprobante de Pago de Tasa por Servicios Administrativos.
-                                </p>
-                                <div class="contenedor-boton-checkbox">
-                                    <label for="comprobanteFile" class="btn btn-light custom-file-upload">Subir Comprobante</label>
-                                    <input type="file" id="comprobanteFile" class="hidden" onchange="actualizarCheckbox('comprobanteFile', 'comprobanteCheckbox', 'comprobanteNombreArchivo')"
-                                    />
-                                    <input type="checkbox" id="comprobanteCheckbox" class="checkbox-estilo" disabled="true" />
-                                    <span id="comprobanteNombreArchivo"></span>
-                                </div>
+                        <!-- Acta -->
+                        <div class="requisito-item">
+                            <p class="descripcion-item">
+                                1.- Acta suscrita por todos los miembros que conforman el colectivo o comunidad solicitante.
+                            </p>
+                            <div class="contenedor-boton-checkbox">
+                                <label for="actaFile" class="custom-file-upload">Subir Acta</label>
+                                <input type="file" id="actaFile" style="display: none;" onchange="ui.actualizarCheckbox('actaFile', 'actaCheckbox', 'actaNombreArchivo')"
+                                />
+                                <input type="checkbox" id="actaCheckbox" class="checkbox-estilo" disabled="true" />
+                                <span id="actaNombreArchivo" class="upload-filename"></span>
                             </div>
                         </div>
-                        <!-- END WRAPPER -->
-                    </div>
 
-                    <div class="requisitos-especificos p-2 rounded-lg" style="border-left: 4px solid var(--color-primary);">
-                        <p class="text-sm text-tertiary mb-0 leading-normal text-center">
+                        <!-- Planos -->
+                        <div class="requisito-item">
+                            <p class="descripcion-item">
+                                2.- Planos del proyecto de los elementos de seguridad a instalarse con firma de responsabilidad técnica.
+                            </p>
+                            <div class="contenedor-boton-checkbox">
+                                <label for="planosFile" class="custom-file-upload">Subir Plano</label>
+                                <input type="file" id="planosFile" style="display: none;" onchange="ui.actualizarCheckbox('planosFile', 'planosCheckbox', 'planosNombreArchivo')"
+                                />
+                                <input type="checkbox" id="planosCheckbox" class="checkbox-estilo" disabled="true" />
+                                <span id="planosNombreArchivo" class="upload-filename"></span>
+                            </div>
+                        </div>
+
+                        <!-- Fotos -->
+                        <div class="requisito-item">
+                            <p class="descripcion-item">
+                                3.- Fotografías del sitio donde se propone instalar los elementos de seguridad en el espacio y vía pública.
+                            </p>
+                            <div class="contenedor-boton-checkbox">
+                                <label for="fotosFile" class="custom-file-upload">Subir PDF</label>
+                                <input type="file" id="fotosFile" style="display: none;" onchange="ui.actualizarCheckbox('fotosFile', 'fotosCheckbox', 'fotosNombreArchivo')"
+                                />
+                                <input type="checkbox" id="fotosCheckbox" class="checkbox-estilo" disabled="true" />
+                                <span id="fotosNombreArchivo" class="upload-filename"></span>
+                            </div>
+                        </div>
+
+                        <!-- Comprobante -->
+                        <div class="requisito-item">
+                            <p class="descripcion-item">
+                                4.- Comprobante de Pago de Tasa por Servicios Administrativos.
+                            </p>
+                            <div class="contenedor-boton-checkbox">
+                                <label for="comprobanteFile" class="custom-file-upload">Subir Comprobante</label>
+                                <input type="file" id="comprobanteFile" style="display: none;" onchange="ui.actualizarCheckbox('comprobanteFile', 'comprobanteCheckbox', 'comprobanteNombreArchivo')"
+                                />
+                                <input type="checkbox" id="comprobanteCheckbox" class="checkbox-estilo" disabled="true" />
+                                <span id="comprobanteNombreArchivo" class="upload-filename"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- END WRAPPER -->
+
+                    <!-- Additional requirements note -->
+                    <div class="requisitos-especificos">
+                        <p>
                             * Los miembros del colectivo o comunidad solicitante deben estar al día en el pago del impuesto predial y tasa de recolección
                             de desechos sólidos no peligrosos, cuya verificación estará a cargo del Gobierno Autónomo Descentralizado
                             Municipal de Guayaquil
                         </p>
                     </div>
 
-                    <!-- Elementos de Seguridad -->
-                    <div class="elementos-seguridad-container">
-                        <table class="elementos-seguridad-tabla">
-                            <!-- Encabezado -->
+                    <!-- Security elements table -->
+                    <div class="security-elements-container">
+                        <table class="security-elements-table">
                             <thead>
                                 <tr>
-                                    <th class="text-sm uppercase">Elementos de seguridad instalado o por instalar</th>
-                                    <th class="text-sm uppercase">Tipo</th>
+                                    <th>Elementos de seguridad instalado o por instalar</th>
+                                    <th>Tipo</th>
                                 </tr>
                             </thead>
-                            <!-- Opciones -->
                             <tbody>
                                 <tr>
-                                    <td style="text-align: justify;">
-                                        PORTONES METÁLICOS EN VÍAS PEATONALES
-                                    </td>
+                                    <td>PORTONES METÁLICOS EN VÍAS PEATONALES</td>
                                     <td>TIPO 1</td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: justify;">
-                                        PORTONES METÁLICOS EN CALLES VEHICULARES CON ACERAS MENORES A 1,50 METROS
-                                    </td>
+                                    <td>PORTONES METÁLICOS EN CALLES VEHICULARES CON ACERAS MENORES A 1,50 METROS</td>
                                     <td>TIPO 2</td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: justify;">
-                                        PORTONES METÁLICOS EN CALLES VEHICULARES CON ACERAS IGUALES O MAYORES A 1,50 METROS
-                                    </td>
+                                    <td>PORTONES METÁLICOS EN CALLES VEHICULARES CON ACERAS IGUALES O MAYORES A 1,50 METROS</td>
                                     <td>TIPO 3</td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: justify;">
-                                        OTROS ELEMENTOS DE SEGURIDAD
-                                    </td>
+                                    <td>OTROS ELEMENTOS DE SEGURIDAD</td>
                                     <td>OTROS</td>
                                 </tr>
                             </tbody>
@@ -223,88 +206,88 @@
                     </div>
                 </div>
 
-                <!-- Registro de direcciones -->
-                <div class="formulario-contenedor section">
-                    <div class="registro-elementos-titulo">
-                        <h2 class="bg-primary text-white p-2 rounded-lg mb-3">
-                            <span class="text-sm uppercase mb-0 w-full">Registro de elementos de seguridad</span>
-                        </h2>
-                    </div>
-                    <div class="registro-elementos-container">
-                        <!-- Campos de entrada -->
-                        <div class="elementos-inputs">
-                            <div class="elemento-campo">
-                                <label class="label text-center" for="tipoElemento" style="font-size: 10pt;">
-                                    Tipo de elemento de seguridad
-                                    <span class="tooltip-container">
-                                        <span class="tooltip-trigger">?</span>
-                                        <span class="tooltip-content">Seleccione el tipo de elemento de seguridad que está instalando (ej. cámara de vigilancia,
-                                            alarma, cerco eléctrico, botón de pánico, etc.).</span>
-                                    </span>
-                                </label>
-                                <select id="tipoElemento" class="input" required="required">
-                                    <option value="">Seleccione...</option>
-                                </select>
-                            </div>
-                            <div class="elemento-campo">
-                                <label class="label text-center" for="direccionElemento" style="font-size: 10pt;">
-                                    Dirección exacta de instalación
-                                    <span class="tooltip-container">
-                                        <span class="tooltip-trigger">?</span>
-                                        <span class="tooltip-content">Ingrese la dirección *exacta* donde está instalado el elemento de seguridad. Incluya
-                                            calle, número, intersecciones, ciudad, y cualquier otra referencia que facilite
-                                            la ubicación. Sea lo más detallado posible.</span>
-                                    </span>
-                                </label>
-                                <input id="direccionElemento" type="text" class="input" placeholder="Ingrese la dirección exacta" required="required" name="direccionElemento"
-                                />
-                            </div>
-                            <div class="elemento-campo coordenadas-grupo">
-                                <label class="label text-center" for="latitudElemento" style="font-size: 10pt;">
-                                    Coordenadas georreferenciadas
-                                    <span class="tooltip-container">
-                                        <span class="tooltip-trigger">?</span>
-                                        <span class="tooltip-content">Si no conoce las coordenadas, puede obtenerlas utilizando un servicio de mapas en
-                                            línea (como Google Maps). Haga clic derecho en la ubicación exacta y seleccione
-                                            "Qué hay aquí?".</span>
-                                    </span>
-                                </label>
-                                <div class="coordenadas-inputs">
-                                    <input id="latitudElemento" type="number" step="any" class="input" placeholder="Latitud" required="required" name="latitudElemento"
-                                    />
-                                    <input id="longitudElemento" type="number" step="any" class="input" placeholder="Longitud" required="required" name="longitudElemento"
-                                    />
-                                </div>
-                            </div>
-                            <div class="elemento-campo">
-                                <label class="label text-center" for="tipoSolicitud" style="font-size: 10pt;">
-                                    Tipo de solicitud
-                                    <span class="tooltip-container">
-                                        <span class="tooltip-trigger">?</span>
-                                        <span class="tooltip-content">Seleccione "PRIMERA VEZ" si es la primera vez que registra este elemento. Seleccione
-                                            "REGULARIZACIÓN" si está actualizando la información de un elemento ya registrado.</span>
-                                    </span>
-                                </label>
-                                <select id="tipoSolicitud" class="input" required="required">
-                                    <!--  Las opciones se llenarán con JavaScript -->
-                                </select>
-                            </div>
-                        </div>
-                        <div class="elemento-accion">
-                            <button type="button" onclick="agregarRegistro(event)" class="btn btn-primary">
-                                Agregar elemento
-                            </button>
+                <!-- Address Registry -->
+                <div class="formulario-contenedor">
+                    <h2 class="solicitante-titulo">Registro de elementos de seguridad</h2>
+                    <div class="elementos-inputs">
+                        <!-- Tipo de elemento de seguridad -->
+                        <div class="elemento-campo">
+                            <label class="label" for="tipoElemento">
+                                Tipo de elemento de seguridad
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Seleccione el tipo de elemento de seguridad que está instalando (ej. cámara de vigilancia,
+                                        alarma, cerco eléctrico, botón de pánico, etc.).</span>
+                                </span>
+                            </label>
+                            <select id="tipoElemento" class="input">
+                                <option value="">Seleccione...</option>
+                            </select>
                         </div>
 
-                        <!-- Tabla de registros -->
-                        <table class="table table--bordered table--responsive tabla-registro">
+                        <!-- Dirección exacta de instalación -->
+                        <div class="elemento-campo">
+                            <label class="label" for="direccionElemento">
+                                Dirección exacta de instalación
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese la dirección *exacta* donde está instalado el elemento de seguridad. Incluya
+                                        calle, número, intersecciones, ciudad, y cualquier otra referencia que facilite la
+                                        ubicación. Sea lo más detallado posible.</span>
+                                </span>
+                            </label>
+                            <input id="direccionElemento" type="text" class="input" placeholder="Ingrese la dirección exacta" name="direccionElemento"
+                            />
+                        </div>
+
+                        <!-- Coordenadas georreferenciadas -->
+                        <div class="elemento-campo coordinates-group">
+                            <label class="label" for="latitudElemento">
+                                Coordenadas georreferenciadas
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Si no conoce las coordenadas, puede obtenerlas utilizando un servicio de mapas en línea
+                                        (como Google Maps). Haga clic derecho en la ubicación exacta y seleccione "Qué hay
+                                        aquí?".
+                                    </span>
+                                </span>
+                            </label>
+                            <div class="coordinates-inputs">
+                                <input id="latitudElemento" type="number" step="any" class="input" placeholder="Latitud" name="latitudElemento" />
+                                <input id="longitudElemento" type="number" step="any" class="input" placeholder="Longitud" name="longitudElemento" />
+                            </div>
+                        </div>
+
+                        <!-- Tipo de solicitud -->
+                        <div class="elemento-campo">
+                            <label class="label" for="tipoSolicitud">
+                                Tipo de solicitud
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Seleccione "PRIMERA VEZ" si es la primera vez que registra este elemento. Seleccione
+                                        "REGULARIZACIÓN" si está actualizando la información de un elemento ya registrado.</span>
+                                </span>
+                            </label>
+                            <select id="tipoSolicitud" class="input">
+                                <!-- Opciones se llenarán con JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="elemento-accion">
+                        <button onclick="agregarRegistro(event)" class="button-element">Agregar elemento</button>
+                    </div>
+
+                    <!-- Tabla de registros -->
+                    <div class="tabla-registro-elementos">
+                        <table class="tabla-elementos">
                             <thead>
                                 <tr>
-                                    <th class="text-center" style="width: 20%;">Tipo de elemento</th>
-                                    <th class="text-center" style="width: 40%;">Dirección de instalación</th>
-                                    <th class="text-center" style="width: 15%;">Coordenadas</th>
-                                    <th class="text-center" style="width: 15%;">Tipo de solicitud</th>
-                                    <th class="text-center" style="width: 10%;">Acciones</th>
+                                    <th>Tipo de elemento</th>
+                                    <th>Dirección de instalación</th>
+                                    <th>Coordenadas</th>
+                                    <th>Tipo de solicitud</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -321,203 +304,199 @@
                 </div>
 
                 <!-- Registro de Propietarios/Mandatarios -->
-                <div class="formulario-contenedor section">
-                    <div class="registro-elementos-titulo">
-                        <h2 class="bg-primary text-white p-2 rounded-lg mb-3">
-                            <span class="text-sm uppercase mb-0 w-full">Registro de Propietarios/Mandatarios</span>
-                        </h2>
-                    </div>
-                    <div class="registro-propietarios-container">
+                <div class="formulario-contenedor">
+                    <h2 class="solicitante-titulo">Registro de Propietarios/Mandatarios</h2>
+                    <div class="propietarios-inputs">
+                        <!-- Calidad -->
+                        <div class="propietario-campo">
+                            <label class="label" for="calidadSuscrito">
+                                Calidad
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Seleccione si usted es el "Propietario" del inmueble o un "Mandatario" (representante
+                                        legal con poder notariado).</span>
+                                </span>
+                            </label>
+                            <select id="calidadSuscrito" class="input" name="calidadSuscrito">
+                                <option value="">Seleccione...</option>
+                                <option value="Propietario">Propietario</option>
+                                <option value="Mandatario">Mandatario</option>
+                            </select>
+                        </div>
 
-                        <!-- Campos de entrada (en línea) -->
-                        <div class="propietarios-inputs">
-                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; width: 100%">
-                                <div class="propietario-campo">
-                                    <label class="label text-center" for="calidadSuscrito">
-                                        Calidad
-                                        <span class="tooltip-container">
-                                            <span class="tooltip-trigger">?</span>
-                                            <span class="tooltip-content">Seleccione si usted es el "Propietario" del inmueble o un "Mandatario" (representante
-                                                legal con poder notariado).</span>
-                                        </span>
-                                    </label>
-                                    <select id="calidadSuscrito" class="input" name="calidadSuscrito">
-                                        <option value="">Seleccione...</option>
-                                        <option value="Propietario">Propietario</option>
-                                        <option value="Mandatario">Mandatario</option>
-                                    </select>
-                                </div>
-                                <div class="propietario-campo">
-                                    <label class="label text-center" for="nombresApellidosPropietario">
-                                        Nombre Completo
-                                        <span class="tooltip-container">
-                                            <span class="tooltip-trigger">?</span>
-                                            <span class="tooltip-content">Ingrese los nombres y apellidos completos, tal como aparecen en su documento
-                                                de identidad (cédula o RUC). Si es mandatario, ingrese sus propios datos,
-                                                no los del propietario.</span>
-                                        </span>
-                                    </label>
-                                    <input type="text" id="nombresApellidosPropietario" class="input" placeholder="Nombres y Apellidos" name="nombresApellidosPropietario"
-                                    />
-                                </div>
-                                <div class="propietario-campo">
-                                    <label class="label text-center" for="cedulaRucPropietario">
-                                        Cédula / RUC
-                                        <span class="tooltip-container">
-                                            <span class="tooltip-trigger">?</span>
-                                            <span class="tooltip-content">Ingrese su número de cédula (10 dígitos) o RUC (13 dígitos), sin guiones ni espacios.
-                                                Este campo es obligatorio.</span>
-                                        </span>
-                                    </label>
-                                    <input type="text" id="cedulaRucPropietario" class="input" placeholder="Cédula / RUC" name="cedulaRucPropietario" />
-                                </div>
-                                <div class="propietario-campo">
-                                    <label class="label text-center" for="telefonoPropietario">
-                                        Teléfono
-                                        <span class="tooltip-container">
-                                            <span class="tooltip-trigger">?</span>
-                                            <span class="tooltip-content">Ingrese un número de teléfono de contacto, preferiblemente un número celular.
-                                                Incluya el código de área si corresponde.</span>
-                                        </span>
-                                    </label>
-                                    <input type="tel" id="telefonoPropietario" class="input" placeholder="Teléfono" name="telefonoPropietario" />
-                                </div>
-                                <div class="propietario-campo">
-                                    <label class="label text-center" for="correoPropietario">
-                                        Correo
-                                        <span class="tooltip-container">
-                                            <span class="tooltip-trigger">?</span>
-                                            <span class="tooltip-content">Por favor, ingrese una dirección de correo electrónico válida. Esta dirección
-                                                será utilizada para comunicaciones oficiales y notificaciones importantes.</span>
+                        <!-- Nombre Completo -->
+                        <div class="propietario-campo">
+                            <label class="label" for="nombresApellidosPropietario">
+                                Nombre Completo
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese los nombres y apellidos completos, tal como aparecen en su documento de identidad
+                                        (cédula o RUC). Si es mandatario, ingrese sus propios datos, no los del propietario.</span>
+                                </span>
+                            </label>
+                            <input type="text" id="nombresApellidosPropietario" class="input" placeholder="Nombres y Apellidos" name="nombresApellidosPropietario"
+                            />
+                        </div>
 
-                                        </span>
-                                    </label>
-                                    <input type="email" id="correoPropietario" class="input" placeholder="Correo Electrónico" name="correoPropietario" />
-                                </div>
-                                <!--  Campo para el nombre del representante (cuando es mandatario) -->
-                                <div id="representante-campo" style="display: none;">
-                                    <label class="label text-center" for="nombreRepresentante">
-                                        Representante legal
-                                        <span class="tooltip-container">
-                                            <span class="tooltip-trigger">?</span>
-                                            <span class="tooltip-content">Ingrese el nombre completo del representante legal.</span>
-                                        </span>
-                                    </label>
-                                    <input type="text" id="nombreRepresentante" class="input" placeholder="Nombre del Representante" name="nombreRepresentante" />
-                                </div>
-                                
-                                <div id="id-representante-campo" style="display: none;">
-                                    <label class="label text-center" for="idRepresentanteLegal">
-                                        Identificación del Representante Legal
-                                        <span class="tooltip-container">
-                                            <span class="tooltip-trigger">?</span>
-                                            <span class="tooltip-content">Ingrese la identificación del representante legal.</span>
-                                        </span>
-                                    </label>
-                                    <input type="text" id="idRepresentanteLegal" class="input" placeholder="Cédula / RUC / Pasaporte" name="idRepresentanteLegal" />
-                                </div>
-                            </div>
-                            <div class="propietario-campo" style="width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 1rem;">
-                                <button type="button" onclick="abrirModalCodigoCatastral()" class="btn btn-primary">Código Catastral</button>
-                                <button type="button" onclick="agregarRegistroPropietario(event)" class="btn btn-primary">Agregar</button>
-                            </div>
+                        <!-- Cédula / RUC -->
+                        <div class="propietario-campo">
+                            <label class="label" for="cedulaRucPropietario">
+                                Cédula / RUC
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese su número de cédula (10 dígitos) o RUC (13 dígitos), sin guiones ni espacios.
+                                        Este campo es obligatorio.</span>
+                                </span>
+                            </label>
+                            <input type="text" id="cedulaRucPropietario" class="input" placeholder="Cédula / RUC" name="cedulaRucPropietario" />
+                        </div>
 
-                            <!-- Tabla de registros de propietarios -->
-                            <table class="table table--bordered table--responsive tabla-registro-propietarios">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">No.</th>
-                                        <th class="text-center">Calidad</th>
-                                        <th class="text-center">Nombres y Apellidos</th>
-                                        <th class="text-center">Cédula / RUC</th>
-                                        <th class="text-center">Teléfono</th>
-                                        <th class="text-center">Correo</th>
-                                        <th class="text-center">Código Catastral</th>
-                                        <th class="text-center">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Filas de ejemplo (opcional) -->
-                                    <tr class="fila-ejemplo">
-                                        <td class="text-center">0</td>
-                                        <td class="text-center">Propietario</td>
-                                        <td class="text-center">Ejemplo Apellido</td>
-                                        <td class="text-center">1234567890</td>
-                                        <td class="text-center">0999999999</td>
-                                        <td class="text-center">ejemplo@correo.com</td>
-                                        <td class="flex justify-center items-center">
-                                            <button type="button" onclick="abrirModalCodigoCatastral()" class="btn btn-success">Ver</button>
-                                        </td>
-                                        <!-- <td class="flex justify-center items-center">
-                                        <button type="button" onclick="eliminarRegistroPropietario(0)" class="btn btn-danger">Eliminar</button>
-                                    </td> -->
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <!-- Teléfono -->
+                        <div class="propietario-campo">
+                            <label class="label" for="telefonoPropietario">
+                                Teléfono
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese un número de teléfono de contacto, preferiblemente un número celular. Incluya
+                                        el código de área si corresponde.</span>
+                                </span>
+                            </label>
+                            <input type="tel" id="telefonoPropietario" class="input" placeholder="Teléfono" name="telefonoPropietario" />
+                        </div>
+
+                        <!-- Correo -->
+                        <div class="propietario-campo">
+                            <label class="label" for="correoPropietario">
+                                Correo
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Por favor, ingrese una dirección de correo electrónico válida. Esta dirección será utilizada
+                                        para comunicaciones oficiales y notificaciones importantes.</span>
+                                </span>
+                            </label>
+                            <input type="email" id="correoPropietario" class="input" placeholder="Correo Electrónico" name="correoPropietario" />
+                        </div>
+
+                        <div class="propietario-campo">
+                            <label class="label" for="representanteLegal">
+                                Representante legal
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese el nombre completo del representante legal, tal como aparece en el documento
+                                        de identidad o poder notarial.</span>
+                                </span>
+                            </label>
+                            <input type="email" id="representanteLegal" class="input" placeholder="Correo Electrónico" name="representanteLegal" />
+                        </div>
+
+                        <div class="propietario-campo">
+                            <label class="label" for="identificacionReprensentante">
+                                Identificacion del representante legal
+                                <span class="tooltip-container">
+                                    <span class="tooltip-trigger">?</span>
+                                    <span class="tooltip-content">Ingrese el número de identificación del representante legal (cédula o RUC).</span>
+                                </span>
+                            </label>
+                            <input type="email" id="identificacionReprensentante" class="input" placeholder="Correo Electrónico" name="identificacionReprensentante" />
                         </div>
                     </div>
 
-                    <!-- Modal para el Código Catastral -->
-                    <div id="modalCodigoCatastral" class="modal">
-                        <div class="modal-content">
-                            <span class="close-button" onclick="cerrarModalCodigoCatastral()">×</span>
-                            <h2 class="text-primary text-lg text-center uppercase">Código Catastral</h2>
-                            <div class="modal-inputs">
-                                <input type="number" id="seccionCatastral" class="input" placeholder="SECT" />
-                                <input type="number" id="manzanaCatastral" class="input" placeholder="MANZ" />
-                                <input type="number" id="loteCatastral" class="input" placeholder="LOTE" />
-                                <input type="number" id="divisionCatastral" class="input" placeholder="DIV." />
-                                <input type="number" id="phvCatastral" class="input" placeholder="PHV." />
-                                <input type="number" id="phhCatastral" class="input" placeholder="PHH." />
-                            </div>
-                            <button type="button" onclick="guardarCodigoCatastral()" class="btn btn-primary">Guardar</button>
-                        </div>
+                    <div class="action-owners">
+                        <button onclick="abrirModalCodigoCatastral()" class="button-element">Código Catastral</button>
+                        <button onclick="agregarRegistroPropietario(event)" class="button-element">Agregar</button>
                     </div>
 
-
+                    <!-- Tabla de registros de propietarios -->
+                    <div class="tabla-registro">
+                        <table class="tabla-propietarios">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Calidad</th>
+                                    <th>Nombres y Apellidos</th>
+                                    <th>Cédula / RUC</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo</th>
+                                    <th>Código Catastral</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="fila-ejemplo">
+                                    <td>0</td>
+                                    <td>Propietario</td>
+                                    <td>Ejemplo Apellido</td>
+                                    <td>1234567890</td>
+                                    <td>0999999999</td>
+                                    <td>ejemplo@correo.com</td>
+                                    <td>
+                                        <button onclick="abrirModalCodigoCatastral()" class="btn btn-success">Ver</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <!-- Declaración -->
-                <div class="declaracion-container section">
-                    <!-- Título -->
-                    <div class="declaracion-titulo">
-                        <h2 class="bg-primary text-white p-2 rounded-xl">
-                            <span class="text-sm uppercase mb-0 w-full">Declaración</span>
-                        </h2>
+
+                <!-- Modal para el Código Catastral -->
+                <div id="modalCodigoCatastral" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button" onclick="cerrarModalCodigoCatastral()">×</span>
+                        <h2 class="text-primary text-lg text-center uppercase">Código Catastral</h2>
+                        <div class="modal-inputs">
+                            <input type="number" id="seccionCatastral" class="input" placeholder="SECT" />
+                            <input type="number" id="manzanaCatastral" class="input" placeholder="MANZ" />
+                            <input type="number" id="loteCatastral" class="input" placeholder="LOTE" />
+                            <input type="number" id="divisionCatastral" class="input" placeholder="DIV." />
+                            <input type="number" id="phvCatastral" class="input" placeholder="PHV." />
+                            <input type="number" id="phhCatastral" class="input" placeholder="PHH." />
+                        </div>
+                        <button onclick="guardarCodigoCatastral()" class="button-element">Guardar</button>
                     </div>
+                </div>
+
+                <!-- Declaración -->
+                <div class="formulario-contenedor">
+                    <!-- Título -->
+                    <h2 class="solicitante-titulo">Declaración</h2>
 
                     <!-- Contenido de la declaración -->
                     <div class="declaracion-contenido">
                         <p class="text-sm mb-0 leading-normal">
-                            1. <span id="id_nombres_1" /> Cuando en un procedimiento sancionador se determine el retiro de un elemento de seguridad y el representante responsable
-                            del colectivo o comunidad no solicite la devolución en el plazo de 30 días contemplado en la
-                            Ordenanza que regula la ocupación del espacio o vía pública mediante la instalación de elementos
-                            de seguridad en el cantón Guayaquil, en mi calidad de representante responsable acepto expresamente
-                            que dichos bienes pasan a ser entregados al Gobierno Autónomo Descentralizado Municipal de Guayaquil
-                            para su disposición final.
+                            1.
+                            <span id="id_nombres_1"></span>Cuando en un procedimiento sancionador se determine el retiro de un elemento de seguridad
+                            y el representante responsable del colectivo o comunidad no solicite la devolución en el plazo
+                            de 30 días contemplado en la Ordenanza que regula la ocupación del espacio o vía pública mediante
+                            la instalación de elementos de seguridad en el cantón Guayaquil, en mi calidad de representante
+                            responsable acepto expresamente que dichos bienes pasan a ser entregados al Gobierno Autónomo
+                            Descentralizado Municipal de Guayaquil para su disposición final.
                         </p>
-
-                        <p class="text-sm mb-0 leading-normal">
-                            2. <span id="id_nombres_2" /> En mi calidad de representante responsable del colectivo o comunidad, mediante la suscripción del presente formulario
-                            acepto ser notificado mediante el correo electrónico que se declara en la presente solicitud.
+                        <p>
+                            2.
+                            <span id="id_nombres_2"></span>En mi calidad de representante responsable del colectivo o comunidad, mediante la suscripción
+                            del presente formulario acepto ser notificado mediante el correo electrónico que se declara en
+                            la presente solicitud.
                         </p>
-
-                        <p class="text-sm mb-0 leading-normal">
-                            3. <span id="id_nombres_3" /> En mi calidad de representante responsable del colectivo o comunidad declaro de manera libre y voluntaria, que la información
-                            proporcionada se sujeta estrictamente a la verdad, dejando constancia que me someto a las sanciones
-                            penales y tributarias establecidas en la ley, para el caso de incurrir en falsedades.
+                        <p>
+                            3.
+                            <span id="id_nombres_3"></span>En mi calidad de representante responsable del colectivo o comunidad declaro de manera
+                            libre y voluntaria, que la información proporcionada se sujeta estrictamente a la verdad, dejando
+                            constancia que me someto a las sanciones penales y tributarias establecidas en la ley, para el
+                            caso de incurrir en falsedades.
                         </p>
                     </div>
 
-                    <div class="terminos-condiciones flex flex-row justify-end gap-1 items-center">
+                    <div class="terminos-condiciones">
                         <input type="checkbox" id="aceptaTerminos" class="checkbox-estilo" />
                         <p class="text-sm mb-0 leading-normal">Acepto los términos y condiciones</p>
                     </div>
                 </div>
 
+                <!-- Submit -->
                 <div class="enviar-formulario">
-                    <button class="btn btn-primary p-3 text-base" onclick="enviarFormulario()">Enviar Formulario</button>
+                    <button onclick="enviarFormulario()">Enviar Formulario</button>
                 </div>
-            </main>
+            </div>
         </apex:form>
     </body>
 </apex:page>

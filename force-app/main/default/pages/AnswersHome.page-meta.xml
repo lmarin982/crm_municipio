@@ -3,5 +3,6 @@
     <apiVersion>63.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>BCInformefact</label>
+    <description>Página de inicio predeterminada de Plataforma Lightning para sitios de Respuestas</description>
+    <label>AnswersHome</label>
 </ApexPage>

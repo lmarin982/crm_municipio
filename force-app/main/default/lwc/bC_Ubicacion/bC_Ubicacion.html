@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Ubicación en Mapa">
+        <template if:true={coordenadas}>
+            <div class="map-container" lwc:dom="manual"></div>
+        </template>
+        <template if:false={coordenadas}>
+            <p>No se encontraron coordenadas para este caso.</p>
+        </template>
+    </lightning-card>
+</template>

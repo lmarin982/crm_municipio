@@ -3,5 +3,6 @@
     <apiVersion>63.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>BCInformefact</label>
+    <description>Página predeterminada de autorización necesaria de Plataforma Lightning</description>
+    <label>Unauthorized</label>
 </ApexPage>

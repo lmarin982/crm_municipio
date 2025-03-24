@@ -3,5 +3,6 @@
     <apiVersion>63.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>BCInformefact</label>
+    <description>Página predeterminada de Plataforma Lightning en construcción</description>
+    <label>UnderConstruction</label>
 </ApexPage>

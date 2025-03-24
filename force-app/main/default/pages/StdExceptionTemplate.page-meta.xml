@@ -3,5 +3,6 @@
     <apiVersion>63.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>BCInformefact</label>
+    <description>Plantilla predeterminada de Plataforma Lightning para páginas de excepción estándar</description>
+    <label>StdExceptionTemplate</label>
 </ApexPage>

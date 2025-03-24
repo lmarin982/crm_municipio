@@ -1,0 +1,81 @@
+@page {
+    size: A4;
+    /* Or Letter, etc. */
+    margin-top: 150px;
+    /* Adjust top margin for header */
+    margin-bottom: 30px;
+    /* Adjust bottom margin for footer */
+    margin-left: 20px;
+    margin-right: 20px;
+
+
+    @top-center {
+        content: element(header);
+    }
+
+    @bottom-left {
+        content: element(footer);
+    }
+}
+
+body {
+    font-family: Arial Unicode MS, Arial, sans-serif;
+    /* Fallback fonts */
+}
+
+.header {
+    position: running(header);
+    top: 0;
+    /* Position at the top */
+    width: 100%;
+    text-align: center;
+    /* Center the header content */
+    padding: 10px;
+    font-size: 11pt;
+}
+
+.header img {
+    display: block;
+    /* Important for centering */
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+.footer {
+    position: running(footer);
+    bottom: 0;
+    /* Position at the bottom */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: 8pt;
+}
+
+.pagenumber:before {
+    content: counter(page);
+}
+
+.pagecount:before {
+    content: counter(pages);
+}
+
+.content {
+    font-size: 12pt;
+    /* Consistent font size */
+    line-height: 1.5;
+    /* Add some line spacing for readability */
+    margin-top: 150px;
+    /* Adjust as needed to position content */
+    width: 100%;
+    /*Use all space available*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.head-content {
+    text-align: right;
+}
